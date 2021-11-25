@@ -1,0 +1,99 @@
+$desktop-sidebar-width: 255px;
+$navbar-height: 70px;
+$show-sidebar-breakpoint: 768px;
+
+.sidebar-toggler {
+    .visible-when-expanded {
+        display: none;
+    }
+    .visible-when-collapsed {
+        display: inline;
+    }
+    &.expanded {
+        .visible-when-expanded {
+            display: inline;
+        }
+        .visible-when-collapsed {
+            display: none;
+        }
+    }
+}
+
+.sidebar {
+    min-width: $desktop-sidebar-width;
+    width: $desktop-sidebar-width;
+    background: $green;
+    position: fixed;
+    height: calc(100vh - #{$navbar-height});
+    top: $navbar-height;
+    overflow: hidden;
+    overflow-y: auto;
+
+    .sidebar-container {
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+        
+        .sidebar-icon::before {
+            color: #408276;
+            font-size: 24px;
+        }
+
+        .active .sidebar-icon::before {
+            color: $white!important;
+        }
+
+        ul li a:hover .sidebar-icon::before {
+            color: $white!important;
+        }
+
+        i {
+            color: #fff;
+            height: 60px;
+            min-width: 50px;
+            font-size: 28px;
+            text-align: center;
+            line-height: 60px;
+        }
+
+        .nav-list {
+            padding-left: 19px;
+        }
+
+        li {
+            margin: 12px 0;
+            list-style: none;
+        }
+
+        .sidebar-bottom {
+            margin-top: auto;
+        }
+    }
+}
+
+
+.main-section {
+    position: relative;
+    background: linear-gradient(to right, #C9E2DC, #076758);
+    min-height: calc(100vh - #{$navbar-height});
+    top: $navbar-height;
+    width: 100%;
+    padding-left: $desktop-sidebar-width;
+    transition: all 0.5s ease;
+    border-left: 1px solid $black;
+    z-index: -1;
+}
+
+@media (max-width: $show-sidebar-breakpoint) {
+    .sidebar {
+        display: none;
+        &.show {
+            display: block;
+            box-shadow: 0 5px 20px rgb(0 0 0 / 20%);
+        }
+    }
+
+    .main-section {
+        padding-left: 0px;
+    }
+}
