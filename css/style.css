@@ -12300,6 +12300,10 @@ input {
     max-width: initial;
   }
 }
+.btn:focus {
+  box-shadow: none;
+}
+
 .btn-success {
   font-weight: normal;
   font-size: 16px;
