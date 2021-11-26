@@ -12275,7 +12275,7 @@ input {
 
 .main-section {
   position: relative;
-  background: linear-gradient(to right, #C9E2DC, #076758);
+  background: linear-gradient(to bottom, #C9E2DC, #076758);
   min-height: calc(100vh - 70px);
   top: 70px;
   max-width: calc(100% - 255px);
@@ -12382,6 +12382,9 @@ input {
   height: 150px;
 }
 
+.themed-packages {
+  padding-bottom: 120px;
+}
 .themed-packages .card {
   width: 620px;
   height: auto;
