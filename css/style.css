@@ -12191,6 +12191,9 @@ input {
   color: #FFFFFF;
 }
 
+.sidebar-toggler {
+  min-width: 22px;
+}
 .sidebar-toggler .visible-when-expanded {
   display: none;
 }

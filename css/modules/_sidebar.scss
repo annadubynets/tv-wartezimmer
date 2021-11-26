@@ -3,6 +3,7 @@ $navbar-height: 70px;
 $show-sidebar-breakpoint: 768px;
 
 .sidebar-toggler {
+    min-width: 22px;
     .visible-when-expanded {
         display: none;
     }
