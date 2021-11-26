@@ -104,16 +104,17 @@ $show-sidebar-breakpoint: 768px;
     background: linear-gradient(to right, #C9E2DC, #076758);
     min-height: calc(100vh - #{$navbar-height});
     top: $navbar-height;
+    max-width: calc(100% - #{$desktop-sidebar-width});
     width: 100%;
-    padding-left: $desktop-sidebar-width;
+    margin-left: $desktop-sidebar-width;
     transition: all 0.5s ease;
     border-left: 1px solid $black;
-    z-index: -1;
 }
 
 @media (max-width: $show-sidebar-breakpoint) {
     .sidebar {
         display: none;
+        z-index: 1;
         &.show {
             display: block;
             box-shadow: 0 5px 20px rgb(0 0 0 / 20%);
@@ -121,6 +122,7 @@ $show-sidebar-breakpoint: 768px;
     }
 
     .main-section {
-        padding-left: 0px;
+        margin-left: 0px;
+        max-width: initial;
     }
 }
