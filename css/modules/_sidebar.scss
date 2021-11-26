@@ -34,35 +34,62 @@ $show-sidebar-breakpoint: 768px;
         flex-direction: column;
         min-height: 100%;
         
-        .sidebar-icon::before {
-            color: #408276;
-            font-size: 24px;
-        }
-
-        .active .sidebar-icon::before {
-            color: $white!important;
-        }
-
-        ul li a:hover .sidebar-icon::before {
-            color: $white!important;
-        }
-
-        i {
-            color: #fff;
-            height: 60px;
-            min-width: 50px;
-            font-size: 28px;
-            text-align: center;
-            line-height: 60px;
-        }
-
         .nav-list {
-            padding-left: 19px;
-        }
+            padding-left: 3px;
+            margin-top: 25px;
 
-        li {
-            margin: 12px 0;
-            list-style: none;
+            .nav-item {
+                margin-top: 36px;
+                list-style: none;
+
+                .nav-link {
+                    position: relative;
+                    color: #408276;
+                    padding-left: 16px;
+
+                    .link-icon-container {
+                        min-width: 40px;
+                        display: inline-block;
+                        text-align: center;
+                        .link-icon {
+                            font-size: 24px;
+                            &:before {
+                                color: #408276;
+                            }
+                        }
+                    }
+
+                    .link-title {
+                        padding-left: 8px;
+                    }
+
+                    &:hover,
+                    &.active {
+                        color: $white;
+                        .link-icon {
+                            &:before {
+                                color: $white;
+                            }
+                        }
+                    }
+
+                    &.active {
+                        background: linear-gradient(to right, #3E8175, #237D61);
+
+                        &::before {
+                            display: block;
+                            content: '';
+                            position: absolute;
+                            height: 100%;
+                            width: 5px;
+                            background-color: #56B8A9;
+                            border-radius: 99px;
+                            top: 0;
+                            left: 0;
+                        }
+                    }
+                }
+            }
         }
 
         .sidebar-bottom {

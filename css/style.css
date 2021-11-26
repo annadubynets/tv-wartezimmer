@@ -12205,30 +12205,52 @@ input {
   flex-direction: column;
   min-height: 100%;
 }
-.sidebar .sidebar-container .sidebar-icon::before {
+.sidebar .sidebar-container .nav-list {
+  padding-left: 3px;
+  margin-top: 25px;
+}
+.sidebar .sidebar-container .nav-list .nav-item {
+  margin-top: 36px;
+  list-style: none;
+}
+.sidebar .sidebar-container .nav-list .nav-item .nav-link {
+  position: relative;
   color: #408276;
+  padding-left: 16px;
+}
+.sidebar .sidebar-container .nav-list .nav-item .nav-link .link-icon-container {
+  min-width: 40px;
+  display: inline-block;
+  text-align: center;
+}
+.sidebar .sidebar-container .nav-list .nav-item .nav-link .link-icon-container .link-icon {
   font-size: 24px;
 }
-.sidebar .sidebar-container .active .sidebar-icon::before {
-  color: #FFFFFF !important;
+.sidebar .sidebar-container .nav-list .nav-item .nav-link .link-icon-container .link-icon:before {
+  color: #408276;
 }
-.sidebar .sidebar-container ul li a:hover .sidebar-icon::before {
-  color: #FFFFFF !important;
+.sidebar .sidebar-container .nav-list .nav-item .nav-link .link-title {
+  padding-left: 8px;
 }
-.sidebar .sidebar-container i {
-  color: #fff;
-  height: 60px;
-  min-width: 50px;
-  font-size: 28px;
-  text-align: center;
-  line-height: 60px;
+.sidebar .sidebar-container .nav-list .nav-item .nav-link:hover, .sidebar .sidebar-container .nav-list .nav-item .nav-link.active {
+  color: #FFFFFF;
 }
-.sidebar .sidebar-container .nav-list {
-  padding-left: 19px;
+.sidebar .sidebar-container .nav-list .nav-item .nav-link:hover .link-icon:before, .sidebar .sidebar-container .nav-list .nav-item .nav-link.active .link-icon:before {
+  color: #FFFFFF;
 }
-.sidebar .sidebar-container li {
-  margin: 12px 0;
-  list-style: none;
+.sidebar .sidebar-container .nav-list .nav-item .nav-link.active {
+  background: linear-gradient(to right, #3E8175, #237D61);
+}
+.sidebar .sidebar-container .nav-list .nav-item .nav-link.active::before {
+  display: block;
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 5px;
+  background-color: #56B8A9;
+  border-radius: 99px;
+  top: 0;
+  left: 0;
 }
 .sidebar .sidebar-container .sidebar-bottom {
   margin-top: auto;
