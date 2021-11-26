@@ -12,7 +12,7 @@
 <body>
     <nav class="navbar navbar-expand navbar-dark fixed-top">
         <div class="container-fluid">
-            <button class="border-0 btn px-0 d-inline-block d-md-none me-auto sidebar-toggler" data-target="#sidebar" type="button"  aria-label="Toggle navigation">
+            <button class="border-0 btn px-0 d-inline-block d-md-none me-auto sidebar-toggler" data-target="#sidebar" type="button" aria-label="Toggle navigation">
                 <span class="icon-user visible-when-expanded"></span>
                 <span class="icon-box-arrow-right visible-when-collapsed"></span>
             </button>
@@ -21,24 +21,30 @@
             <a class="d-block d-md-none navbar-brand" href="/">
                 <img src="images/logo.svg" alt="logo">
             </a>
-            
+
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item align-self-center">
-                    <a href="#">
-                        <span class="icon-user"></span>
-                    </a>
+                    <div class="dropdown">
+                        <a href="#" class="nav-link" id="profileDropdownMemu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="icon-profile"></span>
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdownMemu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li class="nav-item align-self-center">
-                    <a href="#">
+                    <a href="#" class="nav-link">
                         <span class="icon-box-arrow-right"></span>
                     </a>
                 </li>
             </ul>
-            
         </div>
     </nav>
 
-    
+
     <div id="sidebar" class="sidebar">
         <div class="sidebar-container">
             <ul class="list-unstyled nav-list">
@@ -58,7 +64,7 @@
                         <span class="link-title">Meine Praxis</span>
                     </a>
                 </li>
-                <li  class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href="orders.html">
                         <div class="link-icon-container">
                             <span class="icon-camera-reels font-size-24px link-icon align-middle"></span>
@@ -66,7 +72,7 @@
                         <span class="link-title">Meine Filme</span>
                     </a>
                 </li>
-                <li  class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href="transactions.html">
                         <div class="link-icon-container">
                             <span class="icon-tv font-size-24px link-icon align-middle"></span>
@@ -74,7 +80,7 @@
                         <span class="link-title">Unterhaltung</span>
                     </a>
                 </li>
-                <li  class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href="forms.html">
                         <div class="link-icon-container">
                             <span class="icon-emoji-smile font-size-24px link-icon align-middle"></span>
@@ -82,7 +88,7 @@
                         <span class="link-title">Ihre Meinung</span>
                     </a>
                 </li>
-                <li  class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href="forms.html">
                         <div class="link-icon-container">
                             <span class="icon-settings font-size-24px link-icon align-middle"></span>
@@ -135,7 +141,7 @@
                 <div class="col-lg-3 text-center">
                     <div class="bg-white rounded-pill shadow h-100 p-4">
                         <h2>eNEWS</h2>
-                        <img src="images/enews.svg" alt="eNEWS" class="rounded-pills">
+                        <img src="images/enews.svg" alt="eNEWS" class="w-100 rounded-pills">
                     </div>
                 </div>
                 <div class="col-lg-4 text-center">
@@ -161,7 +167,7 @@
                     <p class="text-white">mehr<span class="icon-right-arrow ps-3"></span></p>
                 </div>
             </div>
-        
+
 
             <div class="container-fluid">
                 <div class="row">
@@ -202,7 +208,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="current">
             <div class="container">
                 <div class="d-flex justify-content-between pt-4">
@@ -296,13 +302,13 @@
         <footer class="pt-5">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 offset-lg-2">
+                    <div class="col-lg-6 offset-lg-1">
                         <p class="service-team-title">Ihr persönliches Serviceteam</p>
                         <p class="address-description">Tel. +49(0)8161/4909-269<br> wochentags von 8-18 Uhr erreichbar<br> Fax +49(0)8161/4909-369<br> Serviceteam-PLZ4@tv-wartezimmer.de
                         </p>
                     </div>
                     <div class="col-lg-4">
-                        <img class="w-100" src="images/bild.svg" alt="Service team">
+                        <img class="w-100" src="images/bild.png" alt="Service team">
                     </div>
                 </div>
             </div>

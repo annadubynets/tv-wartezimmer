@@ -11894,8 +11894,8 @@ textarea.form-control-lg {
 }
 @font-face {
   font-family: "icomoon";
-  src: url("../fonts/icomoon.eot?1nn8ks");
-  src: url("../fonts/icomoon.eot?1nn8ks#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?1nn8ks") format("truetype"), url("../fonts/icomoon.woff?1nn8ks") format("woff"), url("../fonts/icomoon.svg?1nn8ks#icomoon") format("svg");
+  src: url("../fonts/icomoon.eot?pek8vv");
+  src: url("../fonts/icomoon.eot?pek8vv#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?pek8vv") format("truetype"), url("../fonts/icomoon.woff?pek8vv") format("woff"), url("../fonts/icomoon.svg?pek8vv#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -11913,6 +11913,11 @@ textarea.form-control-lg {
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-profile:before {
+  content: "";
+  color: #fff;
 }
 
 .icon-list:before {
@@ -11937,11 +11942,6 @@ textarea.form-control-lg {
 
 .icon-twitter:before {
   content: "";
-  color: #fff;
-}
-
-.icon-user:before {
-  content: "";
   color: #fff;
 }
 
@@ -12311,19 +12311,6 @@ input {
   border-radius: 5px;
 }
 
-.page-link {
-  font-weight: 600;
-  font-size: 14px;
-  background: transparent;
-  border: none;
-  color: #F54562;
-}
-.page-link:focus, .page-link:hover {
-  background: transparent !important;
-  color: #F54562 !important;
-  box-shadow: none;
-}
-
 .owl-carousel {
   z-index: 0;
 }
@@ -12362,6 +12349,11 @@ input {
     margin-bottom: 24px;
   }
 }
+.current .card {
+  width: 480px;
+  height: auto;
+}
+
 .quick-access .card {
   width: 347px;
   height: auto;
@@ -12369,11 +12361,6 @@ input {
 .quick-access .card .img-style {
   max-width: 150px;
   height: 150px;
-}
-
-.current .card {
-  width: 480px;
-  height: auto;
 }
 
 .themed-packages .card {

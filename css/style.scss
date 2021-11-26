@@ -7,51 +7,7 @@
 @import "modules/typography";
 @import "modules/navbar";
 @import "modules/sidebar";
-
-.btn-success {
-    font-weight: normal;
-    font-size: 16px;
-    padding: 9px 16px;
-    color: $white;
-    background-color: #218838;
-    border: 3px solid #86C695;
-    border-radius: 5px;
-}
-
-.btn-outline-success {
-    font-weight: normal;
-    font-size: 31px;
-    padding: 17px 38px;
-    color: #116154;
-    background-color: $white;
-    border: 3px solid #116154;
-    border-radius: 50px;
-}
-
-.btn-danger {
-    font-weight: normal;
-    font-size: 16px;
-    padding: 9px 16px;
-    color: $white;
-    background-color: #C82333;
-    border: 2px solid #E08D95;
-    border-radius: 5px;
-}
-
-.page-link {
-    font-weight: 600;
-    font-size: 14px;
-    background: transparent;
-    border: none;
-    color: $pink;
-    &:focus,
-    &:hover {
-        background: transparent!important;
-        color: $pink!important;
-        box-shadow: none;
-    }
-}
-
+@import "modules/buttons";
 .owl-carousel {
     z-index: 0;
 }
@@ -84,196 +40,12 @@
     }
 }
 
-
-// .sidebar .sidebar-icon::before {
-//     color: #408276;
-//     font-size: 24px;
-// }
-
-// .sidebar .active .sidebar-icon::before {
-//     color: $white!important;
-// }
-
-// .sidebar ul li a:hover .sidebar-icon::before {
-//     color: $white!important;
-// }
-
-// .sidebar {
-//     position: fixed;
-//     left: 0;
-//     top: 0;
-//     height: 100%;
-//     width: 78px;
-//     background: $green;
-//     z-index: 99;
-//     transition: all 0.5s ease;
-//     .logo-details {
-//         display: flex;
-//         align-items: center;
-//         position: relative;
-//         .icon {
-//             opacity: 0;
-//             transition: all 0.5s ease;
-//         }
-//         #btn {
-//             position: absolute;
-//             top: 50%;
-//             right: 0;
-//             transform: translateY(-50%);
-//             transition: all 0.4s ease;
-//             font-size: 24px;
-//             text-align: center;
-//             cursor: pointer;
-//             transition: all 0.5s ease;
-//         }
-//     }
-//     i {
-//         color: #fff;
-//         height: 60px;
-//         min-width: 50px;
-//         font-size: 28px;
-//         text-align: center;
-//         line-height: 60px;
-//     }
-//     .nav-list {
-//         margin-top: 80px;
-//         height: 100%;
-//         padding-left: 0;
-//     }
-//     li {
-//         position: relative;
-//         margin: 12px 0;
-//         list-style: none;
-//         .tooltip {
-//             position: absolute;
-//             top: -20px;
-//             left: calc(100% + 15px);
-//             z-index: 3;
-//             background: #fff;
-//             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-//             padding: 6px 12px;
-//             border-radius: 4px;
-//             font-size: 16px;
-//             font-weight: bold;
-//             opacity: 0;
-//             pointer-events: none;
-//             transition: 0s;
-//         }
-//         &:hover {
-//             .tooltip {
-//                 opacity: 1;
-//                 pointer-events: auto;
-//                 transition: all 0.4s ease;
-//                 top: 50%;
-//                 transform: translateY(-50%);
-//             }
-//         }
-//         a {
-//             height: 100%;
-//             width: 100%;
-//             align-items: center;
-//             text-decoration: none;
-//             display: block;
-//             text-align: center;
-//             transition: all 0.4s ease;
-//             &:hover {
-//                 .links-name {
-//                     transition: all 0.5s ease;
-//                     color: $white;
-//                 }
-//                 span {
-//                     transition: all 0.5s ease;
-//                     color: $white;
-//                 }
-//             }
-//             .links-name {
-//                 color: #80ACA4;
-//                 font-size: 14px;
-//                 font-weight: 400;
-//                 white-space: nowrap;
-//                 opacity: 0;
-//                 pointer-events: none;
-//                 transition: 0.4s;
-//                 margin-left: 16px;
-//             }
-//         }
-//         i {
-//             height: 50px;
-//             line-height: 50px;
-//             font-size: 18px;
-//             border-radius: 12px;
-//         }
-//         &.active {
-//             border-left: 4px solid #1FA28E;
-//             background: linear-gradient(to right, #3E8175, #237D61);
-//             a {
-//                 .links-name {
-//                     color: $white;
-//                 }
-//             }
-//         }
-//         img {
-//             height: 45px;
-//             width: 45px;
-//             object-fit: cover;
-//             border-radius: 6px;
-//             margin-right: 10px;
-//         }
-//     }
-//     li.social-links {
-//         position: fixed;
-//         height: 60px;
-//         width: 78px;
-//         left: 0;
-//         bottom: 0;
-//         padding: 24px;
-//         background: $green;
-//         transition: all 0.5s ease;
-//         overflow: hidden;
-//         margin: 36px 0;
-//     }
-//     .social-block {
-//         position: fixed;
-//         bottom: 0;
-//     }
-// }
-
-// .sidebar.open {
-//     width: 240px;
-//     .logo-details {
-//         .icon {
-//             opacity: 1;
-//         }
-//         #btn {
-//             text-align: right;
-//         }
-//     }
-//     li {
-//         padding: 20px 25px;
-//         .tooltip {
-//             display: none;
-//         }
-//         a {
-//             display: initial;
-//             text-align: start;
-//             .links-name {
-//                 opacity: 1;
-//                 pointer-events: auto;
-//             }
-//         }
-//     }
-//     li.social-links {
-//         width: 240px;
-//     }
-//     ~ {
-//         .home-section {
-//             left: 240px;
-//             width: calc(100% - 240px);
-//         }
-//     }
-// }
-
-
+.current {
+    .card {
+        width: 480px;
+        height: auto;
+    }
+}
 
 .quick-access {
     .card {
@@ -283,13 +55,6 @@
             max-width: 150px;
             height: 150px;
         }
-    }
-}
-
-.current {
-    .card {
-        width: 480px;
-        height: auto;
     }
 }
 
