@@ -8,8 +8,88 @@
 @import "modules/navbar";
 @import "modules/sidebar";
 @import "modules/buttons";
+@import "modules/nav-tabs";
+textarea {
+    resize: none;
+    &.form-control {
+        border: 1px solid $darkgreen;
+        &::placeholder {
+            color: $darkgrey;
+            font-size: 16px;
+        }
+    }
+}
+
+iframe {
+    border-radius: 20px;
+}
+
+.dropdown {
+    .dropdown-menu {
+        border-color: $silver;
+        border-radius: 5px;
+        padding: 8px 0;
+        .dropdown-item {
+            font-size: 16px;
+            color: $black;
+            padding: 7px 24px;
+            &:focus,
+            &:hover {
+                background-color: #F8F9FA;
+            }
+            &.active,
+            &:active {
+                background-color: $lightgrey;
+            }
+        }
+    }
+}
+
 .owl-carousel {
     z-index: 0;
+}
+
+.current {
+    .card {
+        width: 480px;
+        height: auto;
+    }
+}
+
+.quick-access {
+    .card {
+        width: 347px;
+        height: auto;
+        .img-style {
+            max-width: 150px;
+            height: 150px;
+        }
+    }
+}
+
+.themed-packages {
+    padding-bottom: 120px;
+    .card {
+        width: 620px;
+        //height: auto;
+        .img-style {
+            max-width: 500px;
+        }
+    }
+}
+
+footer {
+    background-color: #005848;
+    .service-team-title {
+        font-weight: 500;
+        font-size: 44px;
+        color: $white;
+    }
+    .address-description {
+        font-weight: 500;
+        font-size: 22px;
+        color: $white;
+    }
 }
 
 @media (max-width: 992px) {
@@ -37,49 +117,5 @@
     }
     .mb-32px {
         margin-bottom: 24px;
-    }
-}
-
-.current {
-    .card {
-        width: 480px;
-        height: auto;
-    }
-}
-
-.quick-access {
-    .card {
-        width: 347px;
-        height: auto;
-        .img-style {
-            max-width: 150px;
-            height: 150px;
-        }
-    }
-}
-
-.themed-packages {
-    padding-bottom: 120px;
-    .card {
-        width: 620px;
-        height: auto;
-        .img-style {
-            max-width: 500px;
-            height: 350px;
-        }
-    }
-}
-
-footer {
-    background-color: #005848;
-    .service-team-title {
-        font-weight: 500;
-        font-size: 44px;
-        color: $white;
-    }
-    .address-description {
-        font-weight: 500;
-        font-size: 22px;
-        color: $white;
     }
 }

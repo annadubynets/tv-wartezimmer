@@ -48,7 +48,7 @@
         <div class="sidebar-container">
             <ul class="list-unstyled nav-list">
                 <li class="nav-item">
-                    <a class="nav-link active" href="index.html">
+                    <a class="nav-link" href="index.html">
                         <div class="link-icon-container">
                             <span class="icon-house font-size-24px link-icon align-middle"></span>
                         </div>
@@ -56,19 +56,26 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="practice.html">
+                    <a class="nav-link active" href="practice.html">
                         <div class="link-icon-container">
                             <span class="icon-meine-praxis font-size-24px link-icon align-middle"></span>
                         </div>
                         <span class="link-title">Meine Praxis</span>
                     </a>
+                    <div id="practice-collapse">
+                        <ul class="btn-toggle-nav list-unstyled">
+                            <li class="toggle-item"><a href="practice-presentation.html" class="toggle-link">Praxispräsentation</a></li>
+                            <li class="toggle-item"><a href="#" class="toggle-link">Urlaubsmeldung</a></li>
+                            <li class="toggle-item"><a href="#" class="toggle-link">Fotoservice</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="practice.html">
+                    <a class="nav-link" href="#">
                         <div class="link-icon-container">
-                            <span class="icon-meine-praxis font-size-24px link-icon align-middle"></span>
+                            <span class="icon-camera-reels font-size-24px link-icon align-middle"></span>
                         </div>
-                        <span class="link-title">Meine Praxis</span>
+                        <span class="link-title">Meine Filme</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -131,28 +138,10 @@
     <div class="main-section pt-5">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-5 text-center">
+                <div class="col-lg-12 text-center">
                     <div class="bg-white rounded-pill shadow h-100 pt-4">
                         <h2>Filme in Fremdsprache</h2>
-                        <img src="images/practice-picture.png" alt="Filme in Fremdsprache" class="w-100 rounded-pills">
-                    </div>
-                </div>
-                <div class="col-lg-3 text-center">
-                    <div class="bg-white rounded-pill shadow h-100 p-4">
-                        <h2>eNEWS</h2>
-                        <img src="images/enews.svg" alt="eNEWS" class="w-100 rounded-pills">
-                    </div>
-                </div>
-                <div class="col-lg-4 text-center">
-                    <div class="bg-white rounded-pill shadow h-100 p-4">
-                        <h2>Willkommen</h2>
-                        <p class="pb-4">Herr Dr. med. Frederik Floppy</p>
-                        <h2 class="mb-4">Ihr Systemstatus</h2>
-                        <p class="pb-3">System 01</p>
-                        <div>
-                            <a href="#" class="btn btn-success">ONLINE</a>
-                            <a href="#" class="btn btn-danger">OFFLINE</a>
-                        </div>
+                        <img src="images/practice-picture.png" alt="Filme in Fremdsprache" class="rounded-pills">
                     </div>
                 </div>
             </div>
@@ -196,90 +185,6 @@
                                 <div class="card bg-white shadow rounded-pill d-flex justify-content-center align-items-center py-4">
                                     <img src="images/vertragsdaten.svg" alt="Vertragsdaten" class="img-style">
                                     <h3 class="pt-4">Vertragsdaten</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- <div class="current">
-            <div class="container-fluid">
-                <div class="d-flex justify-content-between pt-4">
-                    <h4>Aktuelles</h4>
-                    <p class="text-white">mehr<span class="icon-right-arrow ps-3"></span></p>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="owl-carousel owl-theme">
-                            <div class="item">
-                                <div class="card bg-white shadow rounded-pill d-flex justify-content-center align-items-center py-4">
-
-                                    <h3 class="pt-4">Meine Filme</h3>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="card bg-white shadow rounded-pill d-flex justify-content-center align-items-center py-4">
-
-                                    <h3 class="pt-4">Unterhaltung</h3>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="card bg-white shadow rounded-pill d-flex justify-content-center align-items-center py-4">
-
-                                    <h3 class="pt-4">Urlaubsmeldung</h3>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="card bg-white shadow rounded-pill d-flex justify-content-center align-items-center py-4">
-
-                                    <h3 class="pt-4">Fotoservice</h3>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="card bg-white shadow rounded-pill d-flex justify-content-center align-items-center py-4">
-
-                                    <h3 class="pt-4">Vertragsdaten</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
-        <div class="themed-packages">
-            <div class="container-fluid">
-                <div class="d-flex justify-content-between pt-4">
-                    <h4>Themenpakete</h4>
-                    <p class="text-white">mehr<span class="icon-right-arrow ps-3"></span></p>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="owl-carousel owl-theme">
-                            <div class="item">
-                                <div class="card bg-white shadow rounded-pill d-flex justify-content-center align-items-center py-4">
-                                    <h1 class="mb-3">Natur</h1>
-                                    <p class="pb-4">Unterhaltung</p>
-                                    <a href="#" class="btn btn-outline-success">Jetzt ansehen</a>
-                                    <img src="images/natur.png" alt="Natur" class="img-style">
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="card bg-white shadow rounded-pill d-flex justify-content-center align-items-center py-4">
-                                    <h1 class="mb-3">Corona</h1>
-                                    <p class="pb-4">Information</p>
-                                    <a href="#" class="btn btn-outline-success">Jetzt ansehen</a>
-                                    <img src="images/corona.png" alt="Corona" class="img-style">
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="card bg-white shadow rounded-pill d-flex justify-content-center align-items-center py-4">
-                                    <h1 class="mb-3">Kino</h1>
-                                    <p class="pb-4">Unterhaltung</p>
-                                    <a href="#" class="btn btn-outline-success">Jetzt ansehen</a>
-                                    <img src="images/kino.png" alt="Kino" class="img-style">
                                 </div>
                             </div>
                         </div>

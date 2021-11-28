@@ -1,4 +1,3 @@
-
 // init carousels
 $(function() {
     if ($('.quick-access .owl-carousel').length > 0) {
@@ -21,7 +20,7 @@ $(function() {
             }
         })
     }
-    
+
     if ($('.themed-packages .owl-carousel').length > 0) {
         $('.themed-packages .owl-carousel').owlCarousel({
             loop: true,
@@ -51,3 +50,17 @@ $(function() {
         $(sidebarSelector).toggleClass('show');
     })
 });
+
+
+/**
+ * Initialize popover
+ */
+$(function() {
+    const popoverElems = document.querySelectorAll('[data-bs-toggle=popover]');
+    popoverElems.forEach((popoverElem) => {
+        var popover = new bootstrap.Popover(popoverElem, {
+            trigger: 'focus'
+        })
+    })
+
+})

@@ -22,7 +22,7 @@ $show-sidebar-breakpoint: 768px;
 .sidebar {
     min-width: $desktop-sidebar-width;
     width: $desktop-sidebar-width;
-    background: $green;
+    background: $darkgreen;
     position: fixed;
     height: calc(100vh - #{$navbar-height});
     top: $navbar-height;
@@ -36,11 +36,11 @@ $show-sidebar-breakpoint: 768px;
             padding-left: 3px;
             margin-top: 25px;
             .nav-item {
-                margin-top: 36px;
+                margin: 24px 0;
                 list-style: none;
                 .nav-link {
                     position: relative;
-                    color: #408276;
+                    color: $seagreen;
                     padding-left: 16px;
                     .link-icon-container {
                         min-width: 40px;
@@ -49,7 +49,7 @@ $show-sidebar-breakpoint: 768px;
                         .link-icon {
                             font-size: 24px;
                             &:before {
-                                color: #408276;
+                                color: $seagreen;
                             }
                         }
                     }
@@ -98,6 +98,24 @@ $show-sidebar-breakpoint: 768px;
     margin-left: $desktop-sidebar-width;
     transition: all 0.5s ease;
     border-left: 1px solid $black;
+}
+
+.btn-toggle-nav {
+    &.list-unstyled {
+        padding-left: 70px;
+    }
+    .toggle-item {
+        padding: 6px 0;
+        .toggle-link {
+            font-weight: bold;
+            font-size: 16px;
+            color: $seagreen;
+            &.active,
+            &:active {
+                color: $white;
+            }
+        }
+    }
 }
 
 @media (max-width: $show-sidebar-breakpoint) {

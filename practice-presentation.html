@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV wartezimmer</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand navbar-dark fixed-top">
+        <div class="container-fluid">
+            <button class="border-0 btn px-0 d-inline-block d-md-none me-auto sidebar-toggler" data-target="#sidebar" type="button" aria-label="Toggle navigation">
+                <span class="icon-close font-size-24px visible-when-expanded"></span>
+                <span class="icon-menu font-size-24px visible-when-collapsed"></span>
+            </button>
+
+            <a class="d-block d-md-none navbar-brand" href="/">
+                <img src="images/logo.svg" alt="logo">
+            </a>
+
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item align-self-center">
+                    <div class="dropdown">
+                        <a href="#" class="nav-link" id="profileDropdownMemu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="icon-profile font-size-24px"></span>
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdownMemu">
+                            <li><a class="dropdown-item" href="#">Vertragsdaten</a></li>
+                            <li><a class="dropdown-item" href="#">Rechnung</a></li>
+                            <li><a class="dropdown-item" href="#">Systemstatus</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item align-self-center">
+                    <a href="#" class="nav-link">
+                        <span class="icon-box-arrow-right font-size-24px"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-container">
+            <ul class="list-unstyled nav-list">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">
+                        <div class="link-icon-container">
+                            <span class="icon-house font-size-24px link-icon align-middle"></span>
+                        </div>
+                        <span class="link-title">Startseite</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="practice.html">
+                        <div class="link-icon-container">
+                            <span class="icon-meine-praxis font-size-24px link-icon align-middle"></span>
+                        </div>
+                        <span class="link-title">Meine Praxis</span>
+                    </a>
+                    <div id="practice-collapse">
+                        <ul class="btn-toggle-nav list-unstyled">
+                            <li class="toggle-item"><a href="practice-presentation.html" class="toggle-link active">Praxispräsentation</a></li>
+                            <li class="toggle-item"><a href="#" class="toggle-link">Urlaubsmeldung</a></li>
+                            <li class="toggle-item"><a href="#" class="toggle-link">Fotoservice</a></li>
+                        </ul>
+                    </div>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <div class="link-icon-container">
+                            <span class="icon-camera-reels font-size-24px link-icon align-middle"></span>
+                        </div>
+                        <span class="link-title">Meine Filme</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <div class="link-icon-container">
+                            <span class="icon-tv font-size-24px link-icon align-middle"></span>
+                        </div>
+                        <span class="link-title">Unterhaltung</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <div class="link-icon-container">
+                            <span class="icon-emoji-smile font-size-24px link-icon align-middle"></span>
+                        </div>
+                        <span class="link-title">Ihre Meinung</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <div class="link-icon-container">
+                            <span class="icon-settings font-size-24px link-icon align-middle"></span>
+                        </div>
+                        <span class="link-title">Mein Konto</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-bottom">
+                <a class="d-none d-md-block text-center pt-5" href="/">
+                    <img src="images/logo.svg" alt="logo">
+                </a>
+
+                <ul class="d-flex list-unstyled justify-content-between px-5 pt-5">
+                    <li>
+                        <a href="#">
+                            <span class="icon-instagram"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon-twitter"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon-facebook"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon-web"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-section pt-5">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="bg-white rounded-pill shadow h-100 p-4">
+                        <div class="row">
+                            <div class="col-lg-7">
+                                <div class="ratio ratio-16x9">
+                                    <iframe src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" title="YouTube video" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <form>
+                                    <div class="d-flex justify-content-between align-items-center pb-4">
+                                        <div>
+                                            <h4 class="text-success mb-0"><span class="icon-pencil-square font-size-24px pe-4"></span>Markieren Werkzeug</h4>
+                                        </div>
+                                        <button type="button" class="btn" data-bs-container="body" data-bs-trigger="focus" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Hier können Sie im Video Ihre gewünschten Stellen makieren">
+                                            <span class="icon-feather-info font-size-18px"></span>
+                                          </button>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center pb-4">
+                                        <div>
+                                            <h4 class="text-success mb-0"><span class="icon-card-text font-size-24px pe-4"></span>Text Werkzeug</h4>
+                                        </div>
+                                        <button type="button" class="btn" data-bs-container="body" data-bs-trigger="focus" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Hier können Sie im Video Ihre gewünschten Stellen makieren">
+                                            <span class="icon-feather-info font-size-18px"></span>
+                                          </button>
+                                    </div>
+                                    <div class="mb-4">
+                                        <textarea class="form-control" id="formControlTextarea" rows="4" placeholder="Hier tragen Sie Ihren Präsentationstext ein"></textarea>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center pb-4">
+                                        <div>
+                                            <h4 class="text-success mb-0"><span class="icon-images font-size-24px pe-4"></span>Bild Werkzeug</h4>
+                                        </div>
+                                        <button type="button" class="btn" data-bs-container="body" data-bs-trigger="focus" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Hier können Sie im Video Ihre gewünschten Stellen makieren">
+                                            <span class="icon-feather-info font-size-18px"></span>
+                                          </button>
+                                    </div>
+                                    <div class="text-end">
+                                        <button type="submit" class="btn btn-warning">Anmerkung
+                                            hinzufügen</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="other-presentations pb-80px">
+            <div class="container-fluid">
+                <div class="d-flex align-items-center py-4">
+                    <h4 class="mb-0">andere Praxispräsentationen</h4>
+                    <ul class="nav nav-tabs ms-4">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Alle Standorte</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Standort</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row mb-5">
+                    <div class="col-lg-4">
+                        <div class="card bg-white shadow rounded-pill d-flex justify-content-center align-items-center p-4">
+                            <h2 class="mb-4">Praxispräsentation 01</h2>
+                            <a href="#" class="btn btn-outline-success mb-4">Jetzt bearbeiten</a>
+                            <img src="images/presentation.png" alt="presentation" class="img-style">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card bg-white shadow rounded-pill d-flex justify-content-center align-items-center p-4">
+                            <h2 class="mb-4">Praxispräsentation 02</h2>
+                            <a href="#" class="btn btn-outline-success mb-4">Jetzt bearbeiten</a>
+                            <img src="images/presentation.png" alt="presentation" class="img-style">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card bg-white shadow rounded-pill d-flex justify-content-center align-items-center p-4">
+                            <h2 class="mb-4">Praxispräsentation 03</h2>
+                            <a href="#" class="btn btn-outline-success mb-4">Jetzt bearbeiten</a>
+                            <img src="images/presentation.png" alt="presentation" class="img-style">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card bg-white shadow rounded-pill p-4">
+                            <h2 class="mb-4">Neue Praxispräsentation</h2>
+                            <form>
+                                <div class="mb-4">
+                                    <textarea class="form-control" id="formControlTextarea" rows="4" placeholder="Sie wünschen sich eine neue Praxispräsentation? Kontaktieren sie uns mit Ihren Wünschen."></textarea>
+                                </div>
+                                <div class="text-end">
+                                    <button type="submit" class="btn btn-warning">Senden</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="pt-5">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-1">
+                        <p class="service-team-title">Ihr persönliches Serviceteam</p>
+                        <p class="address-description">Tel. +49(0)8161/4909-269<br> wochentags von 8-18 Uhr erreichbar<br> Fax +49(0)8161/4909-369<br> Serviceteam-PLZ4@tv-wartezimmer.de
+                        </p>
+                    </div>
+                    <div class="col-lg-4">
+                        <img class="w-100" src="images/bild.png" alt="Service team">
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/jquery-1.12.4.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap-select.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>
