@@ -64,8 +64,8 @@
                     </a>
                     <div id="practice-collapse">
                         <ul class="btn-toggle-nav list-unstyled">
-                            <li class="toggle-item"><a href="practice-presentation.html" class="toggle-link active">Praxispräsentation</a></li>
-                            <li class="toggle-item"><a href="practice-vacation-notification.html" class="toggle-link">Urlaubsmeldung</a></li>
+                            <li class="toggle-item"><a href="practice-presentation.html" class="toggle-link">Praxispräsentation</a></li>
+                            <li class="toggle-item"><a href="practice-vacation-notification.html" class="toggle-link active">Urlaubsmeldung</a></li>
                             <li class="toggle-item"><a href="practice-photoservice.html" class="toggle-link">Fotoservice</a></li>
                         </ul>
                     </div>
@@ -138,7 +138,7 @@
 
     <div class="main-section pt-5">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row mb-4">
                 <div class="col-lg-12 text-center">
                     <div class="bg-white rounded-pill shadow h-100 p-4">
                         <div class="row">
@@ -151,7 +151,23 @@
                                 <form>
                                     <div class="d-flex justify-content-between align-items-center pb-4">
                                         <div>
-                                            <h4 class="text-success mb-0"><span class="icon-pencil-square font-size-24px pe-4"></span>Markieren Werkzeug</h4>
+                                            <h4 class="text-success mb-0">Standortwahl</h4>
+                                        </div>
+                                        <ul class="nav nav-tabs ms-4">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" aria-current="page" href="#">Alle Standorte</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link text-success" href="#">Standort</a>
+                                            </li>
+                                        </ul>
+                                        <button type="button" class="btn" data-bs-container="body" data-bs-trigger="focus" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Hier können Sie im Video Ihre gewünschten Stellen makieren">
+                                            <span class="icon-feather-info font-size-18px"></span>
+                                          </button>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center pb-4">
+                                        <div>
+                                            <h4 class="text-success mb-0">Urlaub von wann bis wann?</h4>
                                         </div>
                                         <button type="button" class="btn" data-bs-container="body" data-bs-trigger="focus" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Hier können Sie im Video Ihre gewünschten Stellen makieren">
                                             <span class="icon-feather-info font-size-18px"></span>
@@ -159,26 +175,15 @@
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center pb-4">
                                         <div>
-                                            <h4 class="text-success mb-0"><span class="icon-card-text font-size-24px pe-4"></span>Text Werkzeug</h4>
+                                            <h4 class="text-success mb-0">Textwahl</h4>
                                         </div>
                                         <button type="button" class="btn" data-bs-container="body" data-bs-trigger="focus" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Hier können Sie im Video Ihre gewünschten Stellen makieren">
                                             <span class="icon-feather-info font-size-18px"></span>
                                           </button>
                                     </div>
-                                    <div class="mb-4">
-                                        <textarea class="form-control" id="formControlTextarea" rows="4" placeholder="Hier tragen Sie Ihren Präsentationstext ein"></textarea>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center pb-4">
-                                        <div>
-                                            <h4 class="text-success mb-0"><span class="icon-images font-size-24px pe-4"></span>Bild Werkzeug</h4>
-                                        </div>
-                                        <button type="button" class="btn" data-bs-container="body" data-bs-trigger="focus" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Hier können Sie im Video Ihre gewünschten Stellen makieren">
-                                            <span class="icon-feather-info font-size-18px"></span>
-                                          </button>
-                                    </div>
+
                                     <div class="text-end">
-                                        <button type="submit" class="btn btn-warning">Anmerkung
-                                            hinzufügen</button>
+                                        <button type="submit" class="btn btn-warning">Senden</button>
                                     </div>
                                 </form>
                             </div>
@@ -189,55 +194,117 @@
 
         </div>
 
-        <div class="other-presentations pb-80px">
+        <div class="holiday-reports pb-4">
             <div class="container-fluid">
-                <div class="d-flex align-items-center py-4">
-                    <h4 class="mb-0">andere Praxispräsentationen</h4>
-                    <ul class="nav nav-tabs ms-4">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Alle Standorte</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Standort</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="row mb-5">
-                    <div class="col-lg-4">
-                        <div class="card bg-white shadow rounded-pill d-flex justify-content-center align-items-center p-4">
-                            <h2 class="mb-4">Praxispräsentation 01</h2>
-                            <a href="#" class="btn btn-outline-success mb-4">Jetzt bearbeiten</a>
-                            <img src="images/presentation.png" alt="presentation" class="img-style">
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card bg-white shadow rounded-pill d-flex justify-content-center align-items-center p-4">
-                            <h2 class="mb-4">Praxispräsentation 02</h2>
-                            <a href="#" class="btn btn-outline-success mb-4">Jetzt bearbeiten</a>
-                            <img src="images/presentation.png" alt="presentation" class="img-style">
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card bg-white shadow rounded-pill d-flex justify-content-center align-items-center p-4">
-                            <h2 class="mb-4">Praxispräsentation 03</h2>
-                            <a href="#" class="btn btn-outline-success mb-4">Jetzt bearbeiten</a>
-                            <img src="images/presentation.png" alt="presentation" class="img-style">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
+                <div class="row mb-3">
                     <div class="col-lg-12">
-                        <div class="card bg-white shadow rounded-pill p-4">
-                            <h2 class="mb-4">Neue Praxispräsentation</h2>
-                            <form>
-                                <div class="mb-4">
-                                    <textarea class="form-control" id="formControlTextarea" rows="4" placeholder="Sie wünschen sich eine neue Praxispräsentation? Kontaktieren sie uns mit Ihren Wünschen."></textarea>
+                        <h4 class="mb-0">gebuchte Urlaubsmeldungen</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="position-relative">
+                            <div class="report-overlay rounded-pill"></div>
+                            <img src="images/ph-urlaub.png" alt="presentation" class="w-100 rounded-pill z-index-1">
+                            <div class="card-report d-flex justify-content-center align-items-center text-center">
+                                <div class="d-inline-block">
+                                    <h2 class="mb-3">Urlaubsmeldung September 2021</h2>
+                                    <a href="#" class="btn btn-outline-success bg-transparent">in Bearbeitung</a>
                                 </div>
-                                <div class="text-end">
-                                    <button type="submit" class="btn btn-warning">Senden</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="position-relative">
+                            <div class="report-overlay rounded-pill"></div>
+                            <img src="images/ph-urlaub.png" alt="presentation" class="w-100 rounded-pill z-index-1">
+                            <div class="card-report d-flex justify-content-center align-items-center text-center">
+                                <div class="d-inline-block">
+                                    <h2 class="mb-3">Urlaubsmeldung Februar 2021</h2>
+                                    <a href="#" class="btn btn-outline-success bg-transparent">Jetzt bearbeiten</a>
                                 </div>
-                            </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="position-relative">
+                            <div class="report-overlay rounded-pill"></div>
+                            <img src="images/ph-urlaub.png" alt="presentation" class="w-100 rounded-pill z-index-1">
+                            <div class="card-report d-flex justify-content-center align-items-center text-center">
+                                <div class="d-inline-block">
+                                    <h2 class="mb-3">Urlaubsmeldung Dezember 2021</h2>
+                                    <a href="#" class="btn btn-outline-success bg-transparent">Jetzt bearbeiten</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vacation-messages pb-80px">
+            <div class="container-fluid">
+                <div class="d-flex justify-content-between pt-4">
+                    <h4>Neue Urlaubsmeldungen</h4>
+                    <p class="text-white">mehr<span class="icon-right-arrow ps-3"></span></p>
+                </div>
+                <div class="row">
+                    <div class="owl-carousel owl-theme">
+                        <div class="item">
+                            <div class="col-lg-4 w-100">
+                                <div class="position-relative">
+                                    <div class="report-overlay rounded-pill"></div>
+                                    <img src="images/ph-urlaub.png" alt="presentation" class="w-100 rounded-pill z-index-1">
+                                    <div class="card-report d-flex justify-content-center align-items-center text-center">
+                                        <div class="d-inline-block">
+                                            <h2 class="mb-3">Urlaubsmeldung 01</h2>
+                                            <a href="#" class="btn btn-outline-success bg-transparent">Jetzt bearbeiten</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="col-lg-4 w-100">
+                                <div class="position-relative">
+                                    <div class="report-overlay rounded-pill"></div>
+                                    <img src="images/ph-urlaub.png" alt="presentation" class="w-100 rounded-pill z-index-1">
+                                    <div class="card-report d-flex justify-content-center align-items-center text-center">
+                                        <div class="d-inline-block">
+                                            <h2 class="mb-3">Urlaubsmeldung 02</h2>
+                                            <a href="#" class="btn btn-outline-success bg-transparent">Jetzt bearbeiten</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="col-lg-4 w-100">
+                                <div class="position-relative">
+                                    <div class="report-overlay rounded-pill"></div>
+                                    <img src="images/ph-urlaub.png" alt="presentation" class="w-100 rounded-pill z-index-1">
+                                    <div class="card-report d-flex justify-content-center align-items-center text-center">
+                                        <div class="d-inline-block">
+                                            <h2 class="mb-3">Urlaubsmeldung 03</h2>
+                                            <a href="#" class="btn btn-outline-success bg-transparent">Jetzt bearbeiten</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="col-lg-4 w-100">
+                                <div class="position-relative">
+                                    <div class="report-overlay rounded-pill"></div>
+                                    <img src="images/ph-urlaub.png" alt="presentation" class="w-100 rounded-pill z-index-1">
+                                    <div class="card-report d-flex justify-content-center align-items-center text-center">
+                                        <div class="d-inline-block">
+                                            <h2 class="mb-3">Urlaubsmeldung 04</h2>
+                                            <a href="#" class="btn btn-outline-success bg-transparent">Jetzt bearbeiten</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

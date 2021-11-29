@@ -12386,12 +12386,8 @@ input {
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link.active {
   color: #DD963B;
-  border-color: #D1D0D0;
 }
 
-.nav-tabs {
-  border-bottom: 1px solid #D1D0D0;
-}
 .nav-tabs .nav-link {
   color: #FFFFFF;
   font-size: 16px;
@@ -12430,6 +12426,45 @@ iframe {
   background-color: #D1D0D0;
 }
 
+.carousel-indicators [data-bs-target] {
+  height: 2px;
+  background-color: #D1D0D0;
+}
+.carousel-indicators [data-bs-target].active {
+  background-color: #005848;
+}
+
+label {
+  font-size: 16px;
+  color: #116154;
+  padding-bottom: 4px;
+}
+
+.form-check-label {
+  color: #212429;
+}
+
+.form-control {
+  border-color: #E0E0E0;
+  border-radius: 5px;
+  padding: 10px 12px;
+}
+.form-control::placeholder {
+  color: #868D96;
+}
+
+.form-check-input:checked {
+  background-color: #DD963B;
+  border: none;
+}
+.form-check-input:focus {
+  box-shadow: none;
+  border-color: #E0E0E0;
+}
+.form-check-input:active, .form-check-input.active {
+  background-color: transparent;
+}
+
 .owl-carousel {
   z-index: 0;
 }
@@ -12456,6 +12491,26 @@ iframe {
 }
 .themed-packages .card .img-style {
   max-width: 500px;
+}
+
+.report-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to bottom, #FFFFFF 10%, #808080 100%);
+  opacity: 0.7;
+  height: 100%;
+  z-index: 1;
+}
+
+.card-report {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
 }
 
 footer {

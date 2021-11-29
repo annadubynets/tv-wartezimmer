@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV wartezimmer</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand navbar-dark fixed-top">
+        <div class="container-fluid">
+            <button class="border-0 btn px-0 d-inline-block d-md-none me-auto sidebar-toggler" data-target="#sidebar" type="button" aria-label="Toggle navigation">
+                <span class="icon-close font-size-24px visible-when-expanded"></span>
+                <span class="icon-menu font-size-24px visible-when-collapsed"></span>
+            </button>
+
+            <a class="d-block d-md-none navbar-brand" href="/">
+                <img src="images/logo.svg" alt="logo">
+            </a>
+
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item align-self-center">
+                    <div class="dropdown">
+                        <a href="#" class="nav-link" id="profileDropdownMemu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="icon-profile font-size-24px"></span>
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdownMemu">
+                            <li><a class="dropdown-item" href="#">Vertragsdaten</a></li>
+                            <li><a class="dropdown-item" href="#">Rechnung</a></li>
+                            <li><a class="dropdown-item" href="#">Systemstatus</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item align-self-center">
+                    <a href="#" class="nav-link">
+                        <span class="icon-box-arrow-right font-size-24px"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-container">
+            <ul class="list-unstyled nav-list">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">
+                        <div class="link-icon-container">
+                            <span class="icon-house font-size-24px link-icon align-middle"></span>
+                        </div>
+                        <span class="link-title">Startseite</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="practice.html">
+                        <div class="link-icon-container">
+                            <span class="icon-meine-praxis font-size-24px link-icon align-middle"></span>
+                        </div>
+                        <span class="link-title">Meine Praxis</span>
+                    </a>
+                    <div id="practice-collapse">
+                        <ul class="btn-toggle-nav list-unstyled">
+                            <li class="toggle-item"><a href="practice-presentation.html" class="toggle-link">Praxispräsentation</a></li>
+                            <li class="toggle-item"><a href="practice-vacation-notification.html" class="toggle-link">Urlaubsmeldung</a></li>
+                            <li class="toggle-item"><a href="practice-photoservice.html" class="toggle-link active">Fotoservice</a></li>
+                        </ul>
+                    </div>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <div class="link-icon-container">
+                            <span class="icon-camera-reels font-size-24px link-icon align-middle"></span>
+                        </div>
+                        <span class="link-title">Meine Filme</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <div class="link-icon-container">
+                            <span class="icon-tv font-size-24px link-icon align-middle"></span>
+                        </div>
+                        <span class="link-title">Unterhaltung</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <div class="link-icon-container">
+                            <span class="icon-emoji-smile font-size-24px link-icon align-middle"></span>
+                        </div>
+                        <span class="link-title">Ihre Meinung</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <div class="link-icon-container">
+                            <span class="icon-settings font-size-24px link-icon align-middle"></span>
+                        </div>
+                        <span class="link-title">Mein Konto</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-bottom">
+                <a class="d-none d-md-block text-center pt-5" href="/">
+                    <img src="images/logo.svg" alt="logo">
+                </a>
+
+                <ul class="d-flex list-unstyled justify-content-between px-5 pt-5">
+                    <li>
+                        <a href="#">
+                            <span class="icon-instagram"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon-twitter"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon-facebook"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon-web"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-section pt-5">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="bg-white rounded-pill shadow h-100 p-4">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-indicators">
+                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                    </div>
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <div class="row align-items-center">
+                                                <div class="col-lg-4 offset-lg-1">
+                                                    <img src="images/photoservice.svg" class="d-block w-100" alt="Photo">
+                                                </div>
+                                                <div class="col-lg-4 offset-lg-2">
+                                                    <h1 class="mb-5">Ihre Praxis im besten Licht!</h1>
+                                                    <a href="#" class="btn btn-outline-success">JETZT BUCHEN</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <div class="row align-items-center">
+                                                <div class="col-lg-4 offset-lg-1">
+                                                    <img src="images/photoservice.svg" class="d-block w-100" alt="Photo">
+                                                </div>
+                                                <div class="col-lg-4 offset-lg-2">
+                                                    <h1 class="mb-5">Ihre Praxis im besten Licht!</h1>
+                                                    <a href="#" class="btn btn-outline-success">JETZT BUCHEN</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <div class="row align-items-center">
+                                                <div class="col-lg-4 offset-lg-1">
+                                                    <img src="images/photoservice.svg" class="d-block w-100" alt="Photo">
+                                                </div>
+                                                <div class="col-lg-4 offset-lg-2">
+                                                    <h1 class="mb-5">Ihre Praxis im besten Licht!</h1>
+                                                    <a href="#" class="btn btn-outline-success">JETZT BUCHEN</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="photo-uploads pb-4">
+            <div class="container-fluid">
+                <div class="d-flex justify-content-between align-items-center py-4">
+                    <h4 class="mb-0">letzte Fotouploads</h4>
+                    <a href="#" class="btn btn-warning">download Archiv</a>
+                </div>
+                <div class="row mb-5">
+                    <div class="col-lg-3">
+                        <img src="images/foto.png" alt="Foto" class="w-100 rounded-pills">
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="images/foto.png" alt="Foto" class="w-100 rounded-pills">
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="images/foto.png" alt="Foto" class="w-100 rounded-pills">
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="images/foto.png" alt="Foto" class="w-100 rounded-pills">
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="images/foto.png" alt="Foto" class="w-100 rounded-pills">
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="images/foto.png" alt="Foto" class="w-100 rounded-pills">
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="images/foto.png" alt="Foto" class="w-100 rounded-pills">
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="images/foto.png" alt="Foto" class="w-100 rounded-pills">
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="images/foto.png" alt="Foto" class="w-100 rounded-pills">
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="images/foto.png" alt="Foto" class="w-100 rounded-pills">
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="images/foto.png" alt="Foto" class="w-100 rounded-pills">
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="images/foto.png" alt="Foto" class="w-100 rounded-pills">
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="images/foto.png" alt="Foto" class="w-100 rounded-pills">
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="images/foto.png" alt="Foto" class="w-100 rounded-pills">
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="images/foto.png" alt="Foto" class="w-100 rounded-pills">
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="images/foto.png" alt="Foto" class="w-100 rounded-pills">
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="images/foto.png" alt="Foto" class="w-100 rounded-pills">
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="images/foto.png" alt="Foto" class="w-100 rounded-pills">
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="images/foto.png" alt="Foto" class="w-100 rounded-pills">
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="images/foto.png" alt="Foto" class="w-100 rounded-pills">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bookphoto-service pb-80px">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 pb-4">
+                        <h4>Fotoservice buchen</h4>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="card bg-white rounded-pill shadow h-100 p-4">
+                            <div class="row mb-5 align-items-center">
+                                <div class="col-lg-5">
+                                    <form>
+                                        <div class="row mb-5">
+                                            <div class="col-lg-6">
+                                                <div class="mb-2">
+                                                    <label for="inputName">Name</label>
+                                                    <input type="text" class="form-control" placeholder="Vor- und Nachname" aria-label="Name">
+                                                </div>
+                                                <div class="mb-2">
+                                                    <label for="inputAddress">Anschrift</label>
+                                                    <input type="text" class="form-control" placeholder="Straße" aria-label="Address">
+                                                </div>
+                                                <div class="mb-2">
+                                                    <input type="text" class="form-control" placeholder="Zusatz" aria-label="Additive">
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col mb-2">
+                                                        <input type="text" class="form-control" placeholder="00000000" aria-label="Number">
+                                                    </div>
+
+                                                    <div class="col mb-2">
+                                                        <input type="text" class="form-control" placeholder="Stadt" aria-label="City">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-2">
+                                                    <label for="inputPhone">Telefon</label>
+                                                    <input type="phone" class="form-control" placeholder="012345678910112131415" aria-label="Phone">
+                                                </div>
+                                                <div class="mb-2">
+                                                    <label for="inputMobile">Mobil</label>
+                                                    <input type="phone" class="form-control" placeholder="012345678910112131415" aria-label="Mobile">
+                                                </div>
+                                                <div class="mb-2">
+                                                    <label for="inputEmail">eMail</label>
+                                                    <input type="email" class="form-control" placeholder="praxisXYZ@praxismail.com" aria-label="Email">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-12 mb-4">
+                                                <label for="formControlTextarea">Haben Sie Fragen, Wünsche oder Anregungen?</label>
+                                                <textarea class="form-control" id="formControlTextarea" rows="4"></textarea>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-lg-5 offset-lg-1">
+                                    <img src="images/bookfoto.png" alt="Fotoservice buchen">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <a href="#" class="btn btn-warning">zurück</a>
+                                    <a href="#" class="btn btn-warning">Buchen</a>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="agbsCheck">
+                                            <label class="form-check-label" for="agbsCheck">
+                                                    AGB´s*
+                                                </label>
+                                        </div>
+                                        <span>* Mit drücken des Buchen-Buttons, erklären Sie sich einverstanden das wir Ihnen 000,00 € für den Fotoservice in Rechnung stellen. </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="pt-5">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-1">
+                        <p class="service-team-title">Ihr persönliches Serviceteam</p>
+                        <p class="address-description">Tel. +49(0)8161/4909-269<br> wochentags von 8-18 Uhr erreichbar<br> Fax +49(0)8161/4909-369<br> Serviceteam-PLZ4@tv-wartezimmer.de
+                        </p>
+                    </div>
+                    <div class="col-lg-4">
+                        <img class="w-100" src="images/bild.png" alt="Service team">
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/jquery-1.12.4.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap-select.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>

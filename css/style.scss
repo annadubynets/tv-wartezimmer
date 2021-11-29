@@ -45,6 +45,48 @@ iframe {
     }
 }
 
+.carousel-indicators [data-bs-target] {
+    height: 2px;
+    background-color: #D1D0D0;
+    &.active {
+        background-color: $darkgreen;
+    }
+}
+
+label {
+    font-size: 16px;
+    color: $green;
+    padding-bottom: 4px;
+}
+
+.form-check-label {
+    color: $black;
+}
+
+.form-control {
+    border-color: $silver;
+    border-radius: 5px;
+    padding: 10px 12px;
+    &::placeholder {
+        color: #868D96;
+    }
+}
+
+.form-check-input {
+    &:checked {
+        background-color: $yellow;
+        border: none;
+    }
+    &:focus {
+        box-shadow: none;
+        border-color: $silver;
+    }
+    &:active,
+    &.active {
+        background-color: transparent;
+    }
+}
+
 .owl-carousel {
     z-index: 0;
 }
@@ -76,6 +118,26 @@ iframe {
             max-width: 500px;
         }
     }
+}
+
+.report-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to bottom, $white 10%, #808080 100%);
+    opacity: 0.7;
+    height: 100%;
+    z-index: 1;
+}
+
+.card-report {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 2;
 }
 
 footer {
