@@ -17,6 +17,11 @@
     }
 }
 
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link:hover {
+    border-color: transparent;
+}
+
 .navbar-dark .navbar-nav .nav-link {
     font-weight: 600;
     font-size: 16px;

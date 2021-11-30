@@ -176,9 +176,33 @@
                                             <span class="icon-feather-info font-size-18px"></span>
                                           </button>
                                     </div>
+                                    <div class="input-group">
+                                        <span class="input-group-btn">
+                                          <label class="btn btn-warning btn-file" for="multiple_input_group">
+                                            <div class="input required"><input id="multiple_input_group" type="file" multiple></div>Bild wählen
+                                          </label>
+                                        </span>
+                                        <span class="file-input-label">Kein Bild gewählt</span>
+                                    </div>
                                     <div class="text-end">
-                                        <button type="submit" class="btn btn-warning">Anmerkung
-                                            hinzufügen</button>
+                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#addNote">Anmerkung hinzufügen</button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="addNote" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addNoteLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                                <div class="modal-content p-5">
+                                                    <div class="modal-header border-0">
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body text-center">
+                                                        <h1>Vielen Dank!</h1>
+                                                        <p>Ihre Anmerkung wurde der Praxispräsentation 01 hinzugefügt. Sie können dieses Menü verlassen und weitere Aktionen durchführen.</p>
+                                                    </div>
+                                                    <div class="modal-footer border-0 mx-auto">
+                                                        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">zurück</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -197,8 +221,13 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Alle Standorte</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Standort</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Standort</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>

@@ -12040,6 +12040,24 @@ textarea.form-control-lg {
   color: #fff;
 }
 
+body {
+  font-family: "HelveticaNeueCyr";
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+input {
+  outline: none;
+}
+
 h1 {
   font-weight: 500;
   font-size: 49px;
@@ -12135,7 +12153,7 @@ p {
 }
 
 .bg-success {
-  background: rgba(0, 255, 170, 0.03) !important;
+  background-color: #116154 !important;
 }
 
 .py-72px {
@@ -12174,24 +12192,6 @@ p {
   z-index: 1;
 }
 
-body {
-  font-family: "HelveticaNeueCyr";
-}
-
-p {
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  cursor: pointer;
-  text-decoration: none;
-}
-
-input {
-  outline: none;
-}
-
 .navbar {
   height: 70px;
   background-color: #005848;
@@ -12202,6 +12202,11 @@ input {
 }
 .navbar.main-navbar.scrolled {
   background-color: #868D96;
+}
+
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link:hover {
+  border-color: transparent;
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -12383,6 +12388,10 @@ input {
   border-radius: 5px;
 }
 
+.btn-close:focus {
+  box-shadow: none;
+}
+
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link.active {
   color: #DD963B;
@@ -12463,6 +12472,85 @@ label {
 }
 .form-check-input:active, .form-check-input.active {
   background-color: transparent;
+}
+
+.input-group.input-presentation .input-group-text {
+  border: 1px solid #DDDDDD;
+  background-color: transparent;
+  font-size: 20px;
+  color: #116154;
+  padding: 12px 20px;
+}
+.input-group.input-presentation .form-control {
+  font-size: 16px;
+  color: #FFFFFF;
+  background-color: #188473;
+  border: none;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16) !important;
+}
+.input-group.input-presentation .form-control::placeholder {
+  color: #FFFFFF;
+}
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: #DD963B;
+  cursor: inherit;
+  display: block;
+}
+
+.file-input-label {
+  font-size: 16px;
+  color: #DD963B;
+  padding: 0px 22px;
+  display: table-cell;
+  vertical-align: middle;
+  margin: auto;
+}
+
+input[readonly] {
+  background-color: white !important;
+  cursor: text !important;
+}
+
+.progress {
+  height: 24px;
+}
+
+.modal-content {
+  border: none;
+}
+.modal-content .modal-header {
+  background-color: #DD963B;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.modal-content .modal-header .btn-close {
+  margin: 0;
+}
+.modal-content .modal-header .modal-title {
+  color: #FFFFFF;
+  font-size: 22px;
+  margin: 0 auto;
+}
+.modal-content .modal-body {
+  padding: 50px;
+}
+.modal-content .modal-footer {
+  padding: 0 50px 50px 50px;
 }
 
 .owl-carousel {

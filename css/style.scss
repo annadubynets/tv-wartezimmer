@@ -87,6 +87,87 @@ label {
     }
 }
 
+.input-group.input-presentation {
+    .input-group-text {
+        border: 1px solid #DDDDDD;
+        background-color: transparent;
+        font-size: 20px;
+        color: $green;
+        padding: 12px 20px
+    }
+    .form-control {
+        font-size: 16px;
+        color: $white;
+        background-color: $mediumseagreen;
+        border: none;
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16)!important;
+        &::placeholder {
+            color: $white;
+        }
+    }
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    background: $yellow;
+    cursor: inherit;
+    display: block;
+}
+
+.file-input-label {
+    font-size: 16px;
+    color: $yellow;
+    padding: 0px 22px;
+    display: table-cell;
+    vertical-align: middle;
+    margin: auto;
+}
+
+input[readonly] {
+    background-color: white !important;
+    cursor: text !important;
+}
+
+.progress {
+    height: 24px;
+}
+
+.modal-content {
+    border: none;
+    .modal-header {
+        background-color: $yellow;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        .btn-close {
+            margin: 0;
+        }
+        .modal-title {
+            color: $white;
+            font-size: 22px;
+            margin: 0 auto;
+        }
+    }
+    .modal-body {
+        padding: 50px;
+    }
+    .modal-footer {
+        padding: 0 50px 50px 50px;
+    }
+}
+
 .owl-carousel {
     z-index: 0;
 }

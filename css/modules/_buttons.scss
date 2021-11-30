@@ -43,3 +43,9 @@
     border: none;
     border-radius: 5px;
 }
+
+.btn-close {
+    &:focus {
+        box-shadow: none;
+    }
+}

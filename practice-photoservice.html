@@ -329,7 +329,26 @@
                             <div class="row">
                                 <div class="col-lg-3">
                                     <a href="#" class="btn btn-warning">zurück</a>
-                                    <a href="#" class="btn btn-warning">Buchen</a>
+                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#bookModal">Buchen</button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="bookModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header border-0">
+                                                    <h5 class="modal-title" id="exampleModalLabel">JETZT BESTELLEN</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body text-center">
+                                                    <h2 class="mb-4">Möchten Sie den Fotoservice jetzt kostenpflichtig bestellen?*</h2>
+                                                    <p class="font-size-13px">*Die Kosten belaufen sich pro Fotoservice auf 000,00 Euro.</p>
+                                                </div>
+                                                <div class="modal-footer border-0 mx-auto">
+                                                    <button type="button" class="btn btn-warning">Ja, buchen</button>
+                                                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Nein</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-lg-9">
                                     <div>
