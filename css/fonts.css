@@ -18,8 +18,8 @@
 
 @font-face {
     font-family: 'icomoon';
-    src: url('../fonts/icomoon.eot?bbw4e4');
-    src: url('../fonts/icomoon.eot?bbw4e4#iefix') format('embedded-opentype'), url('../fonts/icomoon.ttf?bbw4e4') format('truetype'), url('../fonts/icomoon.woff?bbw4e4') format('woff'), url('../fonts/icomoon.svg?bbw4e4#icomoon') format('svg');
+    src: url('../fonts/icomoon.eot?ohclg3');
+    src: url('../fonts/icomoon.eot?ohclg3#iefix') format('embedded-opentype'), url('../fonts/icomoon.ttf?ohclg3') format('truetype'), url('../fonts/icomoon.woff?ohclg3') format('woff'), url('../fonts/icomoon.svg?ohclg3#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -66,6 +66,10 @@
 .icon-pencil-square:before {
     content: "\e918";
     color: #005848;
+}
+
+.icon-minus:before {
+    content: "\e91c";
 }
 
 .icon-menu:before {

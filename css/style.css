@@ -11895,8 +11895,8 @@ textarea.form-control-lg {
 }
 @font-face {
   font-family: "icomoon";
-  src: url("../fonts/icomoon.eot?bbw4e4");
-  src: url("../fonts/icomoon.eot?bbw4e4#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?bbw4e4") format("truetype"), url("../fonts/icomoon.woff?bbw4e4") format("woff"), url("../fonts/icomoon.svg?bbw4e4#icomoon") format("svg");
+  src: url("../fonts/icomoon.eot?ohclg3");
+  src: url("../fonts/icomoon.eot?ohclg3#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?ohclg3") format("truetype"), url("../fonts/icomoon.woff?ohclg3") format("woff"), url("../fonts/icomoon.svg?ohclg3#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -11942,6 +11942,10 @@ textarea.form-control-lg {
 .icon-pencil-square:before {
   content: "";
   color: #005848;
+}
+
+.icon-minus:before {
+  content: "";
 }
 
 .icon-menu:before {
@@ -12201,6 +12205,10 @@ p {
   z-index: 1;
 }
 
+.mh-160px {
+  max-height: 160px;
+}
+
 .navbar {
   height: 70px;
   background-color: #005848;
@@ -12421,7 +12429,6 @@ p {
 }
 
 .datepicker {
-  background-color: #F2F2F2;
   padding: 0;
 }
 .datepicker thead tr {
