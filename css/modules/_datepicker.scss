@@ -1,0 +1,61 @@
+.datepicker td,
+.datepicker th {
+    width: auto;
+    height: auto;
+    padding: 15px 35px;
+    border-radius: 0;
+}
+
+.datepicker {
+    background-color: #F2F2F2;
+    padding: 0;
+    thead {
+        tr {
+            background-color: #E6E6E6;
+            .prev {
+                &::before {
+                    display: block;
+                    font-family: 'icomoon';
+                    content: "\e91a";
+                    font-size: 16px;
+                }
+            }
+            .next {
+                &::before {
+                    display: block;
+                    font-family: 'icomoon';
+                    content: "\e919";
+                    font-size: 16px;
+                }
+            }
+        }
+        tr+tr {
+            background-color: #EBEBEB;
+        }
+    }
+    tbody {
+        background-color: #F2F2F2;
+    }
+}
+
+.datepicker table tr td.active.active {
+    background-color: $mediumseagreen!important;
+    background-image: none;
+    border-radius: 5px;
+}
+
+.datepicker table tr td.old,
+.datepicker table tr td.new {
+    color: #AAAAAA;
+}
+
+.datepicker thead tr:first-child th,
+.datepicker tfoot tr:first-child th {
+    font-weight: normal;
+    font-size: 23px;
+}
+
+.datepicker thead tr:first-child th:hover,
+.datepicker tfoot tr:first-child th:hover {
+    background-color: transparent;
+}

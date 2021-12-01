@@ -4,6 +4,7 @@
  * Copyright 2013-2018 David Deutsch
  * Licensed under: SEE LICENSE IN https://github.com/OwlCarousel2/OwlCarousel2/blob/master/LICENSE
  */
+@import "./libs/datepicker.css";
 .owl-carousel, .owl-carousel .owl-item {
   -webkit-tap-highlight-color: transparent;
   position: relative;
@@ -11894,8 +11895,8 @@ textarea.form-control-lg {
 }
 @font-face {
   font-family: "icomoon";
-  src: url("../fonts/icomoon.eot?4j9t3g");
-  src: url("../fonts/icomoon.eot?4j9t3g#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?4j9t3g") format("truetype"), url("../fonts/icomoon.woff?4j9t3g") format("woff"), url("../fonts/icomoon.svg?4j9t3g#icomoon") format("svg");
+  src: url("../fonts/icomoon.eot?bbw4e4");
+  src: url("../fonts/icomoon.eot?bbw4e4#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?bbw4e4") format("truetype"), url("../fonts/icomoon.woff?bbw4e4") format("woff"), url("../fonts/icomoon.svg?bbw4e4#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -11913,6 +11914,14 @@ textarea.form-control-lg {
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-next:before {
+  content: "";
+}
+
+.icon-prev:before {
+  content: "";
 }
 
 .icon-feather-info:before {
@@ -12403,6 +12412,62 @@ p {
   padding: 12px 16px;
 }
 
+.datepicker td,
+.datepicker th {
+  width: auto;
+  height: auto;
+  padding: 15px 35px;
+  border-radius: 0;
+}
+
+.datepicker {
+  background-color: #F2F2F2;
+  padding: 0;
+}
+.datepicker thead tr {
+  background-color: #E6E6E6;
+}
+.datepicker thead tr .prev::before {
+  display: block;
+  font-family: "icomoon";
+  content: "";
+  font-size: 16px;
+}
+.datepicker thead tr .next::before {
+  display: block;
+  font-family: "icomoon";
+  content: "";
+  font-size: 16px;
+}
+.datepicker thead tr + tr {
+  background-color: #EBEBEB;
+}
+.datepicker tbody {
+  background-color: #F2F2F2;
+}
+
+.datepicker table tr td.active.active {
+  background-color: #188473 !important;
+  background-image: none;
+  border-radius: 5px;
+}
+
+.datepicker table tr td.old,
+.datepicker table tr td.new {
+  color: #AAAAAA;
+}
+
+.datepicker thead tr:first-child th,
+.datepicker tfoot tr:first-child th {
+  font-weight: normal;
+  font-size: 23px;
+}
+
+.datepicker thead tr:first-child th:hover,
+.datepicker tfoot tr:first-child th:hover {
+  background-color: transparent;
+}
+
 textarea {
   resize: none;
 }
@@ -12579,6 +12644,7 @@ input[readonly] {
 }
 .themed-packages .card {
   width: 620px;
+  min-height: 592px;
 }
 .themed-packages .card .img-style {
   max-width: 500px;

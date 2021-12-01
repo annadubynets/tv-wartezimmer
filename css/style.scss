@@ -2,6 +2,7 @@
 @import "./owl.theme.default.min";
 @import "./bootstrap.min";
 @import "./bootstrap-select.min";
+@import "./libs/datepicker.css";
 @import "fonts";
 @import "modules/variables";
 @import "modules/typography";
@@ -9,6 +10,7 @@
 @import "modules/sidebar";
 @import "modules/buttons";
 @import "modules/nav-tabs";
+@import "modules/datepicker";
 textarea {
     resize: none;
     &.form-control {
@@ -195,7 +197,7 @@ input[readonly] {
     padding-bottom: 120px;
     .card {
         width: 620px;
-        //height: auto;
+        min-height: 592px;
         .img-style {
             max-width: 500px;
         }
