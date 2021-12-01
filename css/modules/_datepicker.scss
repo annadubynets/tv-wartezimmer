@@ -2,38 +2,42 @@
 .datepicker th {
     width: auto;
     height: auto;
-    padding: 15px 35px;
+    padding: 15px 0;
     border-radius: 0;
 }
 
 .datepicker {
     padding: 0;
-    thead {
-        tr {
-            background-color: #E6E6E6;
-            .prev {
-                &::before {
-                    display: block;
-                    font-family: 'icomoon';
-                    content: "\e91a";
-                    font-size: 16px;
+    width: 100%;
+    .table-condensed {
+        width: 100%;
+        thead {
+            tr {
+                background-color: #E6E6E6;
+                .prev {
+                    &::before {
+                        display: block;
+                        font-family: 'icomoon';
+                        content: "\e91a";
+                        font-size: 16px;
+                    }
+                }
+                .next {
+                    &::before {
+                        display: block;
+                        font-family: 'icomoon';
+                        content: "\e919";
+                        font-size: 16px;
+                    }
                 }
             }
-            .next {
-                &::before {
-                    display: block;
-                    font-family: 'icomoon';
-                    content: "\e919";
-                    font-size: 16px;
-                }
+            tr+tr {
+                background-color: #EBEBEB;
             }
         }
-        tr+tr {
-            background-color: #EBEBEB;
+        tbody {
+            background-color: #F2F2F2;
         }
-    }
-    tbody {
-        background-color: #F2F2F2;
     }
 }
 
