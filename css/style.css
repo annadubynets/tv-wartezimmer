@@ -12562,6 +12562,9 @@ input[readonly] {
   height: auto;
 }
 
+.quick-access {
+  padding-bottom: 120px;
+}
 .quick-access .card {
   width: 347px;
   height: auto;
