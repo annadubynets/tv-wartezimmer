@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV wartezimmer</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand navbar-dark fixed-top">
+        <div class="container-fluid">
+            <button class="border-0 btn px-0 d-inline-block d-md-none me-auto sidebar-toggler" data-target="#sidebar" type="button" aria-label="Toggle navigation">
+                <span class="icon-close font-size-24px visible-when-expanded"></span>
+                <span class="icon-menu font-size-24px visible-when-collapsed"></span>
+            </button>
+
+            <a class="d-block d-md-none navbar-brand" href="/">
+                <img src="images/logo.svg" alt="logo">
+            </a>
+
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item align-self-center">
+                    <div class="dropdown">
+                        <a href="#" class="nav-link" id="profileDropdownMemu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="icon-profile font-size-24px"></span>
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdownMemu">
+                            <li><a class="dropdown-item" href="#">Vertragsdaten</a></li>
+                            <li><a class="dropdown-item" href="#">Rechnung</a></li>
+                            <li><a class="dropdown-item" href="#">Systemstatus</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item align-self-center">
+                    <a href="#" class="nav-link">
+                        <span class="icon-box-arrow-right font-size-24px"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-container">
+            <ul class="list-unstyled nav-list">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">
+                        <div class="link-icon-container">
+                            <span class="icon-house font-size-24px link-icon align-middle"></span>
+                        </div>
+                        <span class="link-title">Startseite</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="practice.html">
+                        <div class="link-icon-container">
+                            <span class="icon-meine-praxis font-size-24px link-icon align-middle"></span>
+                        </div>
+                        <span class="link-title">Meine Praxis</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <div class="link-icon-container">
+                            <span class="icon-camera-reels font-size-24px link-icon align-middle"></span>
+                        </div>
+                        <span class="link-title">Meine Filme</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="entertainment.html">
+                        <div class="link-icon-container">
+                            <span class="icon-tv font-size-24px link-icon align-middle"></span>
+                        </div>
+                        <span class="link-title">Unterhaltung</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="reviews.html">
+                        <div class="link-icon-container">
+                            <span class="icon-emoji-smile font-size-24px link-icon align-middle"></span>
+                        </div>
+                        <span class="link-title">Ihre Meinung</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="account.html">
+                        <div class="link-icon-container">
+                            <span class="icon-settings font-size-24px link-icon align-middle"></span>
+                        </div>
+                        <span class="link-title">Mein Konto</span>
+                    </a>
+                    <div id="account-collapse">
+                        <ul class="btn-toggle-nav list-unstyled">
+                            <li class="toggle-item"><a href="account-contract-data.html" class="toggle-link active">Vertragsdaten</a></li>
+                            <li class="toggle-item"><a href="account-invoice.html" class="toggle-link">Rechnung</a></li>
+                            <li class="toggle-item"><a href="account-system-status.html" class="toggle-link">Systemstatus</a></li>
+                            <li class="toggle-item"><a href="account-data.html" class="toggle-link">Accountdaten</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="sidebar-bottom">
+                <a class="d-none d-md-block text-center pt-5" href="/">
+                    <img src="images/logo.svg" alt="logo">
+                </a>
+
+                <ul class="d-flex list-unstyled justify-content-between px-5 pt-5">
+                    <li>
+                        <a href="#">
+                            <span class="icon-instagram"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon-twitter"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon-facebook"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon-web"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-section pt-4">
+        <div class="account pb-80px">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="bg-white rounded-pill shadow h-100 p-4">
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <div class="d-flex align-items-center pb-4">
+                                        <h4 class="text-success mb-0">Kundendaten</h4>
+                                        <ul class="nav nav-tabs ms-4">
+                                            <li class="nav-item">
+                                                <a class="nav-link text-dark active" aria-current="page" href="#">Alle Standorte</a>
+                                            </li>
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link text-warning dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Standort</a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-12 text-start mb-2">
+                                                <label for="inputName">Name</label>
+                                                <input type="text" class="form-control" placeholder="Vor- und Nachname" aria-label="Name">
+                                            </div>
+                                            <div class="col-12 text-start mb-2">
+                                                <label for="inputAddress">Anschrift</label>
+                                                <input type="text" class="form-control" placeholder="Straße" aria-label="Address">
+                                            </div>
+                                            <div class="col-12 text-start mb-2">
+                                                <input type="text" class="form-control" placeholder="Zusatz" aria-label="Additive">
+                                            </div>
+                                            <div class="col-6 text-start mb-2">
+                                                <input type="text" class="form-control" placeholder="00000000" aria-label="Number">
+                                            </div>
+                                            <div class="col-6 text-start mb-2">
+                                                <input type="text" class="form-control" placeholder="Stadt" aria-label="City">
+                                            </div>
+                                            <div class="col-12 text-start mb-2">
+                                                <label for="inputPhone">Telefon</label>
+                                                <input type="phone" class="form-control" placeholder="012345678910112131415" aria-label="Phone">
+                                            </div>
+                                            <div class="col-12 text-start mb-2">
+                                                <label for="inputMobile">Mobil</label>
+                                                <input type="phone" class="form-control" placeholder="012345678910112131415" aria-label="Mobile">
+                                            </div>
+                                            <div class="col-12 text-start mb-2">
+                                                <label for="inputEmail">eMail</label>
+                                                <input type="email" class="form-control" placeholder="praxisXYZ@praxismail.com" aria-label="Email">
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <h3 class="text-warning mt-5">Sind Ihre Daten noch aktuell? Wenn nicht kontaktieren Sie uns.</h3>
+                                </div>
+                                <div class="col-lg-3 text-start offset-lg-3">
+                                    <h4 class="text-success mb-4">Vertragsdaten</h4>
+                                    <table class="table table-hover mb-5">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Head</th>
+                                                <th scope="col">Head</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Body</td>
+                                                <td>Body</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Body Hover</td>
+                                                <td>Body Hover</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Body</td>
+                                                <td>Body</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Body</td>
+                                                <td>Body</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Body</td>
+                                                <td>Body</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Body</td>
+                                                <td>Body</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Body</td>
+                                                <td>Body</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Body</td>
+                                                <td>Body</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <button class="btn btn-warning">Downloaden</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="pt-5">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-1">
+                        <p class="service-team-title">Ihr persönliches Serviceteam</p>
+                        <p class="address-description">Tel. +49(0)8161/4909-269<br> wochentags von 8-18 Uhr erreichbar<br> Fax +49(0)8161/4909-369<br> Serviceteam-PLZ4@tv-wartezimmer.de
+                        </p>
+                    </div>
+                    <div class="col-lg-4">
+                        <img class="w-100" src="images/bild.png" alt="Service team">
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/jquery-1.12.4.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap-select.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>

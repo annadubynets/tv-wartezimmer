@@ -72,18 +72,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="entertainment.html">
+                    <a class="nav-link" href="entertainment.html">
                         <div class="link-icon-container">
                             <span class="icon-tv font-size-24px link-icon align-middle"></span>
                         </div>
                         <span class="link-title">Unterhaltung</span>
                     </a>
-                    <div id="entertainment-collapse">
-                        <ul class="btn-toggle-nav list-unstyled">
-                            <li class="toggle-item"><a href="entertainment-program-director.html" class="toggle-link">Programmdirektor</a></li>
-                            <li class="toggle-item"><a href="entertainment-highlights.html" class="toggle-link">Highlights</a></li>
-                        </ul>
-                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="reviews.html">
@@ -94,12 +88,20 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="account.html">
+                    <a class="nav-link active" href="account.html">
                         <div class="link-icon-container">
                             <span class="icon-settings font-size-24px link-icon align-middle"></span>
                         </div>
                         <span class="link-title">Mein Konto</span>
                     </a>
+                    <div id="account-collapse">
+                        <ul class="btn-toggle-nav list-unstyled">
+                            <li class="toggle-item"><a href="account-contract-data.html" class="toggle-link">Vertragsdaten</a></li>
+                            <li class="toggle-item"><a href="account-invoice.html" class="toggle-link">Rechnung</a></li>
+                            <li class="toggle-item"><a href="account-system-status.html" class="toggle-link">Systemstatus</a></li>
+                            <li class="toggle-item"><a href="account-data.html" class="toggle-link active">Accountdaten</a></li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
 
@@ -135,43 +137,59 @@
     </div>
 
     <div class="main-section pt-4">
-        <div class="container-fluid">
-            <div class="row mb-5">
-                <div class="col-lg-12 text-center">
-                    <div class="bg-white rounded-pill shadow h-100 pt-4">
-                        <h2>Filme in Fremdsprache</h2>
-                        <img src="images/practice-picture.png" alt="Filme in Fremdsprache" class="rounded-pill">
+        <div class="account pb-80px">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="bg-white rounded-pill shadow h-100 p-4">
+                            <div class="row">
+                                <div class="col-lg-4 text-start">
+                                    <h4 class="text-success mb-5">Accountdaten</h4>
+                                    <div class="d-flex mb-5">
+                                        <!-- <div>
+                                            <span class="icon-profile text-success font-size-24px"></span>
+                                        </div> -->
+                                        <div class="input-group">
+                                            <span class="input-group-btn">
+                                              <label class="btn btn-outline-success rounded-0 btn-file py-2 px-3" for="multiple_input_group">
+                                                <div class="input required"><input id="multiple_input_group" type="file" multiple></div>Bild wählen
+                                              </label>
+                                            </span>
+                                            <span class="file-input-label">Kein Bild gewählt</span>
+                                        </div>
+                                    </div>
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-12 mb-2">
+                                                <label for="inputEmail">EMAIL</label>
+                                                <input type="email" class="form-control" placeholder="Email hier" aria-label="Email">
+                                            </div>
+                                            <div class="col-12 mb-5">
+                                                <label for="inputName">ACCOUNT NAME</label>
+                                                <input type="text" class="form-control" placeholder="Account Name hier" aria-label="Account Name">
+                                            </div>
+                                            <label class="pb-3">PASSWORT ÄNDERN?</label>
+                                            <div class="col-12 mb-2">
+                                                <label for="inputPasswort">PASSWORT</label>
+                                                <input type="text" class="form-control" placeholder="Passwort hier" aria-label="Passwort">
+                                            </div>
+                                            <div class="col-12 mb-5">
+                                                <label for="inputPasswort">PASSWORT WIEDERHOLEN</label>
+                                                <input type="password" class="form-control" placeholder="Passwort hier" aria-label="Passwort">
+                                            </div>
+
+                                            <div class="col-12">
+                                                <button type="button" class="btn btn-warning">Speichern</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h4>Schnellzugriff</h4>
-                </div>
-            </div>
-            <div class="row mb-5">
-                <div class="col-lg-4 pb-lg-0 pb-4">
-                    <a href="entertainment-program-director.html">
-                        <div class="card bg-white shadow rounded-pill d-flex justify-content-center align-items-center p-4">
-                            <img src="images/program-director.png" alt="presentation" class="m-auto mh-160px">
-                            <h2 class="mt-4">Programmdirektor</h2>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 pb-lg-0 pb-4">
-                    <a href="entertainment-highlights.html">
-                        <div class="card bg-white shadow rounded-pill d-flex justify-content-center align-items-center p-4">
-                            <img src="images/highlight.png" alt="presentation" class="m-auto mh-160px">
-                            <h2 class="mt-4">Highlights</h2>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-
 
         <footer class="pt-5">
             <div class="container-fluid">

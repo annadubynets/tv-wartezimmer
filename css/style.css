@@ -11895,8 +11895,8 @@ textarea.form-control-lg {
 }
 @font-face {
   font-family: "icomoon";
-  src: url("../fonts/icomoon.eot?ohclg3");
-  src: url("../fonts/icomoon.eot?ohclg3#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?ohclg3") format("truetype"), url("../fonts/icomoon.woff?ohclg3") format("woff"), url("../fonts/icomoon.svg?ohclg3#icomoon") format("svg");
+  src: url("../fonts/icomoon.eot?gh7bii");
+  src: url("../fonts/icomoon.eot?gh7bii#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?gh7bii") format("truetype"), url("../fonts/icomoon.woff?gh7bii") format("woff"), url("../fonts/icomoon.svg?gh7bii#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -11914,6 +11914,11 @@ textarea.form-control-lg {
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-check:before {
+  content: "";
+  color: #f5fbff;
 }
 
 .icon-next:before {
@@ -11990,7 +11995,6 @@ textarea.form-control-lg {
 
 .icon-right-arrow:before {
   content: "";
-  color: #fff;
 }
 
 .icon-plus:before {
@@ -12109,12 +12113,16 @@ p {
   font-size: 13px;
 }
 
+.font-size-14px {
+  font-size: 14px;
+}
+
 .font-size-18px {
-  font-size: 18px;
+  font-size: 18px !important;
 }
 
 .font-size-24px {
-  font-size: 24px;
+  font-size: 24px !important;
 }
 
 .font-size-48px {
@@ -12135,6 +12143,10 @@ p {
 
 .text-success {
   color: #005848 !important;
+}
+
+.text-warning {
+  color: #DD963B !important;
 }
 
 .text-danger {
@@ -12638,9 +12650,6 @@ input[readonly] {
   height: auto;
 }
 
-.quick-access {
-  padding-bottom: 120px;
-}
 .quick-access .card {
   width: 347px;
   height: auto;
@@ -12681,6 +12690,10 @@ input[readonly] {
   z-index: 2;
 }
 
+.table > :not(caption) > * > * {
+  padding: 16px 10px;
+}
+
 footer {
   background-color: #005848;
 }
@@ -12693,6 +12706,27 @@ footer .address-description {
   font-weight: 500;
   font-size: 22px;
   color: #FFFFFF;
+}
+
+.bootstrap-select > .dropdown-toggle.btn-light {
+  background-color: transparent;
+  border: 1px solid #6C757D;
+}
+
+.form-check-input {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #272D3B;
+}
+
+.form-check-input:checked[type=radio] {
+  background-image: url("../images/check.svg");
+  background-size: initial;
+}
+
+.reviews p {
+  font-size: 14px;
+  color: #212429;
 }
 
 @media (max-width: 992px) {

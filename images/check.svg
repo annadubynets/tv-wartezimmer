@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="11.947"
+   height="8.684"
+   viewBox="0 0 11.947 8.684"
+   version="1.1"
+   id="svg33"
+   sodipodi:docname="check.svg"
+   inkscape:version="1.1 (c4e8f9e, 2021-05-24)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs37" />
+  <sodipodi:namedview
+     id="namedview35"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="27.403907"
+     inkscape:cx="5.4554265"
+     inkscape:cy="4.5249023"
+     inkscape:window-width="1312"
+     inkscape:window-height="814"
+     inkscape:window-x="0"
+     inkscape:window-y="23"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg33" />
+  <path
+     style="color:#000000;fill:#f5fbff;stroke-linecap:round;stroke-linejoin:round;-inkscape-stroke:none"
+     d="M 15.119141,8 A 1,1 0 0 0 14.412109,8.2929688 L 8.8496094,13.855469 6.7070312,11.712891 a 1,1 0 0 0 -1.4140625,0 1,1 0 0 0 0,1.414062 l 2.8496094,2.84961 a 1.0001,1.0001 0 0 0 1.4140625,0 L 15.826172,9.7070313 a 1,1 0 0 0 0,-1.4140625 A 1,1 0 0 0 15.119141,8 Z"
+     id="Icon_feather-check"
+     transform="translate(-4.586 -7.586)" />
+</svg>

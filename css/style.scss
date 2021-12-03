@@ -182,7 +182,6 @@ input[readonly] {
 }
 
 .quick-access {
-    padding-bottom: 120px;
     .card {
         width: 347px;
         height: auto;
@@ -224,6 +223,10 @@ input[readonly] {
     z-index: 2;
 }
 
+.table> :not(caption)>*>* {
+    padding: 16px 10px;
+}
+
 footer {
     background-color: #005848;
     .service-team-title {
@@ -235,6 +238,29 @@ footer {
         font-weight: 500;
         font-size: 22px;
         color: $white;
+    }
+}
+
+.bootstrap-select>.dropdown-toggle.btn-light {
+    background-color: transparent;
+    border: 1px solid #6C757D;
+}
+
+.form-check-input {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #272D3B;
+}
+
+.form-check-input:checked[type=radio] {
+    background-image: url('../images/check.svg');
+    background-size: initial;
+}
+
+.reviews {
+    p {
+        font-size: 14px;
+        color: $black;
     }
 }
 
