@@ -40,6 +40,12 @@ h4 {
     color: $white;
 }
 
+h5 {
+    font-weight: bold;
+    font-size: 15px;
+    color: $white;
+}
+
 p {
     font-weight: bold;
     font-size: 22px;
@@ -70,6 +76,14 @@ p {
     font-size: 48px;
 }
 
+.font-size-80px {
+    font-size: 80px;
+}
+
+.font-size-200px {
+    font-size: 200px;
+}
+
 .text-primary {
     color: $pink!important;
 }
@@ -92,6 +106,10 @@ p {
 
 .text-danger {
     color: $pink!important;
+}
+
+.text-muted {
+    color: $grey!important;
 }
 
 .rounded {
@@ -140,6 +158,10 @@ p {
 
 .mb-32px {
     margin-bottom: 32px;
+}
+
+.mb-37px {
+    margin-bottom: 37px;
 }
 
 .mb-72px {

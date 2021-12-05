@@ -136,7 +136,7 @@ label {
 .file-input-label {
     font-size: 16px;
     color: $yellow;
-    padding: 0px 22px;
+    padding-left: 22px;
     display: table-cell;
     vertical-align: middle;
     margin: auto;
@@ -177,13 +177,6 @@ input[readonly] {
     z-index: 0;
 }
 
-.current {
-    .card {
-        width: 480px;
-        height: auto;
-    }
-}
-
 .quick-access {
     .card {
         width: 347px;
@@ -212,7 +205,6 @@ input[readonly] {
 }
 
 .themed-packages {
-    padding-bottom: 120px;
     .card {
         max-width: calc(100vw - 32px);
         width: 620px;
@@ -273,6 +265,16 @@ footer {
     border: 1px solid #6C757D;
 }
 
+.bootstrap-select .dropdown-toggle:focus,
+.bootstrap-select>select.mobile-device:focus+.dropdown-toggle {
+    outline: 0!important;
+}
+
+.input-group> :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
 .form-check-input {
     width: 20px;
     height: 20px;
@@ -291,15 +293,104 @@ footer {
     }
 }
 
+.icon-block {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.btn-block {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.block-center {
+    position: absolute;
+    top: 25%;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.icon-size {
+    font-size: 46px;
+}
+
+.report-title {
+    font-size: 55px;
+}
+
+.report-subtitle {
+    font-size: 24px;
+}
+
+.programs {
+    .card {
+        .badge {
+            font-size: 18px;
+            padding: 4px 6px;
+            right: 15px;
+        }
+    }
+    .item {
+        .img-style {
+            max-width: 489px;
+        }
+    }
+}
+
+.highlights {
+    .card {
+        .card-title {
+            font-size: 40px;
+            &.font-size-18px {
+                font-size: 18px;
+            }
+        }
+        .card-text {
+            font-size: 30px;
+            &.font-size-16px {
+                font-size: 16px;
+            }
+        }
+        .img-style {
+            object-fit: cover;
+            height: 100%;
+        }
+    }
+}
+
+.search-block {
+    background-color: $darkgreen;
+    padding: 14px 30px;
+}
+
+.login {
+    min-height: 100vh;
+    .login-block {
+        background-color: $darkgreen;
+        padding: 60px 80px;
+        label {
+            color: $white;
+        }
+    }
+}
+
 @media (max-width: 992px) {
     h1 {
-        font-size: 30px;
-        margin-bottom: 32px;
+        font-size: 26px;
     }
     h2 {
         font-size: 24px;
     }
     h3 {
+        font-size: 20px;
+    }
+    h4 {
         font-size: 20px;
     }
     p {
@@ -311,11 +402,17 @@ footer {
     .pt-192px {
         padding-top: 120px;
     }
+    .pb-80px {
+        padding-bottom: 46px;
+    }
     .py-72px {
         padding: 48px 0;
     }
     .mb-32px {
         margin-bottom: 24px;
+    }
+    .btn-outline-success {
+        font-size: 18px;
     }
     .themed-packages {
         .card {
@@ -324,27 +421,63 @@ footer {
             }
         }
     }
-    // .quick-access {
-    //     .card {
-    //         .img-style {
-    //             max-width: 120px;
-    //             height: 120px;
-    //         }
-    //     }
-    // }
-    // .films {
-    //     .img-style {
-    //         max-width: 320px;
-    //     }
-    // }
-    // .other-presentations {
-    //     .img-style {
-    //         max-width: 250px;
-    //     }
-    // }
+    .carousel-indicators {
+        bottom: -38px
+    }
+    .popover-style {
+        position: absolute;
+        top: -4px;
+        right: 0;
+    }
+    .programs {
+        .item {
+            .img-style {
+                max-width: 350px;
+            }
+        }
+    }
     footer {
         .service-team-title {
-            font-size: 32px;
+            font-size: 24px;
         }
+        .address-description {
+            font-size: 16px;
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1900px) {
+    .font-size-200px {
+        font-size: 100px;
+    }
+    .font-size-80px {
+        font-size: 50px;
+    }
+    .icon-size {
+        font-size: 30px;
+    }
+    .report-title {
+        font-size: 30px;
+    }
+    .report-subtitle {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .font-size-200px {
+        font-size: 50px;
+    }
+    .font-size-80px {
+        font-size: 50px;
+    }
+    .icon-size {
+        font-size: 16px;
+    }
+    .report-title {
+        font-size: 16px;
+    }
+    .report-subtitle {
+        font-size: 16px;
     }
 }

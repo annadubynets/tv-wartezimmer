@@ -62,6 +62,27 @@ $(function() {
             }
         })
     }
+
+    if ($('.programs .owl-carousel').length > 0) {
+        $('.programs .owl-carousel').owlCarousel({
+            loop: true,
+            margin: 60,
+            responsiveClass: true,
+            autoplay: false,
+            autoWidth: true,
+            dots: false,
+            nav: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    stagePadding: 60,
+                },
+                992: {
+                    items: 3
+                }
+            }
+        })
+    }
 });
 
 $(function() {
