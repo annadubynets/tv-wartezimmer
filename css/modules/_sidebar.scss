@@ -28,6 +28,8 @@ $show-sidebar-breakpoint: 768px;
     top: $navbar-height;
     overflow: hidden;
     overflow-y: auto;
+    transition: all 0.5s ease;
+    
     .sidebar-container {
         display: flex;
         flex-direction: column;
@@ -96,8 +98,9 @@ $show-sidebar-breakpoint: 768px;
     max-width: calc(100% - #{$desktop-sidebar-width});
     width: 100%;
     margin-left: $desktop-sidebar-width;
-    transition: all 0.5s ease;
     border-left: 1px solid $black;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
 }
 
 .btn-toggle-nav {
@@ -130,5 +133,7 @@ $show-sidebar-breakpoint: 768px;
     .main-section {
         margin-left: 0px;
         max-width: initial;
+        padding-left: 0px;
+        padding-right: 0px;
     }
 }

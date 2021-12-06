@@ -3,7 +3,7 @@ $(function() {
     if ($('.quick-access .owl-carousel').length > 0) {
         $('.quick-access .owl-carousel').owlCarousel({
             loop: true,
-            margin: 60,
+            margin: 35,
             responsiveClass: true,
             autoplay: false,
             autoWidth: true,
@@ -24,7 +24,7 @@ $(function() {
     if ($('.themed-packages .owl-carousel').length > 0) {
         $('.themed-packages .owl-carousel').owlCarousel({
             loop: true,
-            margin: 60,
+            margin: 35,
             responsiveClass: true,
             autoplay: false,
             autoWidth: true,
@@ -45,7 +45,7 @@ $(function() {
     if ($('.vacation-messages .owl-carousel').length > 0) {
         $('.vacation-messages .owl-carousel').owlCarousel({
             loop: true,
-            margin: 60,
+            margin: 35,
             responsiveClass: true,
             autoplay: false,
             autoWidth: true,
@@ -66,7 +66,7 @@ $(function() {
     if ($('.programs .owl-carousel').length > 0) {
         $('.programs .owl-carousel').owlCarousel({
             loop: true,
-            margin: 60,
+            margin: 35,
             responsiveClass: true,
             autoplay: false,
             autoWidth: true,

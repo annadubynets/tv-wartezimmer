@@ -2,50 +2,17 @@
 @import "./owl.theme.default.min";
 @import "./bootstrap.min";
 @import "./bootstrap-select.min";
-@import "./libs/datepicker.css";
+@import "./libs/datepicker";
 @import "fonts";
 @import "modules/variables";
 @import "modules/typography";
 @import "modules/navbar";
 @import "modules/sidebar";
+@import "modules/dropdowns";
 @import "modules/buttons";
 @import "modules/nav-tabs";
 @import "modules/datepicker";
-textarea {
-    resize: none;
-    &.form-control {
-        border: 1px solid $darkgreen;
-        &::placeholder {
-            color: $darkgrey;
-            font-size: 16px;
-        }
-    }
-}
-
-iframe {
-    border-radius: 20px;
-}
-
-.dropdown {
-    .dropdown-menu {
-        border-color: $silver;
-        border-radius: 5px;
-        padding: 8px 0;
-        .dropdown-item {
-            font-size: 16px;
-            color: $black;
-            padding: 7px 24px;
-            &:focus,
-            &:hover {
-                background-color: #F8F9FA;
-            }
-            &.active,
-            &:active {
-                background-color: $lightgrey;
-            }
-        }
-    }
-}
+@import "modules/utilities";
 
 .carousel-indicators [data-bs-target] {
     height: 2px;

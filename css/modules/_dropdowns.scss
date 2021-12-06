@@ -1,0 +1,20 @@
+.dropdown {
+    .dropdown-menu {
+        border-color: $silver;
+        border-radius: 5px;
+        padding: 8px 0;
+        .dropdown-item {
+            font-size: 16px;
+            color: $black;
+            padding: 7px 24px;
+            &:focus,
+            &:hover {
+                background-color: $whitesmoke;
+            }
+            &.active,
+            &:active {
+                background-color: $lightgrey;
+            }
+        }
+    }
+}
