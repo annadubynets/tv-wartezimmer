@@ -36,7 +36,7 @@
                     </div>
                 </li>
                 <li class="nav-item align-self-center">
-                    <a href="#" class="nav-link">
+                    <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#sendModal">
                         <span class="icon-box-arrow-right font-size-24px"></span>
                     </a>
                 </li>
@@ -135,7 +135,7 @@
     </div>
 
     <div class="main-section pt-4">
-        <div class="programs pb-80px">
+        <div class="programs">
             <div class="container-fluid">
                 <div class="row mb-5">
                     <div class="col-lg-12 text-center">
@@ -267,7 +267,32 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
+        <div class="search-block mb-5">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-lg-3">
+                        <h3 class="text-white mb-0">Inhalt hinzufügen</h3>
+                    </div>
+
+                    <div class="col-lg-3">
+                        <div class="input-group rounded">
+                            <button type="button" class="btn btn-outline-success me-4">Suchen</button>
+                            <input type="search" class="form-control" placeholder="Suchen" aria-label="Search" aria-describedby="search-addon" />
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 d-flex align-items-center">
+                        <a href="#" class="btn btn-outline-success">Alle anzeigen</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="programs pb-80px">
+            <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-3 text-center pb-4">
                         <div class="card bg-white rounded-pill shadow h-100 p-4 position-relative">
@@ -378,13 +403,228 @@
                 </div>
             </div>
         </footer>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="sendModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="sendModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header d-flex justify-content-between border-0">
+                    <h5 class="modal-title" id="sendModalLabel">LOGOUT</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <h2 class="mb-5">Haben Sie noch kurz Zeit bevor Sie gehen?</h2>
+                    <div class="mb-5">
+                        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Nein, bitte
+                            ausloggen</button>
+                        <button type="button" class="btn btn-warning">Antwort senden
+                                und ausloggen</button>
+                    </div>
 
-        <script src="js/jquery-1.12.4.js"></script>
-        <script src="js/jquery-ui.js"></script>
-        <script src="js/bootstrap.bundle.min.js"></script>
-        <script src="js/bootstrap-select.min.js"></script>
-        <script src="js/owl.carousel.min.js"></script>
-        <script src="js/scripts.js"></script>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card bg-white border-0 shadow rounded-pill p-4">
+                                <div class="row border-bottom align-items-center">
+                                    <div class="col-lg-7 text-start py-2">
+                                        <p>Frage</p>
+                                    </div>
+                                    <div class="col-lg-4 offset-lg-1 py-2">
+                                        <div class="d-flex justify-content-between">
+                                            <p>01</p>
+                                            <p>02</p>
+                                            <p>03</p>
+                                            <p>04</p>
+                                            <p>05</p>
+                                            <p>06</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row border-bottom align-items-center">
+                                    <div class="col-lg-7 text-start py-2">
+                                        <p>Wie wahrscheinlich ist es, dass Sie TV Wartezimmer an einen Kollegen empfehlen?</p>
+                                    </div>
+                                    <div class="col-lg-4 offset-lg-1 py-2">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1">
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1">
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1">
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row border-bottom align-items-center">
+                                    <div class="col-lg-7 text-start py-2">
+                                        <p>Wie zufrieden sind Sie mit der Erreichbarkeit des Kundenservices?</p>
+                                    </div>
+                                    <div class="col-lg-4 offset-lg-1 py-2">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2">
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2">
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2">
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2">
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2">
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row border-bottom align-items-center">
+                                    <div class="col-lg-7 text-start py-2">
+                                        <p>Wie zufrieden sind Sie mit dem Umfang der Fachfilm Themen bei TV Wartezimmer?</p>
+                                    </div>
+                                    <div class="col-lg-4 offset-lg-1 py-2">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault3">
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault3">
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault3">
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault3">
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault3">
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault3">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row border-bottom align-items-center">
+                                    <div class="col-lg-7 text-start py-2">
+                                        <p>Wie zufrieden sind Sie mit der Präsentation Ihrer Praxis innerhalb der Programmschleife?</p>
+                                    </div>
+                                    <div class="col-lg-4 offset-lg-1 py-2">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadioDefault4">
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadioDefault4">
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadioDefault4">
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadioDefault4">
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadioDefault4">
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadioDefault4">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row align-items-center mb-5">
+                                    <div class="col-lg-7 text-start py-2">
+                                        <p>Wie zufrieden sind Sie bei der Umsetzung Ihrer Anfragen?</p>
+                                    </div>
+                                    <div class="col-lg-4 offset-lg-1 py-2">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault5" id="flexRadioDefault5">
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault5" id="flexRadioDefault5">
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault5" id="flexRadioDefault5">
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault5" id="flexRadioDefault5">
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault5" id="flexRadioDefault5">
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault5" id="flexRadioDefault5">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row align-items-center">
+                                    <div class="col-lg-12 text-start">
+                                        <p class="font-size-18px text-success">01 = trifft gar nicht zu</p>
+                                        <p class="font-size-18px text-success">06 = trifft vollkommen zu</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery-1.12.4.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap-select.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/scripts.js"></script>
 </body>
 
 </html>

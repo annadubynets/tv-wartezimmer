@@ -12218,8 +12218,8 @@ textarea.form-control-lg {
 }
 @font-face {
   font-family: "icomoon";
-  src: url("../fonts/icomoon.eot?gh7bii");
-  src: url("../fonts/icomoon.eot?gh7bii#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?gh7bii") format("truetype"), url("../fonts/icomoon.woff?gh7bii") format("woff"), url("../fonts/icomoon.svg?gh7bii#icomoon") format("svg");
+  src: url("../fonts/icomoon.eot?cxzxxq");
+  src: url("../fonts/icomoon.eot?cxzxxq#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?cxzxxq") format("truetype"), url("../fonts/icomoon.woff?cxzxxq") format("woff"), url("../fonts/icomoon.svg?cxzxxq#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -12773,16 +12773,6 @@ iframe {
   border-radius: 9px;
 }
 
-.btn-outline-success {
-  font-weight: normal;
-  font-size: 16px;
-  padding: 12px 32px;
-  color: #F8F9FA;
-  background-color: transparent;
-  border: 1px solid #F8F9FA;
-  border-radius: 5px;
-}
-
 .btn-close:focus {
   box-shadow: none;
 }
@@ -13038,8 +13028,8 @@ input[readonly] {
 }
 
 .quick-access .card {
-  width: 347px;
-  height: auto;
+  width: 340px;
+  height: 340px;
 }
 .quick-access .card .img-style {
   max-width: 100%;
@@ -13077,8 +13067,8 @@ input[readonly] {
   top: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to bottom, #FFFFFF 10%, #808080 100%);
-  opacity: 0.7;
+  background: linear-gradient(to bottom, #FFFFFF 10%, #000000 100%);
+  opacity: 0.6;
   height: 100%;
   z-index: 1;
 }
@@ -13112,7 +13102,7 @@ footer .address-description {
 
 .bootstrap-select > .dropdown-toggle.btn-light {
   background-color: transparent;
-  border: 1px solid #6C757D;
+  border: 1px solid #DEE2E6;
 }
 
 .bootstrap-select .dropdown-toggle:focus,
@@ -13134,6 +13124,16 @@ footer .address-description {
 .form-check-input:checked[type=radio] {
   background-image: url("../images/check.svg");
   background-size: initial;
+}
+
+.search-block .btn-outline-success {
+  font-weight: normal;
+  font-size: 16px;
+  padding: 12px 32px;
+  color: #F8F9FA;
+  background-color: transparent;
+  border: 1px solid #F8F9FA;
+  border-radius: 5px;
 }
 
 .reviews p {
@@ -13187,6 +13187,7 @@ footer .address-description {
 
 .highlights .card .card-title {
   font-size: 40px;
+  color: #116154;
 }
 .highlights .card .card-title.font-size-18px {
   font-size: 18px;
@@ -13267,6 +13268,11 @@ footer .address-description {
     height: 250px;
   }
 
+  .quick-access .card {
+    width: 250px;
+    height: 250px;
+  }
+
   .carousel-indicators {
     bottom: -38px;
   }
@@ -13289,6 +13295,10 @@ footer .address-description {
   }
 }
 @media (min-width: 768px) and (max-width: 1900px) {
+  h2 {
+    font-size: 28px;
+  }
+
   .font-size-200px {
     font-size: 100px;
   }

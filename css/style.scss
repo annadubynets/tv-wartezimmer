@@ -13,7 +13,6 @@
 @import "modules/nav-tabs";
 @import "modules/datepicker";
 @import "modules/utilities";
-
 .carousel-indicators [data-bs-target] {
     height: 2px;
     background-color: #D1D0D0;
@@ -146,8 +145,8 @@ input[readonly] {
 
 .quick-access {
     .card {
-        width: 347px;
-        height: auto;
+        width: 340px;
+        height: 340px;
         .img-style {
             max-width: 100%;
             height: 100px;
@@ -194,8 +193,8 @@ input[readonly] {
     top: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to bottom, $white 10%, #808080 100%);
-    opacity: 0.7;
+    background: linear-gradient(to bottom, $white 10%, #000000 100%);
+    opacity: 0.6;
     height: 100%;
     z-index: 1;
 }
@@ -229,7 +228,7 @@ footer {
 
 .bootstrap-select>.dropdown-toggle.btn-light {
     background-color: transparent;
-    border: 1px solid #6C757D;
+    border: 1px solid #DEE2E6;
 }
 
 .bootstrap-select .dropdown-toggle:focus,
@@ -251,6 +250,18 @@ footer {
 .form-check-input:checked[type=radio] {
     background-image: url('../images/check.svg');
     background-size: initial;
+}
+
+.search-block {
+    .btn-outline-success {
+        font-weight: normal;
+        font-size: 16px;
+        padding: 12px 32px;
+        color: $whitesmoke;
+        background-color: transparent;
+        border: 1px solid $whitesmoke;
+        border-radius: 5px;
+    }
 }
 
 .reviews {
@@ -314,6 +325,7 @@ footer {
     .card {
         .card-title {
             font-size: 40px;
+            color: $green;
             &.font-size-18px {
                 font-size: 18px;
             }
@@ -388,6 +400,12 @@ footer {
             }
         }
     }
+    .quick-access {
+        .card {
+            width: 250px;
+            height: 250px;
+        }
+    }
     .carousel-indicators {
         bottom: -38px
     }
@@ -414,6 +432,9 @@ footer {
 }
 
 @media (min-width: 768px) and (max-width: 1900px) {
+    h2 {
+        font-size: 28px;
+    }
     .font-size-200px {
         font-size: 100px;
     }
