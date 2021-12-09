@@ -2,18 +2,18 @@
     height: 70px;
     background-color: $darkgreen;
     border: none;
-    // .navbar-toggler {
-    //     &:focus {
-    //         box-shadow: none!important;
-    //     }
-    // }
     .navbar-brand {
+        margin: 0;
         img {
             height: 58px;
         }
     }
     &.main-navbar.scrolled {
         background-color: $darkgrey;
+    }
+
+    .sidebar-toggler {
+        min-width: 32px;
     }
 }
 
@@ -27,88 +27,14 @@
     font-size: 16px;
     line-height: 24px;
     color: rgba(224, 224, 255, 0.6);
-    padding: 0 24px;
+    padding: 0;
     &:hover {
         color: $white;
     }
     // @media (min-width: 992px) {
     //     font-size: 16px;
     // }
-    // @media (max-width: 992px) {
-    //     color: $white;
-    // }
+    @media (min-width: 768px) {
+        padding: 0 24px;
+    }
 }
-
-// @media (max-width: 992px) {
-//     .navbar-dark .navbar-nav {
-//         margin-top: 20px;
-//         .nav-link {
-//             padding: 15px;
-//         }
-//     }
-// }
-// .navbar-toggler {
-//     &:focus {
-//         box-shadow: none;
-//     }
-//     .toggler-expanded {
-//         display: block;
-//     }
-//     .toggler-collapsed {
-//         display: none;
-//     }
-//     &.collapsed {
-//         .toggler-expanded {
-//             display: none;
-//         }
-//         .toggler-collapsed {
-//             display: block;
-//         }
-//     }
-// }
-// .navbar {
-//     .navbar-toggler,
-//     .navbar-brand {
-//         z-index: 1000;
-//     }
-//     .navbar-collapse {
-//         @media (max-width: 992px) {
-//             &.show {
-//                 opacity: 1.5;
-//             }
-//             color: $white;
-//             background-color: $darkgrey;
-//             opacity: 0;
-//             position: fixed;
-//             top: 0;
-//             left: 0;
-//             right: 0;
-//             bottom: 0;
-//             display: flex;
-//             flex-direction: column;
-//             align-content: center;
-//             text-align: center !important;
-//             &.collapse {
-//                 opacity: 0;
-//                 display: flex;
-//                 pointer-events: none;
-//             }
-//             &.collapsing[style*="height"] {
-//                 opacity: 1;
-//                 height: 100vh !important;
-//             }
-//             &.collapsing {
-//                 opacity: 0;
-//                 height: 100vh;
-//             }
-//             &.collapse.show {
-//                 opacity: 1;
-//                 pointer-events: auto;
-//             }
-//             .navbar-nav {
-//                 margin-top: auto;
-//                 margin-bottom: auto;
-//             }
-//         }
-//     }
-// }
