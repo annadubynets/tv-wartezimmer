@@ -12494,6 +12494,10 @@ p {
   color: #BFBFBF !important;
 }
 
+.text-secondary {
+  color: #868D96 !important;
+}
+
 .rounded {
   border-radius: 12px !important;
 }
@@ -12515,6 +12519,10 @@ textarea.form-control {
 textarea.form-control::placeholder {
   color: #868D96;
   font-size: 16px;
+}
+
+.icon-padding {
+  padding: 12px 26px !important;
 }
 
 iframe {
@@ -13067,10 +13075,15 @@ input[readonly] {
   top: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to bottom, #FFFFFF 10%, #000000 100%);
-  opacity: 0.6;
+  background: linear-gradient(to bottom, #FFFFFF 0, #000000 100%);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.16) !important;
+  opacity: 0.8;
   height: 100%;
   z-index: 1;
+}
+.report-overlay.overlay-grey {
+  background: linear-gradient(to bottom, #FFFFFF 0, #808080 100%);
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16) !important;
 }
 
 .card-report {
@@ -13098,6 +13111,10 @@ footer .address-description {
   font-weight: 500;
   font-size: 22px;
   color: #FFFFFF;
+}
+
+.bootstrap-select .selectpicker.warning + .btn-light {
+  background-color: #DD963B !important;
 }
 
 .bootstrap-select > .dropdown-toggle.btn-light {

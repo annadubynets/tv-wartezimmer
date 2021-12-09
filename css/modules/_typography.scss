@@ -112,6 +112,10 @@ p {
     color: $grey!important;
 }
 
+.text-secondary {
+    color: $darkgrey!important;
+}
+
 .rounded {
     border-radius: 12px!important;
 }
@@ -133,6 +137,10 @@ textarea {
             font-size: 16px;
         }
     }
+}
+
+.icon-padding {
+    padding: 12px 26px!important;
 }
 
 iframe {
