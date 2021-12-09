@@ -29,7 +29,7 @@ $show-sidebar-breakpoint: 768px;
     overflow: hidden;
     overflow-y: auto;
     transition: all 0.5s ease;
-    
+
     .sidebar-container {
         display: flex;
         flex-direction: column;
@@ -124,7 +124,7 @@ $show-sidebar-breakpoint: 768px;
 @media (max-width: $show-sidebar-breakpoint) {
     .sidebar {
         display: none;
-        z-index: 1;
+        z-index: 1040;
         &.show {
             display: block;
             box-shadow: 0 5px 20px rgb(0 0 0 / 20%);
