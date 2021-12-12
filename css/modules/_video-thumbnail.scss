@@ -1,0 +1,175 @@
+.video-thumbnail {
+    $padding: 0.9rem;
+    $borderRadius: 30px;
+    height: 100%;
+    border-radius: $borderRadius;
+    position: relative;
+
+    .poster-image {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: $borderRadius;
+    }
+
+    .video-thumbnail-controls {
+        position: relative;
+        background: linear-gradient(to bottom, #ebebebbd 0, #000000bd 100%);
+        border-radius: $borderRadius;
+        padding-bottom: $padding;
+
+        .play-button-container {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            button {
+                .icon-play {
+                    font-size: 80px;
+
+                    @media (max-width: 1780px) {
+                        font-size: 55px;
+                    }
+                    @media (max-width: 375px) {
+                        font-size: 40px;
+                    }
+                }
+            }
+        }
+
+        .video-title-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+
+            .video-title {
+                padding: 0 1rem;
+                color: $white;
+                font-size: 14px;
+                display: inline-block;
+                text-overflow: ellipsis ;
+                overflow: hidden;
+                white-space: nowrap;
+                width: 100%;
+
+                @media (min-width: 376px) {
+                    font-size: 18px;
+                }
+
+                @media (min-width: 1500px) {
+                    font-size: 22px;
+                }
+            }
+        }
+
+        .manage-block {
+            position: absolute;
+            left: $padding;
+            top: $padding;
+
+            button {
+                display: flex;
+                align-items: center;
+                margin-bottom: 0.5rem;
+                padding-right: 1.5rem !important;
+                padding-left: 1.5rem !important;
+                padding-top: 0.5rem !important;
+                padding-bottom: 0.5rem !important;
+                @extend .shadow;
+                @extend .rounded-pill;
+
+                @media (min-width: 1500px) {
+                    padding-top: 0.8rem !important;
+                    padding-bottom: 0.8rem !important;
+                }
+
+                @media (max-width: 375px) {
+                    padding-right: 0.8rem !important;
+                        padding-left: 0.8rem !important;
+                    span {
+                        
+                        font-size: 8px;
+                    }
+                }
+            }
+        }
+
+        .reactions-block {
+            position: absolute;
+            right: $padding;
+            top: $padding + 0.2rem;
+
+            .reaction-btn {
+                font-size: 30px;
+                padding-left: 0.2rem;
+
+                @media (min-width: 1500px) {
+                    font-size: 40px;
+                    padding-left: 0.8rem;
+                }
+
+                @media (max-width: 375px) {
+                    font-size: 18px;
+                    padding-left: 0.2rem;
+                    top: $padding;
+                }
+            }
+
+            
+        }
+    }
+
+    &.large {
+        .video-thumbnail-controls {
+
+            .play-button-container {
+                .icon-play {
+                    @media (min-width: 1200px) {
+                        font-size: 120px;
+                    }
+
+                    @media (min-width: 1780px) {
+                        font-size: 200px;
+                    }
+                }
+            }
+
+            .video-title-container {
+                @media (min-width: 768px) {
+                    bottom: 1rem;
+                }
+                .video-title {
+                        
+                    @media (min-width: 1500px) {
+                        font-size: 24px;
+                    }
+                    
+                    @media (min-width: 1780px) {
+                        font-size: 50px;
+                    }
+                }
+            }
+
+            .reactions-block {
+                @media (min-width: 1500px) {
+                    right: $padding + 0.2rem;
+                    top: $padding + 0.4rem;
+                    .reaction-btn {
+                        font-size: 60px;
+                        padding-left: 0.8rem;
+                    }
+                }
+            }
+        }
+    }
+}

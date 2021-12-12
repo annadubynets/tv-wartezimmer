@@ -69,16 +69,20 @@ $(function() {
             margin: 35,
             responsiveClass: true,
             autoplay: false,
-            autoWidth: true,
             dots: false,
             nav: false,
             responsive: {
                 0: {
                     items: 1,
-                    stagePadding: 60,
+                    autoWidth: true,
                 },
-                992: {
-                    items: 3
+                768: {
+                    items: 2,
+                    autoWidth: true,
+                },
+                1200: {
+                    items: 3,
+                    autoWidth: false,
                 }
             }
         })

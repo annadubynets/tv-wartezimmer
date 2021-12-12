@@ -41,3 +41,18 @@
 .mh-160px {
     max-height: 160px;
 }
+
+.min-width-290px {
+    min-width: 290px;
+}
+
+@media (max-width: 1200px) {
+    .container, .container-fluid {
+        &.zero-right-padding-up-to-xl {
+            padding-right: 0;
+            &>.row {
+                margin-right: 0px;
+            }
+        }
+    }
+}
