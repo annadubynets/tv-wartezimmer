@@ -1,0 +1,21 @@
+.modal-content {
+    border: none;
+    .modal-header {
+        background-color: $yellow;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        .btn-close {
+            margin: 0;
+        }
+        .modal-title {
+            color: $white;
+            font-size: 22px;
+        }
+    }
+    .modal-body {
+        padding: 50px;
+    }
+    .modal-footer {
+        padding: 0 50px 50px 50px;
+    }
+}

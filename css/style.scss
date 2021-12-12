@@ -10,10 +10,12 @@
 @import "modules/sidebar";
 @import "modules/dropdowns";
 @import "modules/buttons";
+@import "modules/modals";
 @import "modules/nav-tabs";
 @import "modules/datepicker";
 @import "modules/utilities";
 @import "modules/video-thumbnail";
+@import "modules/video-viewer";
 .carousel-indicators [data-bs-target] {
     height: 2px;
     background-color: #D1D0D0;
@@ -116,28 +118,6 @@ input[readonly] {
 
 .progress {
     height: 24px;
-}
-
-.modal-content {
-    border: none;
-    .modal-header {
-        background-color: $yellow;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-        .btn-close {
-            margin: 0;
-        }
-        .modal-title {
-            color: $white;
-            font-size: 22px;
-        }
-    }
-    .modal-body {
-        padding: 50px;
-    }
-    .modal-footer {
-        padding: 0 50px 50px 50px;
-    }
 }
 
 .owl-carousel {
