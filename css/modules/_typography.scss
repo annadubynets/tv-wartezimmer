@@ -49,7 +49,6 @@ h5 {
 p {
     font-weight: bold;
     font-size: 22px;
-    color: $mediumseagreen;
 }
 
 .font-family-second {
@@ -98,6 +97,10 @@ p {
 
 .text-success {
     color: $darkgreen!important;
+}
+
+.text-green {
+    color: $mediumseagreen;
 }
 
 .text-warning {

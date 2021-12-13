@@ -12431,7 +12431,6 @@ h5 {
 p {
   font-weight: bold;
   font-size: 22px;
-  color: #188473;
 }
 
 .font-family-second {
@@ -12480,6 +12479,10 @@ p {
 
 .text-success {
   color: #005848 !important;
+}
+
+.text-green {
+  color: #188473;
 }
 
 .text-warning {
@@ -12742,15 +12745,6 @@ iframe {
   box-shadow: none;
 }
 
-.btn-light {
-  color: #FFFFFF;
-  padding: 12px 26px;
-}
-.btn-light:active, .btn-light.active, .btn-light:focus, .btn-light:hover {
-  color: #FFFFFF !important;
-  outline: 0;
-}
-
 .btn-success {
   font-weight: normal;
   font-size: 16px;
@@ -12769,6 +12763,12 @@ iframe {
   background-color: #FFFFFF;
   border: 3px solid #116154;
   border-radius: 50px;
+}
+
+.input-group:not(.has-validation) > .dropdown-toggle:nth-last-child(n+3),
+.input-group:not(.has-validation) > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .btn-danger {
@@ -12815,6 +12815,8 @@ iframe {
 }
 .modal-content .modal-header .btn-close {
   margin: 0;
+  background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+  opacity: 1;
 }
 .modal-content .modal-header .modal-title {
   color: #FFFFFF;
@@ -12822,6 +12824,11 @@ iframe {
 }
 .modal-content .modal-body {
   padding: 50px;
+}
+@media (max-width: 768px) {
+  .modal-content .modal-body {
+    padding: 24px;
+  }
 }
 .modal-content .modal-footer {
   padding: 0 50px 50px 50px;
@@ -13300,6 +13307,11 @@ input[readonly] {
 .other-presentations .img-style {
   max-width: 300px;
 }
+@media (max-width: 1400px) {
+  .other-presentations .img-style {
+    max-width: 220px;
+  }
+}
 
 .report-overlay {
   position: absolute;
@@ -13377,6 +13389,15 @@ footer .img-style {
 .bootstrap-select .dropdown-toggle:focus,
 .bootstrap-select > select.mobile-device:focus + .dropdown-toggle {
   outline: 0 !important;
+}
+
+.selectpicker.dark + .btn-light {
+  color: #212429;
+}
+
+.selectpicker + .btn-light {
+  color: #FFFFFF;
+  padding: 12px;
 }
 
 .input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
@@ -13461,11 +13482,22 @@ footer .img-style {
 .highlights .card .card-title.font-size-18px {
   font-size: 18px;
 }
+@media (max-width: 768px) {
+  .highlights .card .card-title {
+    font-size: 30px;
+  }
+}
 .highlights .card .card-text {
   font-size: 30px;
+  color: #188473;
 }
 .highlights .card .card-text.font-size-16px {
   font-size: 16px;
+}
+@media (max-width: 768px) {
+  .highlights .card .card-text {
+    font-size: 16px;
+  }
 }
 .highlights .card .img-style {
   object-fit: cover;

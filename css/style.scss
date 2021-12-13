@@ -167,6 +167,9 @@ input[readonly] {
 .other-presentations {
     .img-style {
         max-width: 300px;
+        @media (max-width: 1400px) {
+            max-width: 220px;
+        }
     }
 }
 
@@ -242,6 +245,15 @@ footer {
 .bootstrap-select .dropdown-toggle:focus,
 .bootstrap-select>select.mobile-device:focus+.dropdown-toggle {
     outline: 0!important;
+}
+
+.selectpicker.dark+.btn-light {
+    color: $black;
+}
+
+.selectpicker+.btn-light {
+    color: $white;
+    padding: 12px;
 }
 
 .input-group> :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
@@ -337,10 +349,17 @@ footer {
             &.font-size-18px {
                 font-size: 18px;
             }
+            @media (max-width: 768px) {
+                font-size: 30px;
+            }
         }
         .card-text {
             font-size: 30px;
+            color: $mediumseagreen;
             &.font-size-16px {
+                font-size: 16px;
+            }
+            @media (max-width: 768px) {
                 font-size: 16px;
             }
         }

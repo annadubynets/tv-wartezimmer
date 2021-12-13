@@ -4,18 +4,6 @@
     }
 }
 
-.btn-light {
-    color: $white;
-    padding: 12px 26px;
-    &:active,
-    &.active,
-    &:focus,
-    &:hover {
-        color: $white!important;
-        outline: 0;
-    }
-}
-
 .btn-success {
     font-weight: normal;
     font-size: 16px;
@@ -34,6 +22,12 @@
     background-color: $white;
     border: 3px solid #116154;
     border-radius: 50px;
+}
+
+.input-group:not(.has-validation)>.dropdown-toggle:nth-last-child(n+3),
+.input-group:not(.has-validation)> :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .btn-danger {
