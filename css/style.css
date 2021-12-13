@@ -13178,6 +13178,7 @@ label {
 
 .form-check-label {
   color: #212429;
+  vertical-align: sub;
 }
 
 .form-control {
