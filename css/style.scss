@@ -210,6 +210,21 @@ footer {
         font-size: 22px;
         color: $white;
     }
+    .img-style {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        @media (min-width: 1200px) and (max-width: 1700px) {
+            width: 380px;
+            left: -80px;
+        }
+        @media (max-width: 1200px) {
+            position: relative;
+        }
+        @media (max-width: 414px) {
+            width: 100%;
+        }
+    }
 }
 
 .bootstrap-select {
