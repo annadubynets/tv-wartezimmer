@@ -12956,6 +12956,10 @@ iframe {
   min-width: 290px;
 }
 
+.border-radius-5px {
+  border-radius: 5px !important;
+}
+
 @media (max-width: 1200px) {
   .container.zero-right-padding-up-to-xl, .container-fluid.zero-right-padding-up-to-xl {
     padding-right: 0;
