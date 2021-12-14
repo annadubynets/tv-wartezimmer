@@ -12288,7 +12288,6 @@ textarea.form-control-lg {
 
 .icon-profile:before {
   content: "";
-  color: #fff;
 }
 
 .icon-list:before {
@@ -12455,6 +12454,10 @@ p {
 
 .font-size-48px {
   font-size: 48px;
+}
+
+.font-size-60px {
+  font-size: 60px;
 }
 
 .font-size-80px {
