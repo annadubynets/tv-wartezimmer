@@ -194,7 +194,34 @@ $(function() {
             startDate: moment(),
             endDate: moment().startOf('day').add(7, 'day'),
             locale: {
-                format: 'DD.MM.YYYY'
+                format: 'DD.MM.YYYY',
+                applyLabel: "Übernehmen",
+                cancelLabel: "Abbrechen",
+                fromLabel: "Von",
+                toLabel: "bis",
+                daysOfWeek: [
+                    "So",
+                    "Mo",
+                    "Di",
+                    "Mi",
+                    "Do",
+                    "Fr",
+                    "Sa"
+                ],
+                monthNames: [
+                    "Januar",
+                    "Februar",
+                    "Marsch",
+                    "April",
+                    "Kann",
+                    "Juni",
+                    "Juli",
+                    "August",
+                    "September",
+                    "Oktober",
+                    "November",
+                    "Dezember"
+                ],
             }
         }, function(start, end, label) {
           console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
