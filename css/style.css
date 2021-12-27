@@ -4,6 +4,7 @@
  * Copyright 2013-2018 David Deutsch
  * Licensed under: SEE LICENSE IN https://github.com/OwlCarousel2/OwlCarousel2/blob/master/LICENSE
  */
+@import "./libs/daterangepicker.css";
 .owl-carousel, .owl-carousel .owl-item {
   -webkit-tap-highlight-color: transparent;
   position: relative;
@@ -12786,12 +12787,6 @@ iframe {
   border-radius: 50px;
 }
 
-.input-group:not(.has-validation) > .dropdown-toggle:nth-last-child(n+3),
-.input-group:not(.has-validation) > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) {
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-
 .btn-danger {
   font-weight: normal;
   font-size: 16px;
@@ -13419,11 +13414,6 @@ footer .img-style {
 .selectpicker + .btn-light {
   color: #FFFFFF;
   padding: 12px;
-}
-
-.input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
 }
 
 .form-check-input {

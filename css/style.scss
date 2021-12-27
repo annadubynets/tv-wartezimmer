@@ -3,6 +3,7 @@
 @import "./bootstrap.min";
 @import "./bootstrap-select.min";
 @import "./libs/datepicker";
+@import "./libs/daterangepicker.css";
 @import "fonts";
 @import "modules/variables";
 @import "modules/typography";
@@ -254,11 +255,6 @@ footer {
 .selectpicker+.btn-light {
     color: $white;
     padding: 12px;
-}
-
-.input-group> :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
 }
 
 .form-check-input {

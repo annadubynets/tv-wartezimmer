@@ -24,12 +24,6 @@
     border-radius: 50px;
 }
 
-.input-group:not(.has-validation)>.dropdown-toggle:nth-last-child(n+3),
-.input-group:not(.has-validation)> :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) {
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-}
-
 .btn-danger {
     font-weight: normal;
     font-size: 16px;
