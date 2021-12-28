@@ -186,6 +186,7 @@ $(function() {
 
 
 // date range picker setup
+// you can find more details here: http://www.daterangepicker.com/#usage
 $(function() {
     $(function() {
         $('input[name="daterange"]').daterangepicker({
