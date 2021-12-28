@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ge">
 
 <head>
     <meta charset="UTF-8">
@@ -138,401 +138,466 @@
     </div>
 
     <div class="main-section d-flex flex-column pt-4">
-        <div class="programs px-1">
+
+        <div class="loader-block state-screen">
             <div class="container-fluid">
                 <div class="row mb-5">
-                    <div class="col-lg-12 text-center">
-                        <div class="bg-white rounded-pill shadow h-100 p-4">
-                            <div class="d-lg-flex d-block justify-content-between align-items-center pb-4 position-relative">
-                                <div>
-                                    <h4 class="text-success text-start mb-lg-0 mb-4 me-lg-4 me-0">Was läuft gerade?</h4>
+                    <div class="col-lg-12 text-center text-white my-5 py-5">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p>Loading...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="error-block state-screen d-none">
+            <div class="container-fluid">
+                <div class="row mb-5">
+                    <div class="col-lg-12 text-center text-white">
+                        <div class="alert alert-danger" role="alert"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="manage-movies-block state-screen d-none">
+            <div class="programs booked-films px-1">
+                <div class="container-fluid">
+                    <div class="row mb-5">
+                        <div class="col-lg-12 text-center">
+                            <div class="bg-white rounded-pill shadow h-100 p-4">
+                                <div class="booked-films-navigation d-lg-flex d-block justify-content-between align-items-center pb-4 position-relative">
+                                    <div>
+                                        <h4 class="text-success text-start mb-lg-0 mb-4 me-lg-4 me-0">Was läuft gerade?</h4>
+                                    </div>
+                                    <ul class="nav nav-tabs">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" aria-current="page" href="#">Alle Standorte</a>
+                                        </li>
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link text-success dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Standort</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+
+                                    <div class="text-end popover-style">
+                                        <p class="text-success">mehr<span class="icon-right-arrow ps-3"></span></p>
+                                    </div>
                                 </div>
-                                <ul class="nav nav-tabs">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="#">Alle Standorte</a>
-                                    </li>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link text-success dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Standort</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">Action</a></li>
-                                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                        </ul>
-                                    </li>
+
+                                <div class="no-booked-films-block booked-movie-screen d-flex flex-column justify-content-center align-items-middle">
+                                    <h4 class="text-dark">Sie haben aktuell keine Filme gewählt.</h4>
+                                </div>
+
+                                <div class="booked-films-list booked-movie-screen d-none row justify-content-center">
+
+                                    <!-- This block is always here, there is no way to show the booked videos without large video -->
+                                    <div class="large-booked-movie-container col-xl-8 col-lg-12 pb-xl-0 pb-4">
+                                        <div class="ratio ratio-16x9">
+                                            <div>
+                                                <div class="video-thumbnail large" data-video-src="https://cache.tvw.systems/files/2017/12/08/SzYbDpLzJmpAxgr_2017-12-08_28m5x_9hhgvgbab_doc_air-polishing.mp4">
+                                                    <img src="images/video.png" alt="Video" class="poster-image">
+                                                    <div class="video-thumbnail-controls h-100">
+                                                        <div class="play-button-container">
+                                                            <button type="button" class="border-0 bg-transparent play-btn">
+                                                                <span class="icon-play"></span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="manage-block">
+                                                            <button type="button" class="btn btn-warning w-100 btn-unbook"><span class="icon-minus"></span><span class="d-none d-md-inline ps-4">Abwählen</span></button>
+                                                        </div>
+                                                        <div class="reactions-block">
+                                                            <span class="icon-information reaction-btn" data-bs-toggle="modal" data-bs-target="#movieInformationModal"></span>
+                                                            <span class="icon-hand-thumbs-up reaction-btn"></span>
+                                                            <span class="icon-hand-thumbs-down reaction-btn"></span>
+                                                        </div>
+                                                        <div class="video-title-container">
+                                                            <p class="video-title">Knochendichtemessung (Ultraschall)</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- this block can be hidden in case if only single video is booked -->
+                                    <div class="booked-films-list-container d-none col-xl-4 col-lg-12">
+                                        <div class="d-none video-thumbnail-template">
+                                            <div class="small-booked-movie-container col-lg-12 pb-3">
+                                                <div class="ratio ratio-16x9">
+                                                    <div>
+                                                        <div class="video-thumbnail" data-video-src="">
+                                                            <img class="poster-image">
+                                                            <div class="video-thumbnail-controls h-100">
+                                                                <div class="play-button-container">
+                                                                    <button type="button" class="border-0 bg-transparent play-btn">
+                                                                        <span class="icon-play"></span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="manage-block">
+                                                                    <button type="button" class="btn btn-warning btn-unbook"><span class="icon-minus"></span></button>
+                                                                </div>
+                                                                <div class="reactions-block">
+                                                                    <span class="icon-information reaction-btn"></span>
+                                                                    <span class="icon-hand-thumbs-up reaction-btn"></span>
+                                                                    <span class="icon-hand-thumbs-down reaction-btn"></span>
+                                                                </div>
+                                                                <div class="video-title-container">
+                                                                    <span class="video-title text-white"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row side-booked-videos-list">
+
+                                            <!-- <div class="col-lg-12 pb-3">
+                                                <div class="ratio ratio-16x9">
+                                                    <div>
+                                                        <div class="video-thumbnail" data-video-src="https://cache.tvw.systems/files/2017/12/08/MExfTfA5ZC6F7eu_2017-12-08_pt2vx_2vqbwyegn_doc_abi-messung.mp4">
+                                                            <img src="images/video.png" alt="Video" class="poster-image">
+                                                            <div class="video-thumbnail-controls h-100">
+                                                                <div class="play-button-container">
+                                                                    <button type="button" class="border-0 bg-transparent play-btn">
+                                                                        <span class="icon-play"></span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="manage-block">
+                                                                    <button type="button" class="btn btn-warning"><span class="icon-plus"></span></button>
+                                                                </div>
+                                                                <div class="reactions-block">
+                                                                    <span class="icon-information reaction-btn"></span>
+                                                                    <span class="icon-hand-thumbs-up reaction-btn"></span>
+                                                                    <span class="icon-hand-thumbs-down reaction-btn"></span>
+                                                                </div>
+                                                                <div class="video-title-container">
+                                                                    <span class="video-title text-white">Knochendichtemessung (Ultraschall)</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-12">
+                                                <div class="ratio ratio-16x9">
+                                                    <div>
+                                                        <div class="video-thumbnail">
+                                                            <img src="images/video.png" alt="Video" class="poster-image">
+                                                            <div class="video-thumbnail-controls h-100">
+                                                                <div class="play-button-container">
+                                                                    <button type="button" class="border-0 bg-transparent play-btn">
+                                                                        <span class="icon-play"></span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="manage-block">
+                                                                    <button type="button" class="btn btn-warning"><span class="icon-minus"></span></button>
+                                                                </div>
+                                                                <div class="reactions-block">
+                                                                    <span class="icon-information reaction-btn"></span>
+                                                                    <span class="icon-hand-thumbs-up reaction-btn"></span>
+                                                                    <span class="icon-hand-thumbs-down reaction-btn"></span>
+                                                                </div>
+                                                                <div class="video-title-container">
+                                                                    <span class="video-title text-white">Knochendichtemessung (Ultraschall)</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-block mb-5">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-xl-12 col-xxl-2 pb-xl-0 pb-3">
+                            <h3 class="text-white">Fachbereiche</h3>
+                        </div>
+
+                        <div class="col-xl-5 col-xxl-4 pb-xl-0 pb-3">
+                            <div class="input-group rounded">
+                                <input type="search" class="form-control" placeholder="Suchen" aria-label="Search" aria-describedby="search-addon" />
+                                <button type="button" class="btn btn-outline-success">Suchen</button>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-2 pb-xl-0 pb-3">
+                            <select class="selectpicker w-100 me-4">
+                                <option>Listen</option>
+                                <option>Listen</option>
+                                <option>Listen</option>
+                                <option>Listen</option>
+                            </select>
+                        </div>
+
+                        <div class="col-xl-3 col-xxl-2 col-lg-6 px-xxl-0 pb-xl-1 pb-3">
+                            <a href="#" class="btn btn-outline-success">Alle anzeigen</a>
+                        </div>
+
+                        <div class="col-xl-2 col-lg-6 d-flex justify-content-end justify-content-xxl-start">
+                            <div class="dropdown">
+                                <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuFilter" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Filter
+                                        </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuFilter">
+                                    <li><a class="dropdown-item" href="#">Neue Filme</a></li>
+                                    <li><a class="dropdown-item" href="#">Für Sie empfohlen</a></li>
+                                    <li><a class="dropdown-item" href="#">Kollegen buchten auch</a></li>
+                                    <li><a class="dropdown-item" href="#">Meistgebuchte</a></li>
                                 </ul>
-
-                                <div class="text-end popover-style">
-                                    <p class="text-success">mehr<span class="icon-right-arrow ps-3"></span></p>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-xl-8 col-lg-12 pb-xl-0 pb-4">
-                                    <div class="ratio ratio-16x9">
-                                        <div>
-                                            <div class="video-thumbnail large" data-video-src="https://cache.tvw.systems/files/2017/12/08/SzYbDpLzJmpAxgr_2017-12-08_28m5x_9hhgvgbab_doc_air-polishing.mp4">
-                                                <img src="images/video.png" alt="Video" class="poster-image">
-                                                <div class="video-thumbnail-controls h-100">
-                                                    <div class="play-button-container">
-                                                        <button type="button" class="border-0 bg-transparent play-btn">
-                                                            <span class="icon-play"></span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="manage-block">
-                                                        <button type="button" class="btn btn-warning w-100"><span class="icon-plus"></span><span class="d-none d-md-inline ps-4">Hinzufügen</span></button>
-                                                        <button type="button" class="btn btn-warning w-100"><span class="icon-minus"></span><span class="d-none d-md-inline ps-4">Abwählen</span></button>
-                                                    </div>
-                                                    <div class="reactions-block">
-                                                        <span class="icon-information reaction-btn" data-bs-toggle="modal" data-bs-target="#movieInformationModal"></span>
-                                                        <span class="icon-hand-thumbs-up reaction-btn"></span>
-                                                        <span class="icon-hand-thumbs-down reaction-btn"></span>
-                                                    </div>
-                                                    <div class="video-title-container">
-                                                        <p class="video-title">Knochendichtemessung (Ultraschall)</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-12">
-                                    <div class="row">
-                                        <div class="col-lg-12 pb-3">
-                                            <div class="ratio ratio-16x9">
-                                                <div>
-                                                    <div class="video-thumbnail" data-video-src="https://cache.tvw.systems/files/2017/12/08/MExfTfA5ZC6F7eu_2017-12-08_pt2vx_2vqbwyegn_doc_abi-messung.mp4">
-                                                        <img src="images/video.png" alt="Video" class="poster-image">
-                                                        <div class="video-thumbnail-controls h-100">
-                                                            <div class="play-button-container">
-                                                                <button type="button" class="border-0 bg-transparent play-btn">
-                                                                    <span class="icon-play"></span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="manage-block">
-                                                                <button type="button" class="btn btn-warning"><span class="icon-plus"></span></button>
-                                                            </div>
-                                                            <div class="reactions-block">
-                                                                <span class="icon-information reaction-btn"></span>
-                                                                <span class="icon-hand-thumbs-up reaction-btn"></span>
-                                                                <span class="icon-hand-thumbs-down reaction-btn"></span>
-                                                            </div>
-                                                            <div class="video-title-container">
-                                                                <span class="video-title text-white">Knochendichtemessung (Ultraschall)</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-12">
-                                            <div class="ratio ratio-16x9">
-                                                <div>
-                                                    <div class="video-thumbnail">
-                                                        <img src="images/video.png" alt="Video" class="poster-image">
-                                                        <div class="video-thumbnail-controls h-100">
-                                                            <div class="play-button-container">
-                                                                <button type="button" class="border-0 bg-transparent play-btn">
-                                                                    <span class="icon-play"></span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="manage-block">
-                                                                <button type="button" class="btn btn-warning"><span class="icon-minus"></span></button>
-                                                            </div>
-                                                            <div class="reactions-block">
-                                                                <span class="icon-information reaction-btn"></span>
-                                                                <span class="icon-hand-thumbs-up reaction-btn"></span>
-                                                                <span class="icon-hand-thumbs-down reaction-btn"></span>
-                                                            </div>
-                                                            <div class="video-title-container">
-                                                                <span class="video-title text-white">Knochendichtemessung (Ultraschall)</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="search-block mb-5">
-            <div class="container-fluid">
-                <div class="row align-items-center">
-                    <div class="col-xl-12 col-xxl-2 pb-xl-0 pb-3">
-                        <h3 class="text-white">Fachbereiche</h3>
-                    </div>
-
-                    <div class="col-xl-5 col-xxl-4 pb-xl-0 pb-3">
-                        <div class="input-group rounded">
-                            <input type="search" class="form-control" placeholder="Suchen" aria-label="Search" aria-describedby="search-addon" />
-                            <button type="button" class="btn btn-outline-success">Suchen</button>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-2 pb-xl-0 pb-3">
-                        <select class="selectpicker w-100 me-4">
-                            <option>Listen</option>
-                            <option>Listen</option>
-                            <option>Listen</option>
-                            <option>Listen</option>
-                        </select>
-                    </div>
-
-                    <div class="col-xl-3 col-xxl-2 col-lg-6 px-xxl-0 pb-xl-1 pb-3">
-                        <a href="#" class="btn btn-outline-success">Alle anzeigen</a>
-                    </div>
-
-                    <div class="col-xl-2 col-lg-6 d-flex justify-content-end justify-content-xxl-start">
-                        <div class="dropdown">
-                            <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuFilter" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Filter
-                                    </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuFilter">
-                                <li><a class="dropdown-item" href="#">Neue Filme</a></li>
-                                <li><a class="dropdown-item" href="#">Für Sie empfohlen</a></li>
-                                <li><a class="dropdown-item" href="#">Kollegen buchten auch</a></li>
-                                <li><a class="dropdown-item" href="#">Meistgebuchte</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="programs px-1 pb-80px">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-6 col-xl-6 col-xxl-4 pb-4">
-                        <div class="ratio ratio-16x9">
-                            <div>
-                                <div class="video-thumbnail">
-                                    <img src="images/video.png" alt="Video" class="poster-image">
-                                    <div class="video-thumbnail-controls h-100">
-                                        <div class="play-button-container">
-                                            <button type="button" class="border-0 bg-transparent play-btn">
-                                                <span class="icon-play"></span>
-                                            </button>
-                                        </div>
-                                        <div class="manage-block">
-                                            <button type="button" class="btn btn-warning"><span class="icon-plus"></span></button>
-                                        </div>
-                                        <div class="reactions-block">
-                                            <span class="icon-information reaction-btn"></span>
-                                            <span class="icon-hand-thumbs-up reaction-btn"></span>
-                                            <span class="icon-hand-thumbs-down reaction-btn"></span>
-                                        </div>
-                                        <div class="video-title-container">
-                                            <span class="video-title text-white">Knochendichtemessung (Ultraschall)</span>
+            <div class="programs available-videos px-1 pb-80px">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-6 col-xl-6 col-xxl-4 pb-4">
+                            <div class="ratio ratio-16x9">
+                                <div>
+                                    <div class="video-thumbnail">
+                                        <img src="images/video.png" alt="Video" class="poster-image">
+                                        <div class="video-thumbnail-controls h-100">
+                                            <div class="play-button-container">
+                                                <button type="button" class="border-0 bg-transparent play-btn">
+                                                    <span class="icon-play"></span>
+                                                </button>
+                                            </div>
+                                            <div class="manage-block">
+                                                <button type="button" class="btn btn-warning"><span class="icon-plus"></span></button>
+                                            </div>
+                                            <div class="reactions-block">
+                                                <span class="icon-information reaction-btn"></span>
+                                                <span class="icon-hand-thumbs-up reaction-btn"></span>
+                                                <span class="icon-hand-thumbs-down reaction-btn"></span>
+                                            </div>
+                                            <div class="video-title-container">
+                                                <span class="video-title text-white">Knochendichtemessung (Ultraschall)</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-lg-6 col-xl-6 col-xxl-4  pb-4">
-                        <div class="ratio ratio-16x9">
-                            <div>
-                                <div class="video-thumbnail">
-                                    <img src="images/video.png" alt="Video" class="poster-image">
-                                    <div class="video-thumbnail-controls h-100">
-                                        <div class="play-button-container">
-                                            <button type="button" class="border-0 bg-transparent play-btn">
-                                                <span class="icon-play"></span>
-                                            </button>
-                                        </div>
-                                        <div class="manage-block">
-                                            <button type="button" class="btn btn-warning"><span class="icon-plus"></span></button>
-                                        </div>
-                                        <div class="reactions-block">
-                                            <span class="icon-information reaction-btn"></span>
-                                            <span class="icon-hand-thumbs-up reaction-btn"></span>
-                                            <span class="icon-hand-thumbs-down reaction-btn"></span>
-                                        </div>
+                        <div class="col-lg-6 col-xl-6 col-xxl-4  pb-4">
+                            <div class="ratio ratio-16x9">
+                                <div>
+                                    <div class="video-thumbnail">
+                                        <img src="images/video.png" alt="Video" class="poster-image">
+                                        <div class="video-thumbnail-controls h-100">
+                                            <div class="play-button-container">
+                                                <button type="button" class="border-0 bg-transparent play-btn">
+                                                    <span class="icon-play"></span>
+                                                </button>
+                                            </div>
+                                            <div class="manage-block">
+                                                <button type="button" class="btn btn-warning"><span class="icon-plus"></span></button>
+                                            </div>
+                                            <div class="reactions-block">
+                                                <span class="icon-information reaction-btn"></span>
+                                                <span class="icon-hand-thumbs-up reaction-btn"></span>
+                                                <span class="icon-hand-thumbs-down reaction-btn"></span>
+                                            </div>
 
-                                        <div class="video-title-container">
-                                            <span class="video-title text-white">Knochendichtemessung (Ultraschall)</span>
+                                            <div class="video-title-container">
+                                                <span class="video-title text-white">Knochendichtemessung (Ultraschall)</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-lg-6 col-xl-6 col-xxl-4 pb-4">
-                        <div class="ratio ratio-16x9">
-                            <div>
-                                <div class="video-thumbnail">
-                                    <img src="images/video.png" alt="Video" class="poster-image">
-                                    <div class="video-thumbnail-controls h-100">
-                                        <div class="play-button-container">
-                                            <button type="button" class="border-0 bg-transparent play-btn">
-                                                <span class="icon-play"></span>
-                                            </button>
-                                        </div>
-                                        <div class="manage-block">
-                                            <button type="button" class="btn btn-warning"><span class="icon-plus"></span></button>
-                                        </div>
-                                        <div class="reactions-block">
-                                            <span class="icon-information reaction-btn"></span>
-                                            <span class="icon-hand-thumbs-up reaction-btn"></span>
-                                            <span class="icon-hand-thumbs-down reaction-btn"></span>
-                                        </div>
-                                        <div class="video-title-container">
-                                            <span class="video-title text-white">Knochendichtemessung (Ultraschall)</span>
+                        <div class="col-lg-6 col-xl-6 col-xxl-4 pb-4">
+                            <div class="ratio ratio-16x9">
+                                <div>
+                                    <div class="video-thumbnail">
+                                        <img src="images/video.png" alt="Video" class="poster-image">
+                                        <div class="video-thumbnail-controls h-100">
+                                            <div class="play-button-container">
+                                                <button type="button" class="border-0 bg-transparent play-btn">
+                                                    <span class="icon-play"></span>
+                                                </button>
+                                            </div>
+                                            <div class="manage-block">
+                                                <button type="button" class="btn btn-warning"><span class="icon-plus"></span></button>
+                                            </div>
+                                            <div class="reactions-block">
+                                                <span class="icon-information reaction-btn"></span>
+                                                <span class="icon-hand-thumbs-up reaction-btn"></span>
+                                                <span class="icon-hand-thumbs-down reaction-btn"></span>
+                                            </div>
+                                            <div class="video-title-container">
+                                                <span class="video-title text-white">Knochendichtemessung (Ultraschall)</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-lg-6 col-xl-6 col-xxl-4 pb-4">
-                        <div class="ratio ratio-16x9">
-                            <div>
-                                <div class="video-thumbnail">
-                                    <img src="images/video.png" alt="Video" class="poster-image">
-                                    <div class="video-thumbnail-controls h-100">
-                                        <div class="play-button-container">
-                                            <button type="button" class="border-0 bg-transparent play-btn">
-                                                <span class="icon-play"></span>
-                                            </button>
-                                        </div>
-                                        <div class="manage-block">
-                                            <button type="button" class="btn btn-warning"><span class="icon-plus"></span></button>
-                                        </div>
-                                        <div class="reactions-block">
-                                            <span class="icon-information reaction-btn"></span>
-                                            <span class="icon-hand-thumbs-up reaction-btn"></span>
-                                            <span class="icon-hand-thumbs-down reaction-btn"></span>
-                                        </div>
-                                        <div class="video-title-container">
-                                            <span class="video-title text-white">Knochendichtemessung (Ultraschall)</span>
+                        <div class="col-lg-6 col-xl-6 col-xxl-4 pb-4">
+                            <div class="ratio ratio-16x9">
+                                <div>
+                                    <div class="video-thumbnail">
+                                        <img src="images/video.png" alt="Video" class="poster-image">
+                                        <div class="video-thumbnail-controls h-100">
+                                            <div class="play-button-container">
+                                                <button type="button" class="border-0 bg-transparent play-btn">
+                                                    <span class="icon-play"></span>
+                                                </button>
+                                            </div>
+                                            <div class="manage-block">
+                                                <button type="button" class="btn btn-warning"><span class="icon-plus"></span></button>
+                                            </div>
+                                            <div class="reactions-block">
+                                                <span class="icon-information reaction-btn"></span>
+                                                <span class="icon-hand-thumbs-up reaction-btn"></span>
+                                                <span class="icon-hand-thumbs-down reaction-btn"></span>
+                                            </div>
+                                            <div class="video-title-container">
+                                                <span class="video-title text-white">Knochendichtemessung (Ultraschall)</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-lg-6 col-xl-6 col-xxl-4 pb-4">
-                        <div class="ratio ratio-16x9">
-                            <div>
-                                <div class="video-thumbnail">
-                                    <img src="images/video.png" alt="Video" class="poster-image">
-                                    <div class="video-thumbnail-controls h-100">
-                                        <div class="play-button-container">
-                                            <button type="button" class="border-0 bg-transparent play-btn">
-                                                <span class="icon-play"></span>
-                                            </button>
-                                        </div>
-                                        <div class="manage-block">
-                                            <button type="button" class="btn btn-warning"><span class="icon-plus"></span></button>
-                                        </div>
-                                        <div class="reactions-block">
-                                            <span class="icon-information reaction-btn"></span>
-                                            <span class="icon-hand-thumbs-up reaction-btn"></span>
-                                            <span class="icon-hand-thumbs-down reaction-btn"></span>
-                                        </div>
-                                        <div class="video-title-container">
-                                            <span class="video-title text-white">Knochendichtemessung (Ultraschall)</span>
+                        <div class="col-lg-6 col-xl-6 col-xxl-4 pb-4">
+                            <div class="ratio ratio-16x9">
+                                <div>
+                                    <div class="video-thumbnail">
+                                        <img src="images/video.png" alt="Video" class="poster-image">
+                                        <div class="video-thumbnail-controls h-100">
+                                            <div class="play-button-container">
+                                                <button type="button" class="border-0 bg-transparent play-btn">
+                                                    <span class="icon-play"></span>
+                                                </button>
+                                            </div>
+                                            <div class="manage-block">
+                                                <button type="button" class="btn btn-warning"><span class="icon-plus"></span></button>
+                                            </div>
+                                            <div class="reactions-block">
+                                                <span class="icon-information reaction-btn"></span>
+                                                <span class="icon-hand-thumbs-up reaction-btn"></span>
+                                                <span class="icon-hand-thumbs-down reaction-btn"></span>
+                                            </div>
+                                            <div class="video-title-container">
+                                                <span class="video-title text-white">Knochendichtemessung (Ultraschall)</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-lg-6 col-xl-6 col-xxl-4 pb-4">
-                        <div class="ratio ratio-16x9">
-                            <div>
-                                <div class="video-thumbnail">
-                                    <img src="https://admin1.tvw.systems/image-cache/thumb_16_9_sm/files/2017/12/08/zXsxEhnSAwFHeHm_2017-12-08_cnawd_2vqbwyegn_doc_abi-messung_12.jpg" alt="Video" class="poster-image">
-                                    <div class="video-thumbnail-controls h-100">
-                                        <div class="play-button-container">
-                                            <button type="button" class="border-0 bg-transparent play-btn">
-                                                <span class="icon-play"></span>
-                                            </button>
-                                        </div>
-                                        <div class="manage-block">
-                                            <button type="button" class="btn btn-warning"><span class="icon-plus"></span></button>
-                                        </div>
-                                        <div class="reactions-block">
-                                            <span class="icon-information reaction-btn"></span>
-                                            <span class="icon-hand-thumbs-up reaction-btn"></span>
-                                            <span class="icon-hand-thumbs-down reaction-btn"></span>
-                                        </div>
-                                        <div class="video-title-container">
-                                            <span class="video-title text-white">Knochendichtemessung (Ultraschall)</span>
+                        <div class="col-lg-6 col-xl-6 col-xxl-4 pb-4">
+                            <div class="ratio ratio-16x9">
+                                <div>
+                                    <div class="video-thumbnail">
+                                        <img src="https://admin1.tvw.systems/image-cache/thumb_16_9_sm/files/2017/12/08/zXsxEhnSAwFHeHm_2017-12-08_cnawd_2vqbwyegn_doc_abi-messung_12.jpg" alt="Video" class="poster-image">
+                                        <div class="video-thumbnail-controls h-100">
+                                            <div class="play-button-container">
+                                                <button type="button" class="border-0 bg-transparent play-btn">
+                                                    <span class="icon-play"></span>
+                                                </button>
+                                            </div>
+                                            <div class="manage-block">
+                                                <button type="button" class="btn btn-warning"><span class="icon-plus"></span></button>
+                                            </div>
+                                            <div class="reactions-block">
+                                                <span class="icon-information reaction-btn"></span>
+                                                <span class="icon-hand-thumbs-up reaction-btn"></span>
+                                                <span class="icon-hand-thumbs-down reaction-btn"></span>
+                                            </div>
+                                            <div class="video-title-container">
+                                                <span class="video-title text-white">Knochendichtemessung (Ultraschall)</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-lg-6 col-xl-6 col-xxl-4 pb-4">
-                        <div class="ratio ratio-16x9">
-                            <div>
-                                <div class="video-thumbnail">
-                                    <img src="images/video.png" alt="Video" class="poster-image">
-                                    <div class="video-thumbnail-controls h-100">
-                                        <div class="play-button-container">
-                                            <button type="button" class="border-0 bg-transparent play-btn">
-                                                <span class="icon-play"></span>
-                                            </button>
-                                        </div>
-                                        <div class="manage-block">
-                                            <button type="button" class="btn btn-warning"><span class="icon-plus"></span></button>
-                                        </div>
-                                        <div class="reactions-block">
-                                            <span class="icon-information reaction-btn"></span>
-                                            <span class="icon-hand-thumbs-up reaction-btn"></span>
-                                            <span class="icon-hand-thumbs-down reaction-btn"></span>
-                                        </div>
-                                        <div class="video-title-container">
-                                            <span class="video-title text-white">Knochendichtemessung (Ultraschall)</span>
+                        <div class="col-lg-6 col-xl-6 col-xxl-4 pb-4">
+                            <div class="ratio ratio-16x9">
+                                <div>
+                                    <div class="video-thumbnail">
+                                        <img src="images/video.png" alt="Video" class="poster-image">
+                                        <div class="video-thumbnail-controls h-100">
+                                            <div class="play-button-container">
+                                                <button type="button" class="border-0 bg-transparent play-btn">
+                                                    <span class="icon-play"></span>
+                                                </button>
+                                            </div>
+                                            <div class="manage-block">
+                                                <button type="button" class="btn btn-warning"><span class="icon-plus"></span></button>
+                                            </div>
+                                            <div class="reactions-block">
+                                                <span class="icon-information reaction-btn"></span>
+                                                <span class="icon-hand-thumbs-up reaction-btn"></span>
+                                                <span class="icon-hand-thumbs-down reaction-btn"></span>
+                                            </div>
+                                            <div class="video-title-container">
+                                                <span class="video-title text-white">Knochendichtemessung (Ultraschall)</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-lg-6 col-xl-6 col-xxl-4 pb-4">
-                        <div class="ratio ratio-16x9">
-                            <div>
-                                <div class="video-thumbnail">
-                                    <img src="images/video.png" alt="Video" class="poster-image">
-                                    <div class="video-thumbnail-controls h-100">
-                                        <div class="play-button-container">
-                                            <button type="button" class="border-0 bg-transparent play-btn">
-                                                <span class="icon-play"></span>
-                                            </button>
-                                        </div>
-                                        <div class="manage-block">
-                                            <button type="button" class="btn btn-warning"><span class="icon-plus"></span></button>
-                                        </div>
-                                        <div class="reactions-block">
-                                            <span class="icon-information reaction-btn"></span>
-                                            <span class="icon-hand-thumbs-up reaction-btn"></span>
-                                            <span class="icon-hand-thumbs-down reaction-btn"></span>
-                                        </div>
-                                        <div class="video-title-container">
-                                            <span class="video-title text-white">Knochendichtemessung (Ultraschall)</span>
+                        <div class="col-lg-6 col-xl-6 col-xxl-4 pb-4">
+                            <div class="ratio ratio-16x9">
+                                <div>
+                                    <div class="video-thumbnail">
+                                        <img src="images/video.png" alt="Video" class="poster-image">
+                                        <div class="video-thumbnail-controls h-100">
+                                            <div class="play-button-container">
+                                                <button type="button" class="border-0 bg-transparent play-btn">
+                                                    <span class="icon-play"></span>
+                                                </button>
+                                            </div>
+                                            <div class="manage-block">
+                                                <button type="button" class="btn btn-warning"><span class="icon-plus"></span></button>
+                                            </div>
+                                            <div class="reactions-block">
+                                                <span class="icon-information reaction-btn"></span>
+                                                <span class="icon-hand-thumbs-up reaction-btn"></span>
+                                                <span class="icon-hand-thumbs-down reaction-btn"></span>
+                                            </div>
+                                            <div class="video-title-container">
+                                                <span class="video-title text-white">Knochendichtemessung (Ultraschall)</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
             </div>
         </div>
@@ -847,12 +912,29 @@
         </div>
     </div>
 
-    <script src="js/jquery-1.12.4.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/jquery-ui.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/bootstrap-select.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/scripts.js"></script>
+    <script src="js/controllers/films-booking.js"></script>
+
+    <script>
+        $(function() {
+            var controller = new FilmsBookingController(
+                {
+                    api: {
+                        movies: './data/movies.json',
+                        rating: '',
+                        booking: '',
+                    }
+                }
+            );
+
+            controller.init();
+        });
+    </script>
 </body>
 
 </html>

@@ -169,7 +169,7 @@ $(function() {
      *       data-video-src attribute with the url to the video, which should be played
      */
 
-    $('.video-thumbnail .play-btn').on('click', function(e) {
+    $(document).on('click', '.video-thumbnail .play-btn', function(e) {
         e.preventDefault();
 
         var playButton = e.target;
@@ -188,7 +188,7 @@ $(function() {
 // date range picker setup
 // you can find more details here: http://www.daterangepicker.com/#usage
 $(function() {
-    $(function() {
+    if ($('input[name="daterange"]').length) {
         $('input[name="daterange"]').daterangepicker({
             opens: 'left',
             autoUpdateInput: true,
@@ -225,7 +225,7 @@ $(function() {
                 ],
             }
         }, function(start, end, label) {
-          console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+            console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
         });
-      });
-})
+    }
+});

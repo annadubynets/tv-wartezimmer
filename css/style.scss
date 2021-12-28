@@ -203,6 +203,10 @@ input[readonly] {
     padding: 16px 10px;
 }
 
+.table-sm > :not(caption) > * > * {
+    padding: 0.25rem 0.25rem !important;
+}
+
 footer {
     background-color: #005848;
     .service-team-title {
@@ -379,6 +383,17 @@ footer {
         label {
             color: $white;
         }
+    }
+}
+
+.no-booked-films-block {
+    min-height: 400px;
+
+    @media (max-width: 992px) {
+        min-height: 200px;
+    }
+    @media (max-width: 576px) {
+        min-height: 150px;
     }
 }
 

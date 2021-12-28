@@ -12821,6 +12821,12 @@ iframe {
   box-shadow: none;
 }
 
+.btn-group-sm > .btn, .btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  border-radius: 0.2rem;
+}
+
 .modal-content {
   border: none;
 }
@@ -13358,6 +13364,10 @@ input[readonly] {
   padding: 16px 10px;
 }
 
+.table-sm > :not(caption) > * > * {
+  padding: 0.25rem 0.25rem !important;
+}
+
 footer {
   background-color: #005848;
 }
@@ -13529,6 +13539,20 @@ footer .img-style {
 }
 .login .login-block label {
   color: #FFFFFF;
+}
+
+.no-booked-films-block {
+  min-height: 400px;
+}
+@media (max-width: 992px) {
+  .no-booked-films-block {
+    min-height: 200px;
+  }
+}
+@media (max-width: 576px) {
+  .no-booked-films-block {
+    min-height: 150px;
+  }
 }
 
 @media (max-width: 992px) {
