@@ -15,6 +15,7 @@ function FilmsBookingController(options) {
     this.bookedMovies = [];
     this.availableMovies = [];
     this.medicineFields = [];
+    this.availableMoviesPagination = new PaginationController($('.available-movies .movies-pagination'));
 
     this.defaultPosterImage = 'images/video.png';
 
@@ -123,9 +124,9 @@ function FilmsBookingController(options) {
     }
 
 
-    
+
     this._renderAvailableMovies = function() {
-        var movies = this._getFilteredAvailableMovies();
+        var movies = this._getAvailableMovies();
         var jqRootMoviesContainer = $('.available-movies-list-container');
         jqRootMoviesContainer.find('.available-movie-container').remove();
         jqRootMoviesContainer.find('.no-available-movies-block').toggleClass('d-none', !!movies.length)
@@ -138,6 +139,12 @@ function FilmsBookingController(options) {
             
             jqRootMoviesContainer.append(jqMovieContainer);
         }.bind(this))
+    }
+
+    this._getAvailableMovies = function() {
+        var movies = this._getFilteredAvailableMovies();
+        this.availableMoviesPagination.setup(movies.length);
+        return movies.slice(this.availableMoviesPagination.currentPage, this.availableMoviesPagination.itemsPerPage);
     }
 
     this._getFilteredAvailableMovies = function() {
@@ -158,5 +165,71 @@ function FilmsBookingController(options) {
 
     this._hideAllScreens = function() {
         $('.state-screen').addClass('d-none');
+    }
+}
+
+
+function PaginationController(jqRootElement, itemsPerPage) {
+    this.jqRootElement = jqRootElement;
+    this.jqFirstPage = this.jqRootElement.find('.first-page');
+    this.jqPrevPage = this.jqRootElement.find('.prev-page');
+    this.jqNextPage = this.jqRootElement.find('.next-page');
+    this.jqLastPage = this.jqRootElement.find('.last-page');
+    this.itemsPerPage = itemsPerPage || 9;
+    this.currentPage = 0;
+    this.countPages = 0;
+
+    this._init = function() {
+        this.jqFirstPage.on('click', function(e) {
+            e.preventDefault();
+            this._changePage(0);
+        }.bind(this));
+
+        this.jqPrevPage.on('click', function(e) {
+            e.preventDefault();
+            this._changePage(this.currentPage - 1);
+        }.bind(this));
+
+        this.jqNextPage.on('click', function(e) {
+            e.preventDefault();
+            this._changePage(this.currentPage + 1);
+        }.bind(this));
+
+        this.jqLastPage.on('click', function(e) {
+            e.preventDefault();
+            this._changePage(this.countPages - 1);
+        }.bind(this));
+    }
+
+    this._changePage = function(pageNumber) {
+        if (pageNumber < 0) {
+            this.currentPage = 0;
+        } else if (pageNumber + 1 >= this.countPages) {
+            this.currentPage = this.countPages - 1;
+        } else {
+            this.currentPage = pageNumber;
+        }
+        
+        this._render();
+    }
+
+    this._init();
+
+
+    this.setup = function(itemsCount) {
+        itemsCount = itemsCount || 0;
+        this.countPages = Math.ceil(itemsCount / this.itemsPerPage);
+    
+        this._changePage(0);
+    }
+
+    this._render = function() {
+        this.jqRootElement.toggleClass('d-none', this.countPages === 0);
+        this.jqRootElement.find('.current-page').text(this.currentPage + 1);
+        this.jqRootElement.find('.max-pages').text(this.countPages);
+        this.jqFirstPage.closest('.page-item').toggleClass('disabled', this.currentPage == 0);
+        this.jqPrevPage.closest('.page-item').toggleClass('disabled', this.currentPage == 0);
+        this.jqNextPage.closest('.page-item').toggleClass('disabled', this.currentPage >= this.countPages - 1);
+        this.jqLastPage.closest('.page-item').toggleClass('disabled', this.currentPage >= this.countPages - 1);
     }
 }

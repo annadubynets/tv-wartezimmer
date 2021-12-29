@@ -50,6 +50,14 @@
     border-radius: 5px!important;
 }
 
+.hide-focus-effect {
+    &:focus {
+        outline: none;
+        box-shadow: none;
+        background-color: $white;
+    }
+}
+
 @media (max-width: 1200px) {
     .container, .container-fluid {
         &.zero-right-padding-up-to-xl {

@@ -12987,6 +12987,12 @@ iframe {
   border-radius: 5px !important;
 }
 
+.hide-focus-effect:focus {
+  outline: none;
+  box-shadow: none;
+  background-color: #FFFFFF;
+}
+
 @media (max-width: 1200px) {
   .container.zero-right-padding-up-to-xl, .container-fluid.zero-right-padding-up-to-xl {
     padding-right: 0;
