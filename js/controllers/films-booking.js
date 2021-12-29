@@ -32,61 +32,11 @@ function FilmsBookingController(options) {
         this._fetchInitialData({
             success: function() { 
                 this._initPagination()
-                this._renderManageScreen() 
+                this._renderManageScreen()
+                this._setupFilterBar()
             }.bind(this),
             error: function(error) { this._showError(error) }.bind(this)
         });
-    }
-
-    /**
-     * Gets initial data with the all films and categories
-     */
-    this._fetchInitialData = function(callbacks) {
-        this.apiHelper.getMovies().done(function(data) {
-            console.log(data);
-
-            for (var id in data.docMovies){
-                if (data.docMovies.hasOwnProperty(id)) {
-                    var film = data.docMovies[id]
-                    if (film.booked) {
-                        this.bookedMovies.push(film);
-                    } else {
-                        this.availableMovies.push(film);
-                    }
-                }
-            }
-
-            for (var id in data.medicineFields){
-                if (data.medicineFields.hasOwnProperty(id)) {
-                    this.medicineFields.push(data.medicineFields[id]);
-                }
-            }
-
-            console.debug('Booked: ', this.bookedMovies.length);
-            console.debug('Available: ', this.availableMovies.length);
-            console.debug('Categories: ', this.medicineFields.length);
-
-            callbacks.success();
-        }.bind(this)).fail(function(e) {
-            console.error("Can't fetch data:", e.statusText)
-            callbacks.error(e.statusText);
-        });
-    }
-
-    this._initPagination = function() {
-        this.availableMoviesPagination = new PaginationController(
-            $('.available-movies .movies-pagination'),
-            18,
-            function() { this._renderManageScreen() }.bind(this)
-        );
-    }
-
-    this._renderManageScreen = function() {
-        this._renderBookedMovies();
-        this._renderAvailableMovies();
-
-
-        this._showScreen('manage-movies-block');
     }
 
     this._setupEventHandlers = function() {
@@ -217,8 +167,59 @@ function FilmsBookingController(options) {
         }
     }.bind(this);
 
-    
 
+
+    /**
+     * Gets initial data with the all films and categories
+     */
+    this._fetchInitialData = function(callbacks) {
+        this.apiHelper.getMovies().done(function(data) {
+            console.log(data);
+
+            for (var id in data.docMovies){
+                if (data.docMovies.hasOwnProperty(id)) {
+                    var film = data.docMovies[id]
+                    if (film.booked) {
+                        this.bookedMovies.push(film);
+                    } else {
+                        this.availableMovies.push(film);
+                    }
+                }
+            }
+
+            for (var id in data.medicineFields){
+                if (data.medicineFields.hasOwnProperty(id)) {
+                    this.medicineFields.push(data.medicineFields[id]);
+                }
+            }
+
+            console.debug('Booked: ', this.bookedMovies.length);
+            console.debug('Available: ', this.availableMovies.length);
+            console.debug('Categories: ', this.medicineFields.length);
+
+            callbacks.success();
+        }.bind(this)).fail(function(e) {
+            console.error("Can't fetch data:", e.statusText)
+            callbacks.error(e.statusText);
+        });
+    }
+
+    this._initPagination = function() {
+        this.availableMoviesPagination = new PaginationController(
+            $('.available-movies .movies-pagination'),
+            18,
+            function() { this._renderManageScreen() }.bind(this)
+        );
+    }
+
+    this._renderManageScreen = function() {
+        this._renderBookedMovies();
+        this._renderAvailableMovies();
+
+        this._showScreen('manage-movies-block');
+    }
+
+    
     this._renderBookedMovies = function() {
         $('.side-booked-videos-list').empty();
         $('.booked-movies-list-container').addClass('d-none');
@@ -310,6 +311,24 @@ function FilmsBookingController(options) {
     }
 
 
+    this._setupFilterBar = function() {
+        this._setupCategories();
+    }
+
+    this._setupCategories = function() {
+        var categoriesFilter = $('select.categories-filter');
+
+        this.medicineFields.forEach(function(category) {
+            categoriesFilter.append($('<option>', {
+                value: category.id,
+                text: category.name
+            }));
+        })
+        
+        categoriesFilter.selectpicker('refresh');
+    }
+
+
 
     this._showError = function(errorMessage) {
         $('.error-block').find('.alert').text(errorMessage);
@@ -325,6 +344,7 @@ function FilmsBookingController(options) {
         $('.state-screen').addClass('d-none');
     }
 }
+
 
 /**
  * Manages pagination of available movies
