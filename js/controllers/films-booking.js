@@ -20,6 +20,9 @@ function FilmsBookingController(options) {
     this.bookedMovies = [];
     this.availableMovies = [];
     this.medicineFields = [];
+
+    LIKE = 1;
+    DISLIKE = -1;
     
     this.defaultPosterImage = 'images/video.png';
 
@@ -89,6 +92,8 @@ function FilmsBookingController(options) {
     this._setupEventHandlers = function() {
         $(document).on('click', '.btn-book', this._handleClickBookMovie);
         $(document).on('click', '.btn-unbook', this._handleClickUnbookMovie);
+        $(document).on('click', '.btn-like', this._handleClickLikeMovie);
+        $(document).on('click', '.btn-dislike', this._handleClickDislikeMovie);
     }
 
     /**
@@ -169,6 +174,50 @@ function FilmsBookingController(options) {
             })
     }
 
+    /**
+     * Like movie btn click handler
+     */
+     this._handleClickLikeMovie = function(e) {
+        e.preventDefault();
+        var movieId = this._detectMovieIdByEvent(e);
+        if (movieId) {
+            this._toggleMovieRating(movieId, LIKE);
+        }
+    }.bind(this);
+
+    this._toggleMovieRating = function(movieId, rating) {
+        var movie = this._findMovie(movieId);
+        if (movie) {
+            var newRating = rating == movie.rating ? null : rating;
+            this.apiHelper.saveRating(movieId, newRating).done(function() {
+                movie.rating = newRating;
+                this._refreshMovieThumbnail(movie);
+            }.bind(this))
+        }
+    }
+
+    this._findMovie = function(movieId) {
+        return this.availableMovies.find(function(movie) { return movie.id == movieId }) ||
+                this.bookedMovies.find(function(movie) { return movie.id == movieId });
+    }
+
+    this._refreshMovieThumbnail = function(movie) {
+        var thumbnail = $(`.video-thumbnail[data-id=${movie.id}]`);
+        this._setupMovieThumbnail(thumbnail, movie);
+    }
+
+    /**
+     * Dislike movie btn click handler
+     */
+     this._handleClickDislikeMovie = function(e) {
+        e.preventDefault();
+        var movieId = this._detectMovieIdByEvent(e);
+        if (movieId) {
+            this._toggleMovieRating(movieId, DISLIKE);
+        }
+    }.bind(this);
+
+    
 
     this._renderBookedMovies = function() {
         $('.side-booked-videos-list').empty();
@@ -192,10 +241,10 @@ function FilmsBookingController(options) {
     this._renderLargeBookedMovieBlock = function(movie) {
         var movieContainer = $('.large-booked-movie-container');
         var jqThumbnailElem = movieContainer.find('.video-thumbnail');
-        this._fillMovieThumbnail(jqThumbnailElem, movie);
+        this._setupMovieThumbnail(jqThumbnailElem, movie);
     }
 
-    this._fillMovieThumbnail = function(jqThumbnailElem, movie) {
+    this._setupMovieThumbnail = function(jqThumbnailElem, movie) {
         jqThumbnailElem.attr('data-video-src', movie.url);
         var posterImage = jqThumbnailElem.find('.poster-image');
         posterImage.attr(
@@ -205,6 +254,8 @@ function FilmsBookingController(options) {
         posterImage.attr('alt', movie.name);
         jqThumbnailElem.find('.video-title').text(movie.name);
         jqThumbnailElem.attr('data-id', movie.id);
+        jqThumbnailElem.find('.btn-like').toggleClass('active', movie.rating == LIKE);
+        jqThumbnailElem.find('.btn-dislike').toggleClass('active', movie.rating == DISLIKE);
     }
 
     this._renderSmallBookedMovieBlock = function(movie) {
@@ -212,7 +263,7 @@ function FilmsBookingController(options) {
 
         var movieContainer = $($('.video-thumbnail-template').html());
         var jqThumbnailElem = movieContainer.find('.video-thumbnail');
-        this._fillMovieThumbnail(jqThumbnailElem, movie);
+        this._setupMovieThumbnail(jqThumbnailElem, movie);
         
         $('.booked-movies-list-container').find('.side-booked-videos-list').append(movieContainer);
     }
@@ -234,7 +285,7 @@ function FilmsBookingController(options) {
 
             var jqMovieContainer = $(jqMovieContainerTemplate.html());
             var jqThumbnailElem = jqMovieContainer.find('.video-thumbnail');
-            this._fillMovieThumbnail(jqThumbnailElem, movie);
+            this._setupMovieThumbnail(jqThumbnailElem, movie);
             
             jqRootMoviesContainer.append(jqMovieContainer);
         }.bind(this))
@@ -317,7 +368,7 @@ function PaginationController(jqRootElement, itemsPerPage, changePageCallback) {
     }
 
     this._changePage = function(pageNumber) {
-        if (pageNumber < 0) {
+        if (pageNumber <= 0) {
             pageNumber = 0;
         } else if (pageNumber + 1 >= this.countPages) {
             pageNumber = this.countPages - 1;
@@ -380,6 +431,21 @@ function ApiHelper(urls) {
 
         return $.ajax({
             url: urls.booking,
+            type: 'POST',
+            cache: false,
+            processData: false,
+            contentType: false,
+            data: formData
+        })
+    }
+
+    this.saveRating = function(movieId, rating) {
+        var formData = new FormData();
+        formData.append('video-id', movieId);
+        formData.append('rating', rating);
+
+        return $.ajax({
+            url: urls.rating,
             type: 'POST',
             cache: false,
             processData: false,

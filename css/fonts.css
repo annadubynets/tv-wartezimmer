@@ -165,12 +165,10 @@
 
 .icon-hand-thumbs-down:before {
     content: "\e90b";
-    color: #fff;
 }
 
 .icon-hand-thumbs-up:before {
     content: "\e90c";
-    color: #fff;
 }
 
 .icon-house:before {

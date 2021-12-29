@@ -12363,12 +12363,10 @@ textarea.form-control-lg {
 
 .icon-hand-thumbs-down:before {
   content: "";
-  color: #fff;
 }
 
 .icon-hand-thumbs-up:before {
   content: "";
-  color: #fff;
 }
 
 .icon-house:before {
@@ -13110,6 +13108,7 @@ iframe {
   font-size: 30px;
   padding-left: 0.2rem;
   cursor: pointer;
+  color: #FFFFFF;
 }
 @media (min-width: 1500px) {
   .video-thumbnail .video-thumbnail-controls .reactions-block .reaction-btn {
@@ -13123,6 +13122,9 @@ iframe {
     padding-left: 0.2rem;
     top: 0.9rem;
   }
+}
+.video-thumbnail .video-thumbnail-controls .reactions-block .reaction-btn.active {
+  color: #116154;
 }
 @media (min-width: 1200px) {
   .video-thumbnail.large .video-thumbnail-controls .play-button-container .icon-play {
