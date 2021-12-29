@@ -169,7 +169,7 @@ $(function() {
      *       data-video-src attribute with the url to the video, which should be played
      */
 
-    $(document).on('click', '.video-thumbnail .play-btn', function(e) {
+    $(document).on('click', '.video-thumbnail .play-button-container', function(e) {
         e.preventDefault();
 
         var playButton = e.target;

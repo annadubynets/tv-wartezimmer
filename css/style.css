@@ -13030,6 +13030,7 @@ iframe {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 .video-thumbnail .video-thumbnail-controls .play-button-container button .icon-play {
   font-size: 80px;
