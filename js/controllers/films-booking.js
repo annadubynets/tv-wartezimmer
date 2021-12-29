@@ -298,6 +298,12 @@ function FilmsBookingController(options) {
     }
 
     this._getFilteredAvailableMovies = function() {
+        var categoryId = this.categoriesFilter && this.categoriesFilter.val();
+        if (categoryId) {
+            return this.availableMovies.filter(function(movie) {
+                return !!movie.medicineFields[categoryId]
+            })
+        }
         return this.availableMovies;
     }
 
@@ -313,20 +319,37 @@ function FilmsBookingController(options) {
 
     this._setupFilterBar = function() {
         this._setupCategories();
+        this._setupShowAllBtn();
     }
 
     this._setupCategories = function() {
-        var categoriesFilter = $('select.categories-filter');
+        this.categoriesFilter = $('select.categories-filter');
 
         this.medicineFields.forEach(function(category) {
-            categoriesFilter.append($('<option>', {
+            this.categoriesFilter.append($('<option>', {
                 value: category.id,
                 text: category.name
             }));
-        })
+        }.bind(this))
         
-        categoriesFilter.selectpicker('refresh');
+        this.categoriesFilter.selectpicker('refresh');
+
+        this.categoriesFilter.on('change', function() {
+            this._renderAvailableMovies();
+        }.bind(this));
     }
+
+    this._setupShowAllBtn = function() {
+        var showAllBtn = $('.filter-btn-show-all');
+        showAllBtn.on('click', this._resetFilter);
+    }
+
+    this._resetFilter = function() {
+        if (this.categoriesFilter) {
+            this.categoriesFilter.selectpicker('val', '');
+            this._renderAvailableMovies();
+        }
+    }.bind(this);
 
 
 
