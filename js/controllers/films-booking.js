@@ -15,13 +15,15 @@ function FilmsBookingController(options) {
     this.bookedMovies = [];
     this.availableMovies = [];
     this.medicineFields = [];
-    this.availableMoviesPagination = new PaginationController($('.available-movies .movies-pagination'));
-
+    
     this.defaultPosterImage = 'images/video.png';
 
     this.init = function() {
         this._fetchInitialData({
-            success: function() { this._renderInitialScreen() }.bind(this),
+            success: function() { 
+                this._initPagination()
+                this._renderManageScreen() 
+            }.bind(this),
             error: function(error) { this._showError(error) }.bind(this)
         });
     }
@@ -61,7 +63,15 @@ function FilmsBookingController(options) {
         });
     }
 
-    this._renderInitialScreen = function() {
+    this._initPagination = function() {
+        this.availableMoviesPagination = new PaginationController(
+            $('.available-movies .movies-pagination'),
+            18,
+            function() { this._renderManageScreen() }.bind(this)
+        );
+    }
+
+    this._renderManageScreen = function() {
         this._renderBookedMovies();
         this._renderAvailableMovies();
 
@@ -143,12 +153,20 @@ function FilmsBookingController(options) {
 
     this._getAvailableMovies = function() {
         var movies = this._getFilteredAvailableMovies();
-        this.availableMoviesPagination.setup(movies.length);
-        return movies.slice(this.availableMoviesPagination.currentPage, this.availableMoviesPagination.itemsPerPage);
+        return this._applyPagination(movies);
     }
 
     this._getFilteredAvailableMovies = function() {
         return this.availableMovies;
+    }
+
+    this._applyPagination = function(movies) {
+        this.availableMoviesPagination.setup(movies.length);
+        var startIndex = this.availableMoviesPagination.currentPage * this.availableMoviesPagination.itemsPerPage;
+        return movies.slice(
+            startIndex,
+            startIndex + this.availableMoviesPagination.itemsPerPage
+        );
     }
 
 
@@ -169,15 +187,17 @@ function FilmsBookingController(options) {
 }
 
 
-function PaginationController(jqRootElement, itemsPerPage) {
+function PaginationController(jqRootElement, itemsPerPage, changePageCallback) {
     this.jqRootElement = jqRootElement;
     this.jqFirstPage = this.jqRootElement.find('.first-page');
     this.jqPrevPage = this.jqRootElement.find('.prev-page');
     this.jqNextPage = this.jqRootElement.find('.next-page');
     this.jqLastPage = this.jqRootElement.find('.last-page');
+    this.changePageCallback = changePageCallback || function(){};
     this.itemsPerPage = itemsPerPage || 9;
     this.currentPage = 0;
     this.countPages = 0;
+    
 
     this._init = function() {
         this.jqFirstPage.on('click', function(e) {
@@ -203,13 +223,16 @@ function PaginationController(jqRootElement, itemsPerPage) {
 
     this._changePage = function(pageNumber) {
         if (pageNumber < 0) {
-            this.currentPage = 0;
+            pageNumber = 0;
         } else if (pageNumber + 1 >= this.countPages) {
-            this.currentPage = this.countPages - 1;
-        } else {
-            this.currentPage = pageNumber;
+            pageNumber = this.countPages - 1;
         }
-        
+
+        if (this.currentPage != pageNumber) {
+            this.currentPage = pageNumber;
+            this.changePageCallback();
+        }
+
         this._render();
     }
 
@@ -219,8 +242,12 @@ function PaginationController(jqRootElement, itemsPerPage) {
     this.setup = function(itemsCount) {
         itemsCount = itemsCount || 0;
         this.countPages = Math.ceil(itemsCount / this.itemsPerPage);
-    
-        this._changePage(0);
+        
+        if (this.countPages - 1 < this.currentPage) {
+            this._changePage(0);
+        } else {
+            this._render();
+        }
     }
 
     this._render = function() {
