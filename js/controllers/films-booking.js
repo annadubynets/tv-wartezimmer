@@ -111,7 +111,7 @@ function FilmsBookingController(options) {
         var posterImage = jqThumbnailElem.find('.poster-image');
         posterImage.attr(
             'src', 
-            movie.thumbnails.length > 0 ? movie.thumbnails[movie.thumbnails.length-1] : this.defaultPosterImage
+            movie.thumbnails.length > 0 ? movie.thumbnails[0] : this.defaultPosterImage
         )
         posterImage.attr('alt', movie.name);
         jqThumbnailElem.find('.video-title').text(movie.name);
