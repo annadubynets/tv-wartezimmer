@@ -163,12 +163,13 @@
         </div>
 
         <div class="manage-movies-block state-screen d-none">
-            <div class="programs booked-films px-1">
+
+            <div class="programs booked-movies px-1">
                 <div class="container-fluid">
                     <div class="row mb-5">
                         <div class="col-lg-12 text-center">
                             <div class="bg-white rounded-pill shadow h-100 p-4">
-                                <div class="booked-films-navigation d-lg-flex d-block justify-content-between align-items-center pb-4 position-relative">
+                                <div class="booked-movies-navigation d-lg-flex d-block justify-content-between align-items-center pb-4 position-relative">
                                     <div>
                                         <h4 class="text-success text-start mb-lg-0 mb-4 me-lg-4 me-0">Was läuft gerade?</h4>
                                     </div>
@@ -191,11 +192,11 @@
                                     </div>
                                 </div>
 
-                                <div class="no-booked-films-block booked-movie-screen d-flex flex-column justify-content-center align-items-middle">
+                                <div class="no-booked-movies-block booked-movie-screen d-flex flex-column justify-content-center align-items-middle">
                                     <h4 class="text-dark">Sie haben aktuell keine Filme gewählt.</h4>
                                 </div>
 
-                                <div class="booked-films-list booked-movie-screen d-none row justify-content-center">
+                                <div class="booked-movies-list booked-movie-screen d-none row justify-content-center">
 
                                     <!-- This block is always here, there is no way to show the booked videos without large video -->
                                     <div class="large-booked-movie-container col-xl-8 col-lg-12 pb-xl-0 pb-4">
@@ -227,9 +228,9 @@
                                     </div>
 
                                     <!-- this block can be hidden in case if only single video is booked -->
-                                    <div class="booked-films-list-container d-none col-xl-4 col-lg-12">
+                                    <div class="booked-movies-list-container d-none col-xl-4 col-lg-12">
                                         <div class="d-none video-thumbnail-template">
-                                            <div class="small-booked-movie-container col-lg-12 pb-3">
+                                            <div class="booked-movie-container col-lg-12 pb-3">
                                                 <div class="ratio ratio-16x9">
                                                     <div>
                                                         <div class="video-thumbnail" data-video-src="">
@@ -369,14 +370,16 @@
                 </div>
             </div>
 
-            <div class="programs available-videos px-1 pb-80px">
+            <div class="programs available-movies px-1 pb-80px">
                 <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-6 col-xl-6 col-xxl-4 pb-4">
+                    
+                    <!-- Container for template -->
+                    <div class="d-none video-thumbnail-template">
+                        <div class="available-movie-container col-lg-6 col-xl-6 col-xxl-4 pb-4">
                             <div class="ratio ratio-16x9">
                                 <div>
                                     <div class="video-thumbnail">
-                                        <img src="images/video.png" alt="Video" class="poster-image">
+                                        <img class="poster-image">
                                         <div class="video-thumbnail-controls h-100">
                                             <div class="play-button-container">
                                                 <button type="button" class="border-0 bg-transparent play-btn">
@@ -385,6 +388,7 @@
                                             </div>
                                             <div class="manage-block">
                                                 <button type="button" class="btn btn-warning"><span class="icon-plus"></span></button>
+                                                <button type="button" class="btn btn-warning d-none"><span class="icon-minus"></span></button>
                                             </div>
                                             <div class="reactions-block">
                                                 <span class="icon-information reaction-btn"></span>
@@ -392,15 +396,25 @@
                                                 <span class="icon-hand-thumbs-down reaction-btn"></span>
                                             </div>
                                             <div class="video-title-container">
-                                                <span class="video-title text-white">Knochendichtemessung (Ultraschall)</span>
+                                                <span class="video-title text-white"></span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="col-lg-6 col-xl-6 col-xxl-4  pb-4">
+                    
+                    <div class="row available-movies-list-container">
+
+                        <div class="no-available-movies-block col-12">
+                            <div class="text-center rounded-pill shadow bg-white px-4 py-5">
+                                <h4 class="text-success">Es konnten keine Filme mit diesen Kriterien gefunden werden.</h4>
+                            </div>
+                        </div>
+
+                        <!-- <div class="col-lg-6 col-xl-6 col-xxl-4  pb-4">
                             <div class="ratio ratio-16x9">
                                 <div>
                                     <div class="video-thumbnail">
@@ -595,7 +609,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                     </div>
                 </div>

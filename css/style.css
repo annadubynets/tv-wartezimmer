@@ -12435,13 +12435,11 @@ h3 {
 h4 {
   font-weight: bold;
   font-size: 24px;
-  color: #FFFFFF;
 }
 
 h5 {
   font-weight: bold;
   font-size: 15px;
-  color: #FFFFFF;
 }
 
 p {
@@ -13541,16 +13539,16 @@ footer .img-style {
   color: #FFFFFF;
 }
 
-.no-booked-films-block {
+.no-booked-movies-block {
   min-height: 400px;
 }
 @media (max-width: 992px) {
-  .no-booked-films-block {
+  .no-booked-movies-block {
     min-height: 200px;
   }
 }
 @media (max-width: 576px) {
-  .no-booked-films-block {
+  .no-booked-movies-block {
     min-height: 150px;
   }
 }

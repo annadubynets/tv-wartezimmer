@@ -72,67 +72,79 @@ function FilmsBookingController(options) {
 
     this._renderBookedMovies = function() {
         $('.side-booked-videos-list').empty();
-        $('.booked-films-list-container').addClass('d-none');
+        $('.booked-movies-list-container').addClass('d-none');
 
         if (this.bookedMovies.length > 0) {
             this.bookedMovies.forEach(function(movie, index) {
                 if (index == 0) {
-                    this._renderLargeMovieBlock(movie);
+                    this._renderLargeBookedMovieBlock(movie);
                 } else {
-                    this._renderSmallMovieBlock(movie);
+                    this._renderSmallBookedMovieBlock(movie);
                 }
             }.bind(this));
 
-            this._showBookedMovieScreen('booked-films-list');
+            this._showBookedMovieScreen('booked-movies-list');
         } else {
-            this._showBookedMovieScreen('no-booked-films-block');
+            this._showBookedMovieScreen('no-booked-movies-block');
         }
     }
 
-    this._renderLargeMovieBlock = function(movie) {
+    this._renderLargeBookedMovieBlock = function(movie) {
         var movieContainer = $('.large-booked-movie-container');
-        var thumbnail = movieContainer.find('.video-thumbnail');
-        thumbnail.attr('data-video-src', movie.url);
-        var posterImage = thumbnail.find('.poster-image');
-        posterImage.attr(
-            'src', 
-            movie.thumbnails.length > 0 ? movie.thumbnails[movie.thumbnails.length-1] : this.defaultPosterImage
-        )
-        posterImage.attr('alt', movie.name);
-        thumbnail.find('.video-title').text(movie.name);
-        thumbnail.attr('id', movie.id);
+        var jqThumbnailElem = movieContainer.find('.video-thumbnail');
+        this._fillMovieThumbnail(jqThumbnailElem, movie);
     }
 
-    this._renderSmallMovieBlock = function(movie) {
-        $('.booked-films-list-container').removeClass('d-none');
-
-        var movieContainer = $($('.video-thumbnail-template').html());
-        var thumbnail = movieContainer.find('.video-thumbnail');
-        thumbnail.attr('data-video-src', movie.url);
-        var posterImage = thumbnail.find('.poster-image');
+    this._fillMovieThumbnail = function(jqThumbnailElem, movie) {
+        jqThumbnailElem.attr('data-video-src', movie.url);
+        var posterImage = jqThumbnailElem.find('.poster-image');
         posterImage.attr(
             'src', 
             movie.thumbnails.length > 0 ? movie.thumbnails[movie.thumbnails.length-1] : this.defaultPosterImage
         )
         posterImage.attr('alt', movie.name);
-        thumbnail.find('.video-title').text(movie.name);
-        thumbnail.attr('id', movie.id);
+        jqThumbnailElem.find('.video-title').text(movie.name);
+        jqThumbnailElem.attr('id', movie.id);
+    }
 
-        $('.booked-films-list-container').find('.side-booked-videos-list').append(movieContainer);
+    this._renderSmallBookedMovieBlock = function(movie) {
+        $('.booked-movies-list-container').removeClass('d-none');
+
+        var movieContainer = $($('.video-thumbnail-template').html());
+        var jqThumbnailElem = movieContainer.find('.video-thumbnail');
+        this._fillMovieThumbnail(jqThumbnailElem, movie);
+        
+        $('.booked-movies-list-container').find('.side-booked-videos-list').append(movieContainer);
     }
 
     this._showBookedMovieScreen = function(selector) {
         $('.booked-movie-screen').addClass('d-none');
         $(`.${selector}`).removeClass('d-none');
-
-        
     }
 
 
-
+    
     this._renderAvailableMovies = function() {
-        //this.bookedMovies.forEach()
+        var movies = this._getFilteredAvailableMovies();
+        var jqRootMoviesContainer = $('.available-movies-list-container');
+        jqRootMoviesContainer.find('.available-movie-container').remove();
+        jqRootMoviesContainer.find('.no-available-movies-block').toggleClass('d-none', !!movies.length)
+        var jqMovieContainerTemplate = $('.available-movies .video-thumbnail-template');
+        movies.forEach(function(movie) {
+
+            var jqMovieContainer = $(jqMovieContainerTemplate.html());
+            var jqThumbnailElem = jqMovieContainer.find('.video-thumbnail');
+            this._fillMovieThumbnail(jqThumbnailElem, movie);
+            
+            jqRootMoviesContainer.append(jqMovieContainer);
+        }.bind(this))
     }
+
+    this._getFilteredAvailableMovies = function() {
+        return this.availableMovies;
+    }
+
+
 
     this._showError = function(errorMessage) {
         $('.error-block').find('.alert').text(errorMessage);
