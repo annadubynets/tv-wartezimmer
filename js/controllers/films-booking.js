@@ -10,8 +10,13 @@ if (!Object.entries) {
     };
 }
 
+/**
+ * Manages the movies booking page
+ * @param {*} options 
+ */
 function FilmsBookingController(options) {
     this.api = options.api || {};
+    this.apiHelper = new ApiHelper(options.api);
     this.bookedMovies = [];
     this.availableMovies = [];
     this.medicineFields = [];
@@ -19,6 +24,8 @@ function FilmsBookingController(options) {
     this.defaultPosterImage = 'images/video.png';
 
     this.init = function() {
+        this._setupEventHandlers();
+
         this._fetchInitialData({
             success: function() { 
                 this._initPagination()
@@ -32,7 +39,7 @@ function FilmsBookingController(options) {
      * Gets initial data with the all films and categories
      */
     this._fetchInitialData = function(callbacks) {
-        $.get(this.api.movies, function(data) {
+        this.apiHelper.getMovies().done(function(data) {
             console.log(data);
 
             for (var id in data.docMovies){
@@ -79,6 +86,88 @@ function FilmsBookingController(options) {
         this._showScreen('manage-movies-block');
     }
 
+    this._setupEventHandlers = function() {
+        $(document).on('click', '.btn-book', this._handleClickBookMovie);
+        $(document).on('click', '.btn-unbook', this._handleClickUnbookMovie);
+    }
+
+    /**
+     * Book movie btn click handler
+     */
+    this._handleClickBookMovie = function(e) {
+        e.preventDefault();
+        var movieId = this._detectMovieIdByEvent(e);
+        if (movieId) {
+            this._bookMovie(movieId);
+        }
+    }.bind(this);
+
+    this._detectMovieIdByEvent = function(e) {
+        var videoThumbnail = $(e.target).closest('.video-thumbnail');
+        var movieId = videoThumbnail.attr('data-id');
+        if (!movieId) {
+            console.error('video thumbnail should have id. what is going on?')
+            return false;
+        }
+        return movieId;
+    }
+
+    this._bookMovie = function(movieId) {
+        var movie = this.availableMovies.find(function(movie) {
+            return movie.id == movieId
+        });
+
+        if (!movie) {
+            console.error(`no unbooked movie with id: ${movieId}`)
+            return;
+        }
+
+        // TODO: show please wait dialog
+        this.apiHelper.toggleBookMovie(movie.id, true)
+            .done(function(data) {
+                this.availableMovies = this.availableMovies.filter(function(elem) { return elem.id != movie.id })
+                movie.booked = true;
+                this.bookedMovies.push(movie);
+                this._renderManageScreen();
+            }.bind(this))
+            .fail(function(e) {
+                console.error("Can't post book request:", e.statusText);
+            })
+    }
+
+    /**
+     * Unbook movie btn click handler
+     */
+    this._handleClickUnbookMovie = function(e) {
+        e.preventDefault();
+        var movieId = this._detectMovieIdByEvent(e);
+        if (movieId) {
+            this._unbookMovie(movieId);
+        }
+    }.bind(this);
+
+    this._unbookMovie = function(movieId) {
+        var movie = this.bookedMovies.find(function(movie) {
+            return movie.id == movieId
+        });
+
+        if (!movie) {
+            console.error(`no booked movie with id: ${movieId}`)
+            return;
+        }
+
+        // TODO: show please wait dialog
+        this.apiHelper.toggleBookMovie(movie.id, false)
+            .done(function(data) {
+                this.bookedMovies = this.bookedMovies.filter(function(elem) { return elem.id != movie.id })
+                movie.booked = false;
+                this.availableMovies.push(movie);
+                this._renderManageScreen();
+            }.bind(this))
+            .fail(function(e) {
+                console.error("Can't post book request:", e.statusText);
+            })
+    }
 
 
     this._renderBookedMovies = function() {
@@ -115,7 +204,7 @@ function FilmsBookingController(options) {
         )
         posterImage.attr('alt', movie.name);
         jqThumbnailElem.find('.video-title').text(movie.name);
-        jqThumbnailElem.attr('id', movie.id);
+        jqThumbnailElem.attr('data-id', movie.id);
     }
 
     this._renderSmallBookedMovieBlock = function(movie) {
@@ -186,7 +275,13 @@ function FilmsBookingController(options) {
     }
 }
 
-
+/**
+ * Manages pagination of available movies
+ * 
+ * @param {*} jqRootElement - the root pagination container
+ * @param {*} itemsPerPage
+ * @param {*} changePageCallback 
+ */
 function PaginationController(jqRootElement, itemsPerPage, changePageCallback) {
     this.jqRootElement = jqRootElement;
     this.jqFirstPage = this.jqRootElement.find('.first-page');
@@ -258,5 +353,38 @@ function PaginationController(jqRootElement, itemsPerPage, changePageCallback) {
         this.jqPrevPage.closest('.page-item').toggleClass('disabled', this.currentPage == 0);
         this.jqNextPage.closest('.page-item').toggleClass('disabled', this.currentPage >= this.countPages - 1);
         this.jqLastPage.closest('.page-item').toggleClass('disabled', this.currentPage >= this.countPages - 1);
+    }
+}
+
+
+function ApiHelper(urls) {
+
+    this.getMovies = function() {
+        return $.ajax({
+            url: urls.movies,
+            type: 'GET',
+            cache: false
+        })
+    }
+
+    /**
+     * Posts a request to book or unbook the movie
+     * @param {*} movieId 
+     * @param {*} book 
+     * @returns 
+     */
+    this.toggleBookMovie = function(movieId, book) {
+        var formData = new FormData();
+        formData.append('video-id', movieId);
+        formData.append('selected', book);
+
+        return $.ajax({
+            url: urls.booking,
+            type: 'POST',
+            cache: false,
+            processData: false,
+            contentType: false,
+            data: formData
+        })
     }
 }
