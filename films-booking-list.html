@@ -214,7 +214,7 @@
                                                             <button type="button" class="btn btn-warning w-100 btn-unbook"><span class="icon-minus"></span><span class="d-none d-md-inline ps-4">Abwählen</span></button>
                                                         </div>
                                                         <div class="reactions-block">
-                                                            <span class="icon-information reaction-btn btn-show-info" data-bs-toggle="modal" data-bs-target="#movieInformationModal"></span>
+                                                            <span class="icon-information reaction-btn btn-show-info"></span>
                                                             <span class="icon-hand-thumbs-up reaction-btn btn-like"></span>
                                                             <span class="icon-hand-thumbs-down reaction-btn btn-dislike"></span>
                                                         </div>
@@ -415,12 +415,12 @@
         </footer>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="movieInformationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="movieInformationModalLabel" aria-hidden="true">
+    <!-- Movie info modal. Should be included to the pages where video thumbnails with 'i' (info) button is present -->
+    <div class="modal fade" id="movie-information-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="movie-information-modal-label" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header border-0">
-                    <h5 class="modal-title" id="movieInformationModalLabel">FILM INFOMARTIONEN</h5>
+                    <h5 class="modal-title" id="movie-information-modal-label">FILM INFOMARTIONEN</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
@@ -429,8 +429,8 @@
                             <div class="col-xl-8">
                                 <div class="ratio ratio-16x9">
                                     <div>
-                                        <div class="video-thumbnail" data-video-src="https://cache.tvw.systems/files/2017/12/08/SzYbDpLzJmpAxgr_2017-12-08_28m5x_9hhgvgbab_doc_air-polishing.mp4">
-                                            <img src="images/video.png" alt="Video" class="poster-image">
+                                        <div class="video-thumbnail" data-video-src="">
+                                            <img alt="Video" class="poster-image">
                                             <div class="video-thumbnail-controls h-100">
                                                 <div class="play-button-container">
                                                     <button type="button" class="border-0 bg-transparent play-btn">
@@ -438,15 +438,15 @@
                                                     </button>
                                                 </div>
                                                 <div class="manage-block">
-                                                    <button type="button" class="btn btn-warning w-100"><span class="icon-plus"></span><span class="d-none d-md-inline ps-4">Hinzufügen</span></button>
-                                                    <button type="button" class="btn btn-warning w-100"><span class="icon-minus"></span><span class="d-none d-md-inline ps-4">Abwählen</span></button>
+                                                    <button type="button" class="btn btn-warning w-100 btn-book"><span class="icon-plus"></span><span class="d-none d-md-inline ps-4">Hinzufügen</span></button>
+                                                    <button type="button" class="btn btn-warning w-100 btn-unbook"><span class="icon-minus"></span><span class="d-none d-md-inline ps-4">Abwählen</span></button>
                                                 </div>
                                                 <div class="reactions-block">
-                                                    <span class="icon-hand-thumbs-up reaction-btn"></span>
-                                                    <span class="icon-hand-thumbs-down reaction-btn"></span>
+                                                    <span class="icon-hand-thumbs-up reaction-btn btn-like"></span>
+                                                    <span class="icon-hand-thumbs-down reaction-btn btn-dislike"></span>
                                                 </div>
                                                 <div class="video-title-container">
-                                                    <p class="video-title">Knochendichtemessung (Ultraschall)</p>
+                                                    <p class="video-title"></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -455,9 +455,7 @@
                             </div>
                             <div class="col-xl-4 text-start">
                                 <div class="card-body p-4">
-                                    <h5 class="card-title text-success pb-4">Inhalt 01</h5>
-                                    <p class="card-text">Praesent eu dolor eu orci vehicula euismod. Vivamus sed sollicitudin libero, vel malesuada velit. Nullam et maximus lorem.<br><br> Suspendisse maximus do or quis consequat volutpat.
-                                    </p>
+                                    <p class="card-text video-description"></p>
                                 </div>
                             </div>
                         </div>

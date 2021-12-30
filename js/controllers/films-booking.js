@@ -10,6 +10,13 @@ if (!Object.entries) {
     };
 }
 
+var MovieRating = MovieRating || {};
+MovieRating.LIKE = 1;
+MovieRating.DISLIKE = -1;
+
+var MovieDefaults = {};
+MovieDefaults.POSTER_THUMBNAIL = 'images/video.png';
+
 /**
  * Manages the movies booking page
  * @param {*} options 
@@ -21,11 +28,10 @@ function FilmsBookingController(options) {
     this.availableMovies = [];
     this.medicineFields = [];
     this.searchBar = false;
-
-    LIKE = 1;
-    DISLIKE = -1;
-    
-    this.defaultPosterImage = 'images/video.png';
+    /**
+     * The modal should be on the page!
+     */
+    this.movieInfoModal = new MovieInformationModal('movie-information-modal');
 
     this.init = function() {
         this._setupEventHandlers();
@@ -45,6 +51,7 @@ function FilmsBookingController(options) {
         $(document).on('click', '.btn-unbook', this._handleClickUnbookMovie);
         $(document).on('click', '.btn-like', this._handleClickLikeMovie);
         $(document).on('click', '.btn-dislike', this._handleClickDislikeMovie);
+        $(document).on('click', '.btn-show-info', this._handleClickShowInfo);
     }
 
     /**
@@ -78,12 +85,13 @@ function FilmsBookingController(options) {
             return;
         }
 
-        // TODO: show please wait dialog
+        // TODO: show please wait dialog?
         this.apiHelper.toggleBookMovie(movie.id, true)
             .done(function(data) {
                 this.availableMovies = this.availableMovies.filter(function(elem) { return elem.id != movie.id })
                 movie.booked = true;
                 this.bookedMovies.push(movie);
+                this._refreshMovieThumbnail(movie);
                 this._renderManageScreen();
             }.bind(this))
             .fail(function(e) {
@@ -118,6 +126,7 @@ function FilmsBookingController(options) {
                 this.bookedMovies = this.bookedMovies.filter(function(elem) { return elem.id != movie.id })
                 movie.booked = false;
                 this.availableMovies.push(movie);
+                this._refreshMovieThumbnail(movie);
                 this._renderManageScreen();
             }.bind(this))
             .fail(function(e) {
@@ -132,7 +141,7 @@ function FilmsBookingController(options) {
         e.preventDefault();
         var movieId = this._detectMovieIdByEvent(e);
         if (movieId) {
-            this._toggleMovieRating(movieId, LIKE);
+            this._toggleMovieRating(movieId, MovieRating.LIKE);
         }
     }.bind(this);
 
@@ -154,7 +163,7 @@ function FilmsBookingController(options) {
 
     this._refreshMovieThumbnail = function(movie) {
         var thumbnail = $(`.video-thumbnail[data-id=${movie.id}]`);
-        this._setupMovieThumbnail(thumbnail, movie);
+        MovieThumbnailUtils.refreshThumbnailState(thumbnail, movie);
     }
 
     /**
@@ -164,8 +173,15 @@ function FilmsBookingController(options) {
         e.preventDefault();
         var movieId = this._detectMovieIdByEvent(e);
         if (movieId) {
-            this._toggleMovieRating(movieId, DISLIKE);
+            this._toggleMovieRating(movieId, MovieRating.DISLIKE);
         }
+    }.bind(this);
+
+    this._handleClickShowInfo = function(e) {
+        e.preventDefault();
+        var movieId = this._detectMovieIdByEvent(e);
+        var movie = this._findMovie(movieId);
+        this.movieInfoModal.show(movie);
     }.bind(this);
 
 
@@ -243,21 +259,7 @@ function FilmsBookingController(options) {
     this._renderLargeBookedMovieBlock = function(movie) {
         var movieContainer = $('.large-booked-movie-container');
         var jqThumbnailElem = movieContainer.find('.video-thumbnail');
-        this._setupMovieThumbnail(jqThumbnailElem, movie);
-    }
-
-    this._setupMovieThumbnail = function(jqThumbnailElem, movie) {
-        jqThumbnailElem.attr('data-video-src', movie.url);
-        var posterImage = jqThumbnailElem.find('.poster-image');
-        posterImage.attr(
-            'src', 
-            movie.thumbnails.length > 0 ? movie.thumbnails[0] : this.defaultPosterImage
-        )
-        posterImage.attr('alt', movie.name);
-        jqThumbnailElem.find('.video-title').text(movie.name);
-        jqThumbnailElem.attr('data-id', movie.id);
-        jqThumbnailElem.find('.btn-like').toggleClass('active', movie.rating == LIKE);
-        jqThumbnailElem.find('.btn-dislike').toggleClass('active', movie.rating == DISLIKE);
+        MovieThumbnailUtils.refreshThumbnailState(jqThumbnailElem, movie);
     }
 
     this._renderSmallBookedMovieBlock = function(movie) {
@@ -265,7 +267,7 @@ function FilmsBookingController(options) {
 
         var movieContainer = $($('.video-thumbnail-template').html());
         var jqThumbnailElem = movieContainer.find('.video-thumbnail');
-        this._setupMovieThumbnail(jqThumbnailElem, movie);
+        MovieThumbnailUtils.refreshThumbnailState(jqThumbnailElem, movie);
         
         $('.booked-movies-list-container').find('.side-booked-videos-list').append(movieContainer);
     }
@@ -284,11 +286,9 @@ function FilmsBookingController(options) {
         jqRootMoviesContainer.find('.no-available-movies-block').toggleClass('d-none', !!movies.length)
         var jqMovieContainerTemplate = $('.available-movies .video-thumbnail-template');
         movies.forEach(function(movie) {
-
             var jqMovieContainer = $(jqMovieContainerTemplate.html());
             var jqThumbnailElem = jqMovieContainer.find('.video-thumbnail');
-            this._setupMovieThumbnail(jqThumbnailElem, movie);
-            
+            MovieThumbnailUtils.refreshThumbnailState(jqThumbnailElem, movie);
             jqRootMoviesContainer.append(jqMovieContainer);
         }.bind(this))
     }
@@ -418,6 +418,13 @@ function PaginationController(jqRootElement, itemsPerPage, changePageCallback) {
 }
 
 
+/**
+ * Manages the search bar on films booking page
+ * 
+ * @param {*} jqRootElement 
+ * @param {*} categories 
+ * @param {*} onFilterChangeCallback 
+ */
 function SearchBarController(jqRootElement, categories, onFilterChangeCallback) {
     this.categoriesFilter = jqRootElement.find('select.categories-filter');
     this.showAllBtn = jqRootElement.find('.filter-btn-show-all');
@@ -506,7 +513,11 @@ function SearchBarController(jqRootElement, categories, onFilterChangeCallback) 
     }
 }
 
-
+/**
+ * API helper simplifies the usage of the movies related api requests
+ * 
+ * @param {*} urls 
+ */
 function ApiHelper(urls) {
 
     this.getMovies = function() {
@@ -551,5 +562,52 @@ function ApiHelper(urls) {
             contentType: false,
             data: formData
         })
+    }
+}
+
+
+/**
+ * Utils for managing video thumbnails
+ */
+var MovieThumbnailUtils = MovieThumbnailUtils || {}
+
+MovieThumbnailUtils.refreshThumbnailState = function(jqThumbnailElem, movie) {
+    jqThumbnailElem.attr('data-video-src', movie.url);
+    var posterImage = jqThumbnailElem.find('.poster-image');
+    posterImage.attr(
+        'src', 
+        movie.thumbnail || MovieDefaults.POSTER_THUMBNAIL
+    )
+    posterImage.attr('alt', movie.name);
+    jqThumbnailElem.find('.video-title').text(movie.name);
+    jqThumbnailElem.attr('data-id', movie.id);
+    jqThumbnailElem.find('.btn-like').toggleClass('active', movie.rating == MovieRating.LIKE);
+    jqThumbnailElem.find('.btn-dislike').toggleClass('active', movie.rating == MovieRating.DISLIKE);
+
+    jqThumbnailElem.find('.btn-book').toggleClass('d-none', movie.booked)
+    jqThumbnailElem.find('.btn-unbook').toggleClass('d-none', !movie.booked)
+}
+
+
+/**
+ * Used for managing the movies info modal
+ * 
+ * @param {string} modalId 
+ */
+function MovieInformationModal(modalId) {
+    this._modalInstance = bootstrap.Modal.getOrCreateInstance(document.getElementById(modalId))
+
+    this.show = function(movie) {
+        this.hide();
+        var jqModalElem = $(`#${modalId}`);
+        var thumbnailElem = jqModalElem.find(".video-thumbnail");
+        MovieThumbnailUtils.refreshThumbnailState(thumbnailElem, movie);
+        jqModalElem.find('.video-description').text(movie.description);
+
+        this._modalInstance.show();
+    }
+
+    this.hide = function() {
+        this._modalInstance.hide();
     }
 }
