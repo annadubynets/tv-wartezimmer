@@ -20,6 +20,7 @@ function FilmsBookingController(options) {
     this.bookedMovies = [];
     this.availableMovies = [];
     this.medicineFields = [];
+    this.searchBar = false;
 
     LIKE = 1;
     DISLIKE = -1;
@@ -31,9 +32,9 @@ function FilmsBookingController(options) {
 
         this._fetchInitialData({
             success: function() { 
+                this._setupSearchBar()
                 this._initPagination()
                 this._renderManageScreen()
-                this._setupFilterBar()
             }.bind(this),
             error: function(error) { this._showError(error) }.bind(this)
         });
@@ -298,13 +299,7 @@ function FilmsBookingController(options) {
     }
 
     this._getFilteredAvailableMovies = function() {
-        var categoryId = this.categoriesFilter && this.categoriesFilter.val();
-        if (categoryId) {
-            return this.availableMovies.filter(function(movie) {
-                return !!movie.medicineFields[categoryId]
-            })
-        }
-        return this.availableMovies;
+        return this.searchBar.filter(this.availableMovies);
     }
 
     this._applyPagination = function(movies) {
@@ -317,41 +312,13 @@ function FilmsBookingController(options) {
     }
 
 
-    this._setupFilterBar = function() {
-        this._setupCategories();
-        this._setupShowAllBtn();
-    }
-
-    this._setupCategories = function() {
-        this.categoriesFilter = $('select.categories-filter');
-
-        this.medicineFields.forEach(function(category) {
-            this.categoriesFilter.append($('<option>', {
-                value: category.id,
-                text: category.name
-            }));
+    this._setupSearchBar = function() {
+        this.searchBar = new SearchBarController($('.search-block'), this.medicineFields, function() {
+            this._renderAvailableMovies()
         }.bind(this))
-        
-        this.categoriesFilter.selectpicker('refresh');
 
-        this.categoriesFilter.on('change', function() {
-            this._renderAvailableMovies();
-        }.bind(this));
+        this.searchBar.init();
     }
-
-    this._setupShowAllBtn = function() {
-        var showAllBtn = $('.filter-btn-show-all');
-        showAllBtn.on('click', this._resetFilter);
-    }
-
-    this._resetFilter = function() {
-        if (this.categoriesFilter) {
-            this.categoriesFilter.selectpicker('val', '');
-            this._renderAvailableMovies();
-        }
-    }.bind(this);
-
-
 
     this._showError = function(errorMessage) {
         $('.error-block').find('.alert').text(errorMessage);
@@ -447,6 +414,95 @@ function PaginationController(jqRootElement, itemsPerPage, changePageCallback) {
         this.jqPrevPage.closest('.page-item').toggleClass('disabled', this.currentPage == 0);
         this.jqNextPage.closest('.page-item').toggleClass('disabled', this.currentPage >= this.countPages - 1);
         this.jqLastPage.closest('.page-item').toggleClass('disabled', this.currentPage >= this.countPages - 1);
+    }
+}
+
+
+function SearchBarController(jqRootElement, categories, onFilterChangeCallback) {
+    this.categoriesFilter = jqRootElement.find('select.categories-filter');
+    this.showAllBtn = jqRootElement.find('.filter-btn-show-all');
+    this.searchInput = jqRootElement.find('input[type=search]');
+    this.searchBtn = jqRootElement.find('.btn-search');
+    this.onFilterChangeCallback = onFilterChangeCallback || function() {}
+
+
+    this.init = function() {
+        this._setupCategories();
+        this._setupShowAllBtn();
+        this._setupTextSearch();
+    }
+
+    this._setupCategories = function() {
+
+        categories.forEach(function(category) {
+            this.categoriesFilter.append($('<option>', {
+                value: category.id,
+                text: category.name
+            }));
+        }.bind(this))
+        
+        this.categoriesFilter.selectpicker('refresh');
+
+        this.categoriesFilter.on('change', function() {
+            this.onFilterChangeCallback();
+        }.bind(this));
+    }
+
+    this._setupShowAllBtn = function() {
+        var showAllBtn = $('.filter-btn-show-all');
+        showAllBtn.on('click', this._resetFilter);
+    }
+
+    this._resetFilter = function() {
+        if (this.categoriesFilter) {
+            this.categoriesFilter.selectpicker('val', '');
+            this.searchInput.val('');
+            this.onFilterChangeCallback();
+        }
+    }.bind(this);
+
+    this._setupTextSearch = function() {
+        this.searchInput.on("search", function(event) {
+            this.searchBtn.trigger("click");
+        }.bind(this));
+
+        this.searchInput.on("keyup", function(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                this.searchBtn.trigger("click");
+            }
+        }.bind(this));
+
+        this.searchBtn.on('click', function(e) {
+            e.preventDefault();
+            this.onFilterChangeCallback();
+        }.bind(this))
+    }
+
+
+    /**
+     * Filters the movies based on the current filter settings
+     * @param {*} movies 
+     * @returns filtered movies array
+     */
+    this.filter = function(movies) {
+        var categoryId = this.categoriesFilter.val();
+        if (categoryId) {
+            movies = movies.filter(function(movie) {
+                return !!movie.medicineFields[categoryId]
+            })
+        }
+
+        var searchText = this.searchInput.val().trim();
+        if (searchText) {
+            var searchExpression = new RegExp(searchText, 'gi')
+            movies = movies.filter(function(movie) {
+                return (movie.name && movie.name.match(searchExpression)) 
+                        || (movie.description && movie.description.match(searchExpression))
+            })
+        }
+
+        return movies
     }
 }
 
