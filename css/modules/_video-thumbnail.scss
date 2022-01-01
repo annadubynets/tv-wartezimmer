@@ -89,6 +89,10 @@
                 @extend .shadow;
                 @extend .rounded-pill;
 
+                .btn-label {
+                    display: none;
+                }
+
                 @media (min-width: 1500px) {
                     padding-top: 0.8rem !important;
                     padding-bottom: 0.8rem !important;
@@ -161,6 +165,16 @@
                     
                     @media (min-width: 1780px) {
                         font-size: 50px;
+                    }
+                }
+            }
+
+            @media (min-width: 992px) {
+                .manage-block {
+                    button {
+                        .btn-label {
+                            display: inline;
+                        }
                     }
                 }
             }

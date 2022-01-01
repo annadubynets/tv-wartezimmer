@@ -1,0 +1,44 @@
+@import "slick";
+@import "slick-theme";
+
+.booked-movies-carousel {
+    .owl-nav, .owl-dots {
+        &.disabled {
+            display: none;
+        }
+    }
+
+    .movie-slide {
+        padding-right: 1rem;
+        min-width: 475px;
+
+        &.large {
+            min-width: 962px;
+            width: 962px;
+        }
+
+        @media (max-width: 1500px) {
+            min-width: 363px;
+            &.large {
+                min-width: 740px;
+                width: 740px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            min-width: calc(100vw - 96px);
+            @media (min-width: 769px) {
+                min-width: calc(100vw - 96px - #{$desktop-sidebar-width});
+            }
+            &.large {
+                min-width: calc(100vw - 321px);
+                width: 520px;
+            }
+        }
+    }
+
+    .slick-dotted.slick-slider {
+        margin-bottom: 0;
+    }
+
+}

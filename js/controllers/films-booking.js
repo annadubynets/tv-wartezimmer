@@ -28,10 +28,8 @@ function FilmsBookingController(options) {
     this.availableMovies = [];
     this.medicineFields = [];
     this.searchBar = false;
-    /**
-     * The modal should be on the page!
-     */
     this.movieInfoModal = new MovieInformationModal('movie-information-modal');
+    this.bookedMoviesController = new BookedMoviesController('.booked-movies-list-screen');
 
     this.init = function() {
         this._setupEventHandlers();
@@ -52,6 +50,8 @@ function FilmsBookingController(options) {
         $(document).on('click', '.btn-like', this._handleClickLikeMovie);
         $(document).on('click', '.btn-dislike', this._handleClickDislikeMovie);
         $(document).on('click', '.btn-show-info', this._handleClickShowInfo);
+
+        this.bookedMoviesController.init(this._handleScreenSizeChange);
     }
 
     /**
@@ -184,6 +184,13 @@ function FilmsBookingController(options) {
         this.movieInfoModal.show(movie);
     }.bind(this);
 
+    this._handleScreenSizeChange = function(e) {
+        this._renderBookedMovies();
+    }.bind(this);
+
+    this._renderBookedMovies = function() {
+        this.bookedMoviesController.renderMovieThumbnails(this.bookedMovies);
+    }
 
 
     /**
@@ -221,6 +228,14 @@ function FilmsBookingController(options) {
         });
     }
 
+    this._setupSearchBar = function() {
+        this.searchBar = new SearchBarController($('.search-block'), this.medicineFields, function() {
+            this._renderAvailableMovies()
+        }.bind(this))
+
+        this.searchBar.init();
+    }
+
     this._initPagination = function() {
         this.availableMoviesPagination = new PaginationController(
             $('.available-movies .movies-pagination'),
@@ -236,57 +251,20 @@ function FilmsBookingController(options) {
         this._showScreen('manage-movies-block');
     }
 
-    
-    this._renderBookedMovies = function() {
-        $('.side-booked-videos-list').empty();
-        $('.booked-movies-list-container').addClass('d-none');
-
-        if (this.bookedMovies.length > 0) {
-            this.bookedMovies.forEach(function(movie, index) {
-                if (index == 0) {
-                    this._renderLargeBookedMovieBlock(movie);
-                } else {
-                    this._renderSmallBookedMovieBlock(movie);
-                }
-            }.bind(this));
-
-            this._showBookedMovieScreen('booked-movies-list');
-        } else {
-            this._showBookedMovieScreen('no-booked-movies-block');
-        }
-    }
-
-    this._renderLargeBookedMovieBlock = function(movie) {
-        var movieContainer = $('.large-booked-movie-container');
-        var jqThumbnailElem = movieContainer.find('.video-thumbnail');
-        MovieThumbnailUtils.refreshThumbnailState(jqThumbnailElem, movie);
-    }
-
-    this._renderSmallBookedMovieBlock = function(movie) {
-        $('.booked-movies-list-container').removeClass('d-none');
-
-        var movieContainer = $($('.video-thumbnail-template').html());
-        var jqThumbnailElem = movieContainer.find('.video-thumbnail');
-        MovieThumbnailUtils.refreshThumbnailState(jqThumbnailElem, movie);
-        
-        $('.booked-movies-list-container').find('.side-booked-videos-list').append(movieContainer);
-    }
-
-    this._showBookedMovieScreen = function(selector) {
-        $('.booked-movie-screen').addClass('d-none');
-        $(`.${selector}`).removeClass('d-none');
-    }
-
-
-
     this._renderAvailableMovies = function() {
         var movies = this._getAvailableMovies();
         var jqRootMoviesContainer = $('.available-movies-list-container');
         jqRootMoviesContainer.find('.available-movie-container').remove();
         jqRootMoviesContainer.find('.no-available-movies-block').toggleClass('d-none', !!movies.length)
-        var jqMovieContainerTemplate = $('.available-movies .video-thumbnail-template');
+        var jqMovieContainerTemplate = $('.movie-block-template');
         movies.forEach(function(movie) {
-            var jqMovieContainer = $(jqMovieContainerTemplate.html());
+            var jqMovieContainer = $(
+                `
+                    <div class="available-movie-container col-lg-6 col-xl-6 col-xxl-4 pb-4">
+                        ${jqMovieContainerTemplate.html()}
+                    </div>
+                `
+            );
             var jqThumbnailElem = jqMovieContainer.find('.video-thumbnail');
             MovieThumbnailUtils.refreshThumbnailState(jqThumbnailElem, movie);
             jqRootMoviesContainer.append(jqMovieContainer);
@@ -311,14 +289,6 @@ function FilmsBookingController(options) {
         );
     }
 
-
-    this._setupSearchBar = function() {
-        this.searchBar = new SearchBarController($('.search-block'), this.medicineFields, function() {
-            this._renderAvailableMovies()
-        }.bind(this))
-
-        this.searchBar.init();
-    }
 
     this._showError = function(errorMessage) {
         $('.error-block').find('.alert').text(errorMessage);
@@ -609,5 +579,176 @@ function MovieInformationModal(modalId) {
 
     this.hide = function() {
         this._modalInstance.hide();
+    }
+}
+
+
+function BookedMoviesController(selector) {
+    this._rootScreenContainer = $(selector);
+    this._renderDesktop = true;
+    this.layoutChangeCallback = function() {};
+
+    this.init = function(layoutChangeCallback) {
+        this.layoutChangeCallback = layoutChangeCallback || this.layoutChangeCallback;
+        this._renderDesktop = this._isDesktop();
+        window.addEventListener('resize', function() {
+            var newLayout = this._isDesktop();
+            if (this._renderDesktop != newLayout) {
+                this._renderDesktop = newLayout;
+                this.layoutChangeCallback();
+                console.log('screen size changed to: ', this._renderDesktop)
+            }
+        }.bind(this))
+    }
+
+    this._isDesktop = function() {
+        return window.matchMedia('(min-width: 993px)').matches
+    }
+
+    this.renderMovieThumbnails = function(movies) {
+        $('.side-booked-videos-list').empty();
+        $('.booked-movies-list-container').addClass('d-none');
+
+        if (movies.length >= 1) {
+            this._renderMovieThumbnails(movies);
+            this._showBookedMovieScreen('booked-movies-list-screen');
+        } else {
+            this._showBookedMovieScreen('no-booked-movies-block');
+        }
+    }
+
+    this._renderMovieThumbnails = function(movies) {
+        if (movies.length == 1) {
+            this._renderSingleThumbnail(movies[0]);
+        } else if (this._renderDesktop) {
+            this._renderDesktopCarousel(movies);
+        } else {
+            this._renderMobileCarousel(movies);
+        }
+    }
+
+    this._renderSingleThumbnail = function(movie) {
+        this._cleanupAllThumbnails();
+
+        var jqMovieContainerTemplate = $('.movie-block-template');
+        
+        var jqMovieContainer = $(
+            `
+                <div class="row justify-content-center">
+                    <div class="col-xl-8 col-lg-12 pb-xl-0">
+                        ${jqMovieContainerTemplate.html()}
+                    </div>
+                </div>
+            `
+        );
+        var jqThumbnailElem = jqMovieContainer.find('.video-thumbnail');
+        jqThumbnailElem.addClass('large');
+        MovieThumbnailUtils.refreshThumbnailState(jqThumbnailElem, movie);
+        this._rootScreenContainer.append(jqMovieContainer);
+    }
+
+    this._cleanupAllThumbnails = function() {
+        this._rootScreenContainer.find('.booked-movies-carousel').slick('unslick');
+        this._rootScreenContainer.empty();
+    }
+
+    this._renderDesktopCarousel = function(movies) {
+        this._cleanupAllThumbnails();
+
+        var jqCarouselContainer = $(
+            `
+                <div class="booked-movies-carousel"></div>
+            `
+        );
+
+        this._rootScreenContainer.append(jqCarouselContainer);
+        var jqMovieContainerTemplate = $('.movie-block-template');
+
+        var lastCarouselSlide = false;
+
+        movies.forEach(function(movie, index) {
+            if (!lastCarouselSlide || index % 2 != 0) {
+                lastCarouselSlide = $(`<div class="movie-slide"></div>`);
+                lastCarouselSlide.toggleClass('large', index == 0)
+                jqCarouselContainer.append(lastCarouselSlide)
+            }
+
+            var jqThumbnailContainer = $(
+                `
+                    <div class="${index % 2 != 0 ? 'mb-3' : ''}">
+                        ${jqMovieContainerTemplate.html()}
+                    </div>
+                `
+            );
+            var jqThumbnailElem = jqThumbnailContainer.find('.video-thumbnail');
+            
+            jqThumbnailElem.toggleClass('large', index == 0);
+            MovieThumbnailUtils.refreshThumbnailState(jqThumbnailElem, movie);
+
+            lastCarouselSlide.append(jqThumbnailContainer)
+        });
+
+        jqCarouselContainer.slick({
+            infinite: false,
+            variableWidth: true,
+            appendArrows: false,
+            slidesToShow: 1,
+        });
+    }
+
+    this._renderMobileCarousel = function(movies) {
+        this._cleanupAllThumbnails();
+
+        var jqCarouselContainer = $(
+            `
+                <div class="booked-movies-carousel"></div>
+            `
+        );
+
+        this._rootScreenContainer.append(jqCarouselContainer);
+        var jqMovieContainerTemplate = $('.movie-block-template');
+
+        movies.forEach(function(movie) {
+            var jqMovieContainer = $(
+                `
+                    <div class="movie-slide">
+                        <div>
+                            ${jqMovieContainerTemplate.html()}
+                        </div>
+                    </div>
+                `
+            );
+            var jqThumbnailElem = jqMovieContainer.find('.video-thumbnail');
+            MovieThumbnailUtils.refreshThumbnailState(jqThumbnailElem, movie);
+            jqCarouselContainer.append(jqMovieContainer)
+        });
+
+        jqCarouselContainer.slick({
+            infinite: false,
+            variableWidth: true,
+            appendArrows: false,
+            slidesToShow: 1,
+        });
+    }
+
+    this._showBookedMovieScreen = function(selector) {
+        $('.booked-movie-screen').addClass('d-none');
+        $(`.${selector}`).removeClass('d-none');
+    }
+
+    this._renderLargeBookedMovieBlock = function(movie) {
+        var movieContainer = $('.large-booked-movie-container');
+        var jqThumbnailElem = movieContainer.find('.video-thumbnail');
+        MovieThumbnailUtils.refreshThumbnailState(jqThumbnailElem, movie);
+    }
+
+    this._renderSmallBookedMovieBlock = function(movie) {
+        $('.booked-movies-list-container').removeClass('d-none');
+
+        var movieContainer = $($('.video-thumbnail-template').html());
+        var jqThumbnailElem = movieContainer.find('.video-thumbnail');
+        MovieThumbnailUtils.refreshThumbnailState(jqThumbnailElem, movie);
+        
+        $('.booked-movies-list-container').find('.side-booked-videos-list').append(movieContainer);
     }
 }

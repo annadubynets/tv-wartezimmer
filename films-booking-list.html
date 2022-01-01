@@ -196,74 +196,7 @@
                                     <h4 class="text-dark">Sie haben aktuell keine Filme gewählt.</h4>
                                 </div>
 
-                                <div class="booked-movies-list booked-movie-screen d-none row justify-content-center">
-
-                                    <!-- This block is always here, there is no way to show the booked videos without large video -->
-                                    <div class="large-booked-movie-container col-xl-8 col-lg-12 pb-xl-0 pb-4">
-                                        <div class="ratio ratio-16x9">
-                                            <div>
-                                                <div class="video-thumbnail large" data-video-src="https://cache.tvw.systems/files/2017/12/08/SzYbDpLzJmpAxgr_2017-12-08_28m5x_9hhgvgbab_doc_air-polishing.mp4">
-                                                    <img src="images/video.png" alt="Video" class="poster-image">
-                                                    <div class="video-thumbnail-controls h-100">
-                                                        <div class="play-button-container">
-                                                            <button type="button" class="border-0 bg-transparent play-btn">
-                                                                <span class="icon-play"></span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="manage-block">
-                                                            <button type="button" class="btn btn-warning w-100 btn-unbook"><span class="icon-minus"></span><span class="d-none d-md-inline ps-4">Abwählen</span></button>
-                                                        </div>
-                                                        <div class="reactions-block">
-                                                            <span class="icon-information reaction-btn btn-show-info"></span>
-                                                            <span class="icon-hand-thumbs-up reaction-btn btn-like"></span>
-                                                            <span class="icon-hand-thumbs-down reaction-btn btn-dislike"></span>
-                                                        </div>
-                                                        <div class="video-title-container">
-                                                            <p class="video-title">Knochendichtemessung (Ultraschall)</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- this block can be hidden in case if only single video is booked -->
-                                    <div class="booked-movies-list-container d-none col-xl-4 col-lg-12">
-                                        <div class="d-none video-thumbnail-template">
-                                            <div class="booked-movie-container col-lg-12 pb-3">
-                                                <div class="ratio ratio-16x9">
-                                                    <div>
-                                                        <div class="video-thumbnail" data-video-src="">
-                                                            <img class="poster-image">
-                                                            <div class="video-thumbnail-controls h-100">
-                                                                <div class="play-button-container">
-                                                                    <button type="button" class="border-0 bg-transparent play-btn">
-                                                                        <span class="icon-play"></span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="manage-block">
-                                                                    <button type="button" class="btn btn-warning btn-unbook"><span class="icon-minus"></span></button>
-                                                                </div>
-                                                                <div class="reactions-block">
-                                                                    <span class="icon-information reaction-btn btn-show-info"></span>
-                                                                    <span class="icon-hand-thumbs-up reaction-btn btn-like"></span>
-                                                                    <span class="icon-hand-thumbs-down reaction-btn btn-dislike"></span>
-                                                                </div>
-                                                                <div class="video-title-container">
-                                                                    <span class="video-title text-white"></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row side-booked-videos-list">
-
-                                        </div>
-                                    </div>
-
+                                <div class="booked-movies-list-screen booked-movie-screen">
                                 </div>
                             </div>
                         </div>
@@ -315,39 +248,6 @@
             <div class="programs available-movies px-1 pb-80px">
                 <div class="container-fluid">
                     
-                    <!-- Container for template -->
-                    <div class="d-none video-thumbnail-template">
-                        <div class="available-movie-container col-lg-6 col-xl-6 col-xxl-4 pb-4">
-                            <div class="ratio ratio-16x9">
-                                <div>
-                                    <div class="video-thumbnail">
-                                        <img class="poster-image">
-                                        <div class="video-thumbnail-controls h-100">
-                                            <div class="play-button-container">
-                                                <button type="button" class="border-0 bg-transparent play-btn">
-                                                    <span class="icon-play"></span>
-                                                </button>
-                                            </div>
-                                            <div class="manage-block">
-                                                <button type="button" class="btn btn-warning btn-book"><span class="icon-plus"></span></button>
-                                                <button type="button" class="btn btn-warning d-none btn-unbook"><span class="icon-minus"></span></button>
-                                            </div>
-                                            <div class="reactions-block">
-                                                <span class="icon-information reaction-btn btn-show-info"></span>
-                                                <span class="icon-hand-thumbs-up reaction-btn btn-like"></span>
-                                                <span class="icon-hand-thumbs-down reaction-btn btn-dislike"></span>
-                                            </div>
-                                            <div class="video-title-container">
-                                                <span class="video-title text-white"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
                     <div class="row available-movies-list-container">
 
                         <div class="no-available-movies-block col-12">
@@ -413,6 +313,36 @@
                 </div>
             </div>
         </footer>
+    </div>
+
+    <!-- Movie thumbnail template -->
+    <div class="movie-block-template d-none">
+        <div class="ratio ratio-16x9">
+            <div>
+                <div class="video-thumbnail" data-video-src="">
+                    <img alt="Video" class="poster-image">
+                    <div class="video-thumbnail-controls h-100">
+                        <div class="play-button-container">
+                            <button type="button" class="border-0 bg-transparent play-btn">
+                                <span class="icon-play"></span>
+                            </button>
+                        </div>
+                        <div class="manage-block">
+                            <button type="button" class="btn btn-warning w-100 btn-book"><span class="icon-plus"></span><span class="btn-label ps-4">Hinzufügen</span></button>
+                            <button type="button" class="btn btn-warning w-100 btn-unbook"><span class="icon-minus"></span><span class="btn-label ps-4">Abwählen</span></button>
+                        </div>
+                        <div class="reactions-block">
+                            <span class="icon-information reaction-btn btn-show-info"></span>
+                            <span class="icon-hand-thumbs-up reaction-btn btn-like"></span>
+                            <span class="icon-hand-thumbs-down reaction-btn btn-dislike"></span>
+                        </div>
+                        <div class="video-title-container">
+                            <p class="video-title"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Movie info modal. Should be included to the pages where video thumbnails with 'i' (info) button is present -->
@@ -709,7 +639,7 @@
     <script src="js/jquery-ui.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/bootstrap-select.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/slick.js"></script>
     <script src="js/scripts.js"></script>
     <script src="js/controllers/films-booking.js"></script>
 
