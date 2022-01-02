@@ -19,20 +19,29 @@ MovieDefaults.POSTER_THUMBNAIL = 'images/video.png';
 
 /**
  * Manages the movies booking page
- * @param {*} options 
+ * @param {*} options - controller settings:
+ *      ex:
+ *             {
+ *                  api: {
+ *                      movies: './data/movies.json',
+ *                      movieDetails: 'https://en4lzo1vrtnaahx.m.pipedream.net/movies/'
+ *                      rating: 'https://enghrwur11dut.x.pipedream.net/rating',
+ *                      booking: 'https://enghrwur11dut.x.pipedream.net/booking',
+ *                  }
+ *             }
  */
 function FilmsBookingController(options) {
-    this.api = options.api || {};
-    this.apiHelper = new ApiHelper(options.api);
-    this.bookedMovies = [];
-    this.availableMovies = [];
-    this.medicineFields = [];
-    this.searchBar = false;
-    this.movieInfoModal = new MovieInformationModal('movie-information-modal');
-    this.bookedMoviesController = new BookedMoviesController('.booked-movies-list-screen');
+    this._apiHelper = new ApiHelper(options.api || {});
+    this._bookedMovies = [];
+    this._availableMovies = [];
+    this._availableMoviesPagination = false;
+    this._medicineFields = [];
+    this._searchBar = false;
+    this._bookedMoviesController = new BookedMoviesController('.booked-movies-list-screen');
+    this._movieThumbnailController = false;
 
     this.init = function() {
-        this._setupEventHandlers();
+        this._initMovieThumbnailController();
 
         this._fetchInitialData({
             success: function() { 
@@ -44,152 +53,107 @@ function FilmsBookingController(options) {
         });
     }
 
-    this._setupEventHandlers = function() {
-        $(document).on('click', '.btn-book', this._handleClickBookMovie);
-        $(document).on('click', '.btn-unbook', this._handleClickUnbookMovie);
-        $(document).on('click', '.btn-like', this._handleClickLikeMovie);
-        $(document).on('click', '.btn-dislike', this._handleClickDislikeMovie);
-        $(document).on('click', '.btn-show-info', this._handleClickShowInfo);
+    this._initMovieThumbnailController = function() {
+        this._movieThumbnailController = new MovieThumbnailController({
+            dispatchers: {
+                bookMovie: this._bookMovie.bind(this),
+                unbookMovie: this._unbookMovie.bind(this),
+                toggleRating: this._toggleMovieRating.bind(this),
+                getMovieInfo: this._handleGetMovieInfo.bind(this),
+            }
+        });
 
-        this.bookedMoviesController.init(this._handleScreenSizeChange);
+        this._movieThumbnailController.init();
+
+        this._bookedMoviesController.init(this._handleScreenSizeChange.bind(this));
     }
 
-    /**
-     * Book movie btn click handler
-     */
-    this._handleClickBookMovie = function(e) {
-        e.preventDefault();
-        var movieId = this._detectMovieIdByEvent(e);
-        if (movieId) {
-            this._bookMovie(movieId);
-        }
-    }.bind(this);
-
-    this._detectMovieIdByEvent = function(e) {
-        var videoThumbnail = $(e.target).closest('.video-thumbnail');
-        var movieId = videoThumbnail.attr('data-id');
-        if (!movieId) {
-            console.error('video thumbnail should have id. what is going on?')
-            return false;
-        }
-        return movieId;
-    }
-
-    this._bookMovie = function(movieId) {
-        var movie = this.availableMovies.find(function(movie) {
+    this._bookMovie = function(movieId, callback) {
+        var movie = this._availableMovies.find(function(movie) {
             return movie.id == movieId
         });
 
         if (!movie) {
             console.error(`no unbooked movie with id: ${movieId}`)
+            callback(false);
             return;
         }
 
-        // TODO: show please wait dialog?
-        this.apiHelper.toggleBookMovie(movie.id, true)
+        this._apiHelper.toggleBookMovie(movie.id, true)
             .done(function(data) {
-                this.availableMovies = this.availableMovies.filter(function(elem) { return elem.id != movie.id })
+                this._availableMovies = this._availableMovies.filter(function(elem) { return elem.id != movie.id })
                 movie.booked = true;
-                this.bookedMovies.push(movie);
-                this._refreshMovieThumbnail(movie);
+                this._bookedMovies.push(movie);
+                callback(movie);
                 this._renderManageScreen();
             }.bind(this))
             .fail(function(e) {
                 console.error("Can't post book request:", e.statusText);
+                callback(false, e);
             })
     }
 
-    /**
-     * Unbook movie btn click handler
-     */
-    this._handleClickUnbookMovie = function(e) {
-        e.preventDefault();
-        var movieId = this._detectMovieIdByEvent(e);
-        if (movieId) {
-            this._unbookMovie(movieId);
-        }
-    }.bind(this);
-
-    this._unbookMovie = function(movieId) {
-        var movie = this.bookedMovies.find(function(movie) {
+    this._unbookMovie = function(movieId, callback) {
+        var movie = this._bookedMovies.find(function(movie) {
             return movie.id == movieId
         });
 
         if (!movie) {
             console.error(`no booked movie with id: ${movieId}`)
+            callback(false);
             return;
         }
 
         // TODO: show please wait dialog
-        this.apiHelper.toggleBookMovie(movie.id, false)
+        this._apiHelper.toggleBookMovie(movie.id, false)
             .done(function(data) {
-                this.bookedMovies = this.bookedMovies.filter(function(elem) { return elem.id != movie.id })
+                this._bookedMovies = this._bookedMovies.filter(function(elem) { return elem.id != movie.id })
                 movie.booked = false;
-                this.availableMovies.push(movie);
-                this._refreshMovieThumbnail(movie);
+                this._availableMovies.push(movie);
+                callback(movie)
                 this._renderManageScreen();
             }.bind(this))
             .fail(function(e) {
                 console.error("Can't post book request:", e.statusText);
+                callback(false, e);
             })
     }
 
-    /**
-     * Like movie btn click handler
-     */
-     this._handleClickLikeMovie = function(e) {
-        e.preventDefault();
-        var movieId = this._detectMovieIdByEvent(e);
-        if (movieId) {
-            this._toggleMovieRating(movieId, MovieRating.LIKE);
-        }
-    }.bind(this);
-
-    this._toggleMovieRating = function(movieId, rating) {
+    this._toggleMovieRating = function(movieId, rating, callback) {
         var movie = this._findMovie(movieId);
-        if (movie) {
-            var newRating = rating == movie.rating ? null : rating;
-            this.apiHelper.saveRating(movieId, newRating).done(function() {
-                movie.rating = newRating;
-                this._refreshMovieThumbnail(movie);
-            }.bind(this))
+        if (!movie) {
+            console.error(`movie with id: ${movieId} was not found`);
+            callback(false);
+            return;
         }
+
+        var newRating = rating == movie.rating ? null : rating;
+        this._apiHelper.saveRating(movieId, newRating)
+            .done(function() {
+                movie.rating = newRating;
+                callback(movie);
+            }.bind(this))
+            .fail(function(e) {
+                console.error("Can't post rating request:", e.statusText);
+                callback(false, e);
+            })
     }
 
     this._findMovie = function(movieId) {
-        return this.availableMovies.find(function(movie) { return movie.id == movieId }) ||
-                this.bookedMovies.find(function(movie) { return movie.id == movieId });
+        return this._availableMovies.find(function(movie) { return movie.id == movieId }) ||
+                this._bookedMovies.find(function(movie) { return movie.id == movieId });
     }
 
-    this._refreshMovieThumbnail = function(movie) {
-        var thumbnail = $(`.video-thumbnail[data-id=${movie.id}]`);
-        MovieThumbnailUtils.refreshThumbnailState(thumbnail, movie);
-    }
-
-    /**
-     * Dislike movie btn click handler
-     */
-     this._handleClickDislikeMovie = function(e) {
-        e.preventDefault();
-        var movieId = this._detectMovieIdByEvent(e);
-        if (movieId) {
-            this._toggleMovieRating(movieId, MovieRating.DISLIKE);
-        }
-    }.bind(this);
-
-    this._handleClickShowInfo = function(e) {
-        e.preventDefault();
-        var movieId = this._detectMovieIdByEvent(e);
-        var movie = this._findMovie(movieId);
-        this.movieInfoModal.show(movie);
-    }.bind(this);
+    this._handleGetMovieInfo = function(movieId, callback) {
+        callback(this._findMovie(movieId));
+    };
 
     this._handleScreenSizeChange = function(e) {
         this._renderBookedMovies();
-    }.bind(this);
+    };
 
     this._renderBookedMovies = function() {
-        this.bookedMoviesController.renderMovieThumbnails(this.bookedMovies);
+        this._bookedMoviesController.renderMovieThumbnails(this._bookedMovies);
     }
 
 
@@ -197,29 +161,29 @@ function FilmsBookingController(options) {
      * Gets initial data with the all films and categories
      */
     this._fetchInitialData = function(callbacks) {
-        this.apiHelper.getMovies().done(function(data) {
+        this._apiHelper.getMovies().done(function(data) {
             console.log(data);
 
             for (var id in data.docMovies){
                 if (data.docMovies.hasOwnProperty(id)) {
                     var film = data.docMovies[id]
                     if (film.booked) {
-                        this.bookedMovies.push(film);
+                        this._bookedMovies.push(film);
                     } else {
-                        this.availableMovies.push(film);
+                        this._availableMovies.push(film);
                     }
                 }
             }
 
             for (var id in data.medicineFields){
                 if (data.medicineFields.hasOwnProperty(id)) {
-                    this.medicineFields.push(data.medicineFields[id]);
+                    this._medicineFields.push(data.medicineFields[id]);
                 }
             }
 
-            console.debug('Booked: ', this.bookedMovies.length);
-            console.debug('Available: ', this.availableMovies.length);
-            console.debug('Categories: ', this.medicineFields.length);
+            console.debug('Booked: ', this._bookedMovies.length);
+            console.debug('Available: ', this._availableMovies.length);
+            console.debug('Categories: ', this._medicineFields.length);
 
             callbacks.success();
         }.bind(this)).fail(function(e) {
@@ -229,15 +193,15 @@ function FilmsBookingController(options) {
     }
 
     this._setupSearchBar = function() {
-        this.searchBar = new SearchBarController($('.search-block'), this.medicineFields, function() {
+        this._searchBar = new SearchBarController($('.search-block'), this._medicineFields, function() {
             this._renderAvailableMovies()
         }.bind(this))
 
-        this.searchBar.init();
+        this._searchBar.init();
     }
 
     this._initPagination = function() {
-        this.availableMoviesPagination = new PaginationController(
+        this._availableMoviesPagination = new PaginationController(
             $('.available-movies .movies-pagination'),
             18,
             function() { this._renderManageScreen() }.bind(this)
@@ -277,15 +241,15 @@ function FilmsBookingController(options) {
     }
 
     this._getFilteredAvailableMovies = function() {
-        return this.searchBar.filter(this.availableMovies);
+        return this._searchBar.filter(this._availableMovies);
     }
 
     this._applyPagination = function(movies) {
-        this.availableMoviesPagination.setup(movies.length);
-        var startIndex = this.availableMoviesPagination.currentPage * this.availableMoviesPagination.itemsPerPage;
+        this._availableMoviesPagination.setup(movies.length);
+        var startIndex = this._availableMoviesPagination.currentPage * this._availableMoviesPagination.itemsPerPage;
         return movies.slice(
             startIndex,
-            startIndex + this.availableMoviesPagination.itemsPerPage
+            startIndex + this._availableMoviesPagination.itemsPerPage
         );
     }
 
@@ -499,6 +463,23 @@ function ApiHelper(urls) {
     }
 
     /**
+     * Gets movie details
+     * @param {*} movieId 
+     * @returns jqXHR instance
+     */
+    this.getMovieInfo = function(movieId) {
+        var url = `${urls.movieInfo || ''}`;
+        if (!url.endsWith('/')) {
+            url += '/';
+        }
+        return $.ajax({
+            url: url + movieId,
+            type: 'GET',
+            cache: false
+        })
+    }
+
+    /**
      * Posts a request to book or unbook the movie
      * @param {*} movieId 
      * @param {*} book 
@@ -556,6 +537,17 @@ MovieThumbnailUtils.refreshThumbnailState = function(jqThumbnailElem, movie) {
 
     jqThumbnailElem.find('.btn-book').toggleClass('d-none', movie.booked)
     jqThumbnailElem.find('.btn-unbook').toggleClass('d-none', !movie.booked)
+}
+
+/**
+ * Finds the movie thumbnail by id and refreshes it's state
+ * @param {Object} movie 
+ */
+MovieThumbnailUtils.refreshMovieThumbnail = function(movie) {
+    if (movie) {
+        var thumbnail = $(`.video-thumbnail[data-id=${movie.id}]`);
+        MovieThumbnailUtils.refreshThumbnailState(thumbnail, movie);
+    }
 }
 
 
@@ -752,3 +744,207 @@ function BookedMoviesController(selector) {
         $('.booked-movies-list-container').find('.side-booked-videos-list').append(movieContainer);
     }
 }
+
+
+/**
+ * This controller dispatches like/dislike/info and book/unbook actions for standalone video thumbnails.
+ * @param {Object} options - controller settings:
+ *      ex:
+ *             {
+ *                  dispatchers: {
+ *                      bookMovie: function(movieId, function(movieData) {}) {},
+ *                      unbookMovie: function(movieId, function(movieData) {}) {},
+ *                      toggleRating: function(movieId, rating, function(movieData) {}) {},
+ *                      getMovieInfo: function(movieId, function(movieData) {}) {},
+ *                  }
+ *             }
+ */
+function MovieThumbnailController(options) {
+    this._dispatchers = {
+        bookMovie: options.dispatchers.bookMovie || function(movieId, callback) { callback(false); },
+        unbookMovie: options.dispatchers.unbookMovie || function(movieId, callback) { callback(false); },
+        toggleRating: options.dispatchers.toggleRating || function(movieId, rating, callback) { callback(false); },
+        getMovieInfo: options.dispatchers.getMovieInfo || function(movieId, callback) { callback(false); },
+    }
+
+    this._movieInfoModal = new MovieInformationModal('movie-information-modal');
+
+    this.init = function() {
+        this._setupEventHandlers();
+    }
+
+    this._setupEventHandlers = function() {
+        $(document).on('click', '.btn-book', this._handleClickBookMovie.bind(this));
+        $(document).on('click', '.btn-unbook', this._handleClickUnbookMovie.bind(this));
+        $(document).on('click', '.btn-like', this._handleClickLikeMovie.bind(this));
+        $(document).on('click', '.btn-dislike', this._handleClickDislikeMovie.bind(this));
+        $(document).on('click', '.btn-show-info', this._handleClickShowInfo.bind(this));
+    }
+
+    this._handleClickBookMovie = function(e) {
+        e.preventDefault();
+        var movieId = this._detectMovieIdByEvent(e);
+        this._dispatchers.bookMovie(movieId, function(movieData) {
+            MovieThumbnailUtils.refreshMovieThumbnail(movieData);
+        })
+    }
+
+    this._handleClickUnbookMovie = function(e) {
+        e.preventDefault();
+        var movieId = this._detectMovieIdByEvent(e);
+        this._dispatchers.unbookMovie(movieId, function(movieData) {
+            MovieThumbnailUtils.refreshMovieThumbnail(movieData);
+        })
+    }
+
+    this._handleClickLikeMovie = function(e) {
+        e.preventDefault();
+        var movieId = this._detectMovieIdByEvent(e);
+        var liked = $(e.target).hasClass('active');
+        this._dispatchers.toggleRating(movieId, liked ? null : MovieRating.LIKE, function(movieData) {
+            MovieThumbnailUtils.refreshMovieThumbnail(movieData);
+        })
+    }
+
+    this._handleClickDislikeMovie = function(e) {
+        e.preventDefault();
+        var movieId = this._detectMovieIdByEvent(e);
+        var disliked = $(e.target).hasClass('active');
+        this._dispatchers.toggleRating(movieId, disliked ? null : MovieRating.DISLIKE, function(movieData) {
+            MovieThumbnailUtils.refreshMovieThumbnail(movieData);
+        })
+    }
+
+    this._handleClickShowInfo = function(e) {
+        e.preventDefault();
+        var movieId = this._detectMovieIdByEvent(e);
+        this._dispatchers.getMovieInfo(movieId, function(movieData) {
+            if (movieData) {
+                this._movieInfoModal.show(movieData);
+            }
+        }.bind(this))
+    }
+
+    this._detectMovieIdByEvent = function(e) {
+        var videoThumbnail = $(e.target).closest('.video-thumbnail');
+        var movieId = videoThumbnail.attr('data-id');
+        if (!movieId) {
+            console.error('video thumbnail should have id. what is going on?')
+            return false;
+        }
+        return movieId;
+    }
+}
+
+
+function DefaultMovieThumbnailController(options) {
+    this._apiHelper = new ApiHelper(options.api || {});
+    this._movieThumbnailController = false;
+
+    this.init = function() {
+        this._movieThumbnailController = new MovieThumbnailController(
+            {
+                dispatchers: {
+                    bookMovie: function(movieId, callback) {
+                        this._apiHelper.toggleBookMovie(movieId, true)
+                            .done(function(data) {
+                                callback(data);
+                            }.bind(this))
+                            .fail(function(e) {
+                                console.error("Can't post book request:", e.statusText);
+                                callback(false, e);
+                            })
+                    }.bind(this),
+                    unbookMovie: function(movieId, callback) {
+                        this._apiHelper.toggleBookMovie(movieId, false)
+                            .done(function(movieData) {
+                                callback(movieData);
+                            }.bind(this))
+                            .fail(function(e) {
+                                console.error("Can't post book request:", e.statusText);
+                                callback(false, e);
+                            })
+                    }.bind(this),
+                    toggleRating: function(movieId, rating, callback) {
+                        this._apiHelper.saveRating(movieId, rating)
+                            .done(function(movieData) {
+                                callback(movieData);
+                            }.bind(this))
+                            .fail(function(e) {
+                                console.error("Can't post rating request:", e.statusText);
+                                callback(false, e);
+                            })
+                    }.bind(this),
+                    getMovieInfo: function(movieId, callback) {
+                        this._apiHelper.getMovieInfo(movieId)
+                        .done(function(movieData) {
+                            callback(movieData);
+                        }.bind(this))
+                        .fail(function(e) {
+                            console.error("Can't get movie info:", e.statusText);
+                            callback(false, e);
+                        })
+                    }.bind(this),
+                }
+            }
+        );
+
+        this._movieThumbnailController.init();
+    }
+
+}
+
+
+/**
+ * Full screen video player
+ */
+ var FullScreenVideoPlayer = FullScreenVideoPlayer || {}
+
+ FullScreenVideoPlayer.show = function(videoSrc) {
+     var playerModalElem = document.getElementById('video-viewer-modal');
+     if (!playerModalElem) {
+         console.error("video-viewer-modal is not on the screen")
+         return;
+     }
+     var playerElem = playerModalElem.querySelector('.video-player');
+     if (!playerElem) {
+         console.error('no player')
+         return;
+     }
+     var playerModal = new bootstrap.Modal(playerModalElem, {
+         keyboard: true
+     });
+ 
+     playerElem.src = videoSrc;
+     playerModal.show();
+     playerElem.play();
+     playerElem.focus();
+ 
+     playerModalElem.addEventListener('hidden.bs.modal', function (event) { 
+         playerElem.pause();
+         playerElem.currentTime = 0;
+     });
+ }
+ 
+ $(function() {
+     /**
+      * Subscribe to the play-btn click of video-thumbnail control
+      * NOTE: the element with the class video-thumbnail should have 
+      *       data-video-src attribute with the url to the video, which should be played
+      */
+ 
+     $(document).on('click', '.video-thumbnail .play-button-container', function(e) {
+         e.preventDefault();
+ 
+         var playButton = e.target;
+         var videoThumbnail = playButton.closest('.video-thumbnail');
+         var url = videoThumbnail && 
+                   videoThumbnail.hasAttribute('data-video-src') && 
+                   videoThumbnail.getAttribute('data-video-src');
+ 
+         if (url) {
+             FullScreenVideoPlayer.show(url);
+         }
+     })
+ });
+ 

@@ -134,57 +134,6 @@ $(document).ready(function() {
 
 $('.datepicker').datepicker('show');
 
-/**
- * Full screen video player
- */
-
-var FullScreenVideoPlayer = FullScreenVideoPlayer || {}
-
-FullScreenVideoPlayer.show = function(videoSrc) {
-    var playerModalElem = document.getElementById('video-viewer-modal');
-    var playerElem = playerModalElem.querySelector('.video-player');
-    if (!playerElem) {
-        console.error('no player')
-        return;
-    }
-    var playerModal = new bootstrap.Modal(playerModalElem, {
-        keyboard: true
-    });
-
-    playerElem.src = videoSrc;
-    playerModal.show();
-    playerElem.play();
-    playerElem.focus();
-
-    playerModalElem.addEventListener('hidden.bs.modal', function (event) { 
-        playerElem.pause();
-        playerElem.currentTime = 0;
-    });
-}
-
-$(function() {
-    /**
-     * Subscribe to the play-btn click of video-thumbnail control
-     * NOTE: the element with the class video-thumbnail should have 
-     *       data-video-src attribute with the url to the video, which should be played
-     */
-
-    $(document).on('click', '.video-thumbnail .play-button-container', function(e) {
-        e.preventDefault();
-
-        var playButton = e.target;
-        var videoThumbnail = playButton.closest('.video-thumbnail');
-        var url = videoThumbnail && 
-                  videoThumbnail.hasAttribute('data-video-src') && 
-                  videoThumbnail.getAttribute('data-video-src');
-
-        if (url) {
-            FullScreenVideoPlayer.show(url);
-        }
-    })
-});
-
-
 // date range picker setup
 // you can find more details here: http://www.daterangepicker.com/#usage
 $(function() {
