@@ -552,23 +552,15 @@
                                 <div class="ratio ratio-16x9">
                                     <div>
                                         <div class="video-thumbnail" data-video-src="">
-                                            <img alt="Video" class="poster-image">
-                                            <div class="video-thumbnail-controls h-100">
-                                                <div class="play-button-container">
-                                                    <button type="button" class="border-0 bg-transparent play-btn">
-                                                        <span class="icon-play"></span>
-                                                    </button>
-                                                </div>
-                                                <div class="manage-block">
+                                            <video class="embed-responsive-item w-100 video-player" controls></video>
+                                            <div class="video-thumbnail-controls bg-none pe-none h-100">
+                                                <div class="manage-block pe-auto">
                                                     <button type="button" class="btn btn-warning w-100 btn-book"><span class="icon-plus"></span><span class="d-none d-md-inline ps-4">Hinzufügen</span></button>
                                                     <button type="button" class="btn btn-warning w-100 btn-unbook"><span class="icon-minus"></span><span class="d-none d-md-inline ps-4">Abwählen</span></button>
                                                 </div>
-                                                <div class="reactions-block">
+                                                <div class="reactions-block pe-auto">
                                                     <span class="icon-hand-thumbs-up reaction-btn btn-like"></span>
                                                     <span class="icon-hand-thumbs-down reaction-btn btn-dislike"></span>
-                                                </div>
-                                                <div class="video-title-container">
-                                                    <p class="video-title"></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -577,6 +569,7 @@
                             </div>
                             <div class="col-xl-4 text-start">
                                 <div class="card-body p-4">
+                                    <h5 class="card-title text-success pb-4 video-title"></h5>
                                     <p class="card-text video-description"></p>
                                 </div>
                             </div>

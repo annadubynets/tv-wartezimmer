@@ -565,6 +565,19 @@ function MovieInformationModal(modalId) {
         var thumbnailElem = jqModalElem.find(".video-thumbnail");
         MovieThumbnailUtils.refreshThumbnailState(thumbnailElem, movie);
         jqModalElem.find('.video-description').text(movie.description);
+        jqModalElem.find('.video-title').text(movie.name)
+
+        var playerElem = jqModalElem.find('.video-player');
+        if (playerElem) {
+            playerElem.attr('src', movie.url);
+            playerElem[0].play();
+            playerElem[0].focus();
+        
+            jqModalElem.one('hidden.bs.modal', function (event) { 
+                playerElem[0].pause();
+                playerElem[0].currentTime = 0;
+            });
+        }
 
         this._modalInstance.show();
     }
@@ -778,7 +791,7 @@ function MovieThumbnailController(options) {
         $(document).on('click', '.btn-unbook', this._handleClickUnbookMovie.bind(this));
         $(document).on('click', '.btn-like', this._handleClickLikeMovie.bind(this));
         $(document).on('click', '.btn-dislike', this._handleClickDislikeMovie.bind(this));
-        $(document).on('click', '.btn-show-info', this._handleClickShowInfo.bind(this));
+        $(document).on('click', '.btn-show-info, .video-thumbnail .play-button-container', this._handleClickShowInfo.bind(this));
     }
 
     this._handleClickBookMovie = function(e) {
@@ -893,58 +906,3 @@ function DefaultMovieThumbnailController(options) {
     }
 
 }
-
-
-/**
- * Full screen video player
- */
- var FullScreenVideoPlayer = FullScreenVideoPlayer || {}
-
- FullScreenVideoPlayer.show = function(videoSrc) {
-     var playerModalElem = document.getElementById('video-viewer-modal');
-     if (!playerModalElem) {
-         console.error("video-viewer-modal is not on the screen")
-         return;
-     }
-     var playerElem = playerModalElem.querySelector('.video-player');
-     if (!playerElem) {
-         console.error('no player')
-         return;
-     }
-     var playerModal = new bootstrap.Modal(playerModalElem, {
-         keyboard: true
-     });
- 
-     playerElem.src = videoSrc;
-     playerModal.show();
-     playerElem.play();
-     playerElem.focus();
- 
-     playerModalElem.addEventListener('hidden.bs.modal', function (event) { 
-         playerElem.pause();
-         playerElem.currentTime = 0;
-     });
- }
- 
- $(function() {
-     /**
-      * Subscribe to the play-btn click of video-thumbnail control
-      * NOTE: the element with the class video-thumbnail should have 
-      *       data-video-src attribute with the url to the video, which should be played
-      */
- 
-     $(document).on('click', '.video-thumbnail .play-button-container', function(e) {
-         e.preventDefault();
- 
-         var playButton = e.target;
-         var videoThumbnail = playButton.closest('.video-thumbnail');
-         var url = videoThumbnail && 
-                   videoThumbnail.hasAttribute('data-video-src') && 
-                   videoThumbnail.getAttribute('data-video-src');
- 
-         if (url) {
-             FullScreenVideoPlayer.show(url);
-         }
-     })
- });
- 
