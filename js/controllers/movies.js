@@ -450,7 +450,14 @@ function SearchBarController(jqRootElement, categories, onFilterChangeCallback) 
 /**
  * API helper simplifies the usage of the movies related api requests
  * 
- * @param {*} urls 
+ * @param {*} urls api endpoints list
+ *      Ex:
+ *        {
+ *           movies: "/",      // used for getting the movies list
+ *           movieInfo: "/",   // gets single movie info
+ *           booking: "/",     // POST booking request
+ *           rating: "/",    // POST rating request
+ *        }
  */
 function ApiHelper(urls) {
 
@@ -587,7 +594,10 @@ function MovieInformationModal(modalId) {
     }
 }
 
-
+/**
+ * Manages booked movies block with a fancy horizontal carousel
+ * @param {*} selector 
+ */
 function BookedMoviesController(selector) {
     this._rootScreenContainer = $(selector);
     this._renderDesktop = true;
@@ -849,7 +859,19 @@ function MovieThumbnailController(options) {
     }
 }
 
-
+/**
+ * Used for managing video thumbnails on the pages without filter bar
+ * @param {Object} options 
+ *  Ex:
+ *     {
+ *          api: { // See ApiHelper description
+ *              movies: "/",      // used for getting the movies list
+ *              movieInfo: "/",   // gets single movie info
+ *              booking: "/",     // POST booking request
+ *              rating: "/",      // POST rating request
+ *          }
+ *     }
+ */
 function DefaultMovieThumbnailController(options) {
     this._apiHelper = new ApiHelper(options.api || {});
     this._movieThumbnailController = false;
