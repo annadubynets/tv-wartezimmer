@@ -476,11 +476,8 @@ function ApiHelper(urls) {
      */
     this.getMovieInfo = function(movieId) {
         var url = `${urls.movieInfo || ''}`;
-        if (!url.endsWith('/')) {
-            url += '/';
-        }
         return $.ajax({
-            url: url + movieId,
+            url: url + '?docMovieId=' + movieId,
             type: 'GET',
             cache: false
         })
