@@ -99,7 +99,6 @@ $show-sidebar-breakpoint: 768px;
     max-width: calc(100% - #{$desktop-sidebar-width});
     width: 100%;
     margin-left: $desktop-sidebar-width;
-    border-left: 1px solid $black;
 }
 
 .btn-toggle-nav {

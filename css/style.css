@@ -12501,6 +12501,10 @@ p {
   color: #188473;
 }
 
+.text-light-green {
+  color: #5F958C;
+}
+
 .text-warning {
   color: #DD963B !important;
 }
@@ -12711,7 +12715,6 @@ iframe {
   max-width: calc(100% - 255px);
   width: 100%;
   margin-left: 255px;
-  border-left: 1px solid #212429;
 }
 
 .btn-toggle-nav.list-unstyled {
@@ -13530,6 +13533,10 @@ label {
 .form-control::placeholder {
   color: #868D96;
 }
+.form-control:focus, .form-control:hover {
+  box-shadow: none;
+  border-color: #DD963B;
+}
 
 .form-check-input:checked {
   background-color: #DD963B;
@@ -13835,6 +13842,31 @@ footer .img-style {
 .highlights .card .img-style {
   object-fit: cover;
   height: 100%;
+}
+
+.modal-dialog .card .card-title {
+  font-size: 28px;
+  color: #116154;
+}
+.modal-dialog .card .card-title.font-size-18px {
+  font-size: 18px;
+}
+@media (max-width: 768px) {
+  .modal-dialog .card .card-title {
+    font-size: 20px;
+  }
+}
+.modal-dialog .card .card-text {
+  font-size: 25px;
+  color: #188473;
+}
+.modal-dialog .card .card-text.font-size-16px {
+  font-size: 16px;
+}
+@media (max-width: 768px) {
+  .modal-dialog .card .card-text {
+    font-size: 16px;
+  }
 }
 
 .search-block {

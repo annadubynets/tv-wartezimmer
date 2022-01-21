@@ -44,6 +44,11 @@ label {
     &::placeholder {
         color: #868D96;
     }
+    &:focus,
+    &:hover {
+        box-shadow: none;
+        border-color: $yellow;
+    }
 }
 
 .form-check-input {
@@ -204,7 +209,7 @@ input[readonly] {
     padding: 16px 10px;
 }
 
-.table-sm > :not(caption) > * > * {
+.table-sm> :not(caption)>*>* {
     padding: 0.25rem 0.25rem !important;
 }
 
@@ -371,6 +376,31 @@ footer {
     }
 }
 
+.modal-dialog {
+    .card {
+        .card-title {
+            font-size: 28px;
+            color: $green;
+            &.font-size-18px {
+                font-size: 18px;
+            }
+            @media (max-width: 768px) {
+                font-size: 20px;
+            }
+        }
+        .card-text {
+            font-size: 25px;
+            color: $mediumseagreen;
+            &.font-size-16px {
+                font-size: 16px;
+            }
+            @media (max-width: 768px) {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
 .search-block {
     background-color: $darkgreen;
     padding: 14px 30px;
@@ -389,7 +419,6 @@ footer {
 
 .no-booked-movies-block {
     min-height: 400px;
-
     @media (max-width: 992px) {
         min-height: 200px;
     }
