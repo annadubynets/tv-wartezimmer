@@ -24,7 +24,7 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item align-self-center">
                     <div class="dropdown">
-                        <a href="#" class="nav-link profile-dropdown-icon" id="profileDropdownMemu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a href="#" class="nav-link profile-dropdown-icon pe-0" id="profileDropdownMemu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <span class="icon-profile font-size-24px text-white"></span>
                         </a>
 
@@ -163,9 +163,9 @@
 
         <div class="quick-access">
             <div class="container-fluid">
-                <div class="d-flex justify-content-between pt-4">
-                    <h4 class="text-white">Schnellzugriff</h4>
-                    <p class="text-white">mehr<span class="icon-right-arrow ps-3"></span></p>
+                <div class="d-flex justify-content-between pt-4 pb-4">
+                    <h4 class="text-white mb-0">Schnellzugriff</h4>
+                    <p class="text-white">mehr<span class="icon-right-arrow ps-4 align-middle"></span></p>
                 </div>
             </div>
             <div class="container-fluid pe-0">
@@ -225,9 +225,9 @@
 
         <div class="programs">
             <div class="container-fluid zero-right-padding-up-to-xl">
-                <div class="d-flex justify-content-between pt-3">
-                    <h4 class="text-white">Aktuelles</h4>
-                    <p class="text-white">mehr<span class="icon-right-arrow ps-3"></span></p>
+                <div class="d-flex justify-content-between pt-3 pb-4">
+                    <h4 class="text-white mb-0">Aktuelles</h4>
+                    <p class="text-white">mehr<span class="icon-right-arrow ps-4 align-middle"></span></p>
                 </div>
                 <div class="owl-carousel owl-theme">
                     <div class="item min-width-290px">
@@ -351,9 +351,9 @@
 
         <div class="themed-packages pb-80px">
             <div class="container-fluid">
-                <div class="d-flex justify-content-between pt-4">
-                    <h4 class="text-white">Themenpakete</h4>
-                    <p class="text-white">mehr<span class="icon-right-arrow ps-3"></span></p>
+                <div class="d-flex justify-content-between pt-4 pb-4">
+                    <h4 class="text-white mb-0">Themenpakete</h4>
+                    <p class="text-white">mehr<span class="icon-right-arrow ps-4 align-middle"></span></p>
                 </div>
             </div>
             <div class="container-fluid pe-0">
@@ -655,7 +655,7 @@
                             </div>
                             <div class="col-xl-4 text-start">
                                 <div class="card-body p-4">
-                                    <h5 class="card-title text-success pb-4 video-title"></h5>
+                                    <h5 class="card-title text-success pb-4 video-title mb-0"></h5>
                                     <p class="card-text video-description"></p>
                                 </div>
                             </div>
@@ -681,16 +681,14 @@
 
     <script>
         $(function() {
-            var controller = new DefaultMovieThumbnailController(
-                {
-                    api: {
-                        movies: './data/movies.json',
-                        rating: 'https://envv2uhro2b4heb.m.pipedream.net/rating',
-                        booking: 'https://enban4rakn7cdzr.m.pipedream.net/booking',
-                        movieInfo: 'https://en4lzo1vrtnaahx.m.pipedream.net',
-                    }
+            var controller = new DefaultMovieThumbnailController({
+                api: {
+                    movies: './data/movies.json',
+                    rating: 'https://envv2uhro2b4heb.m.pipedream.net/rating',
+                    booking: 'https://enban4rakn7cdzr.m.pipedream.net/booking',
+                    movieInfo: 'https://en4lzo1vrtnaahx.m.pipedream.net',
                 }
-            );
+            });
 
             controller.init();
         });
