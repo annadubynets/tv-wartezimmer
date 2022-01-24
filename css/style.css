@@ -13506,6 +13506,10 @@ iframe {
   margin-bottom: 0;
 }
 
+.lottie-animation-play-on-hover {
+  cursor: pointer;
+}
+
 .lottie-animation {
   background-color: #ffffff;
   width: 100%;

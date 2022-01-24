@@ -195,10 +195,13 @@ $(function() {
             name: elem.getAttribute('data-title') || '',
         });
 
-        elem.addEventListener('mouseover', function() {
+        var playTrigger = elem.closest('.lottie-animation-play-on-hover') || elem;
+
+        playTrigger.addEventListener('mouseover', function() {
             animation.play();
         });
-        elem.addEventListener('mouseout', function() {
+
+        playTrigger.addEventListener('mouseout', function() {
             animation.pause();
         })
     })
