@@ -191,8 +191,15 @@ $(function() {
             path: elem.getAttribute('data-src'),
             renderer: 'svg/canvas/html',
             loop: true,
-            autoplay: true,
+            autoplay: false,
             name: elem.getAttribute('data-title') || '',
+        });
+
+        elem.addEventListener('mouseover', function() {
+            animation.play();
+        });
+        elem.addEventListener('mouseout', function() {
+            animation.pause();
         })
     })
     
