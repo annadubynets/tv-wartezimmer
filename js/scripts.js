@@ -178,3 +178,22 @@ $(function() {
         });
     }
 });
+
+
+/**
+ * bodymovin/lottie animation setup
+ */
+$(function() {
+    var animationElements = document.querySelectorAll('.lottie-animation')
+    animationElements.forEach(function(elem) {
+        var animation = bodymovin.loadAnimation({
+            container: elem,
+            path: elem.getAttribute('data-src'),
+            renderer: 'svg/canvas/html',
+            loop: true,
+            autoplay: true,
+            name: elem.getAttribute('data-title') || '',
+        })
+    })
+    
+})
