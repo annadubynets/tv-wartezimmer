@@ -112,7 +112,7 @@ $show-sidebar-breakpoint: 768px;
             font-size: 16px;
             color: $seagreen;
             &.active,
-            &:active {
+            &:active, &:hover {
                 color: $white;
             }
         }
