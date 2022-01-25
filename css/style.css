@@ -12481,6 +12481,10 @@ p {
   font-size: 200px;
 }
 
+.font-weight-400 {
+  font-weight: 400;
+}
+
 .text-primary {
   color: #F54562 !important;
 }
@@ -12570,6 +12574,10 @@ iframe {
 
 .bg-none {
   background: none !important;
+}
+
+.line-height-25px {
+  line-height: 25px;
 }
 
 .navbar {
