@@ -1,9 +1,13 @@
 .video-thumbnail {
     $padding: 0.9rem;
-    $borderRadius: 30px;
+    --borderRadius: 30px;
     height: 100%;
-    border-radius: $borderRadius;
+    border-radius: var(--borderRadius);
     position: relative;
+
+    @media (max-width: 414px) {
+        --borderRadius: 16px;
+    }
 
     .poster-image {
         position: absolute;
@@ -12,7 +16,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        border-radius: $borderRadius;
+        border-radius: var(--borderRadius);
     }
 
     .video-player {
@@ -21,13 +25,13 @@
         top: 0;
         width: 100%;
         height: 100%;
-        border-radius: $borderRadius;
+        border-radius: var(--borderRadius);
     }
 
     .video-thumbnail-controls {
         position: relative;
         background: linear-gradient(to bottom, #ebebebbd 0, #000000bd 100%);
-        border-radius: $borderRadius;
+        border-radius: var(--borderRadius);
         padding-bottom: $padding;
 
         .play-button-container {
@@ -67,9 +71,7 @@
                 color: $white;
                 font-size: 14px;
                 display: inline-block;
-                text-overflow: ellipsis ;
                 overflow: hidden;
-                white-space: nowrap;
                 width: 100%;
 
                 @media (min-width: 376px) {
