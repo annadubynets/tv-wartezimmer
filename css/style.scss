@@ -142,13 +142,14 @@ input[readonly] {
             height: 150px;
             object-fit: contain;
         }
-
-        .animation-block {
-            max-width: 100%;
-            width: 150px;
-            min-height: 150px;
-        }
     }
+}
+
+.animation-block {
+    display: grid;
+    max-width: 100%;
+    width: 150px;
+    min-height: 150px;
 }
 
 .films {

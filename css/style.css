@@ -13650,7 +13650,9 @@ input[readonly] {
   height: 150px;
   object-fit: contain;
 }
-.quick-access .card .animation-block {
+
+.animation-block {
+  display: grid;
   max-width: 100%;
   width: 150px;
   min-height: 150px;
