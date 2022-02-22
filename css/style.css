@@ -13703,6 +13703,10 @@ input[readonly] {
   background: linear-gradient(to bottom, #ebebeb 0, #808080 100%);
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16) !important;
 }
+.report-overlay.overlay-grey-50 {
+  background: linear-gradient(to bottom, #000000, 30%, #FFFFFF);
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16) !important;
+}
 
 .card-report {
   position: absolute;
@@ -13931,6 +13935,11 @@ footer .img-style {
   .no-booked-movies-block {
     min-height: 150px;
   }
+}
+
+.btn-container {
+  position: absolute;
+  bottom: 15px;
 }
 
 @media (max-width: 992px) {
