@@ -627,6 +627,8 @@ function BookedMoviesController(selector) {
         } else {
             this._showBookedMovieScreen('no-booked-movies-block');
         }
+
+        this._renderBookedMoviesCount(movies);
     }
 
     this._renderMovieThumbnails = function(movies) {
@@ -737,6 +739,14 @@ function BookedMoviesController(selector) {
         MovieThumbnailUtils.refreshThumbnailState(jqThumbnailElem, movie);
         
         $('.booked-movies-list-container').find('.side-booked-videos-list').append(movieContainer);
+    }
+
+    this._renderBookedMoviesCount = function(movies) {
+        if (movies.length) {
+            $('.booked-movies-count').text(movies.length);
+        }
+
+        $('.booked-movies-counter').toggleClass('d-none', movies.length == 0);
     }
 }
 
