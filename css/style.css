@@ -13553,8 +13553,7 @@ label {
   object-fit: cover;
 }
 
-.item-img {
-  width: 100%;
+.ratio > * {
   object-fit: cover;
 }
 
