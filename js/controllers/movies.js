@@ -630,33 +630,11 @@ function BookedMoviesController(selector) {
     }
 
     this._renderMovieThumbnails = function(movies) {
-        if (movies.length == 1) {
-            this._renderSingleThumbnail(movies[0]);
-        } else if (this._renderDesktop) {
+        if (this._renderDesktop) {
             this._renderDesktopCarousel(movies);
         } else {
             this._renderMobileCarousel(movies);
         }
-    }
-
-    this._renderSingleThumbnail = function(movie) {
-        this._cleanupAllThumbnails();
-
-        var jqMovieContainerTemplate = $('.movie-block-template');
-        
-        var jqMovieContainer = $(
-            `
-                <div class="row justify-content-center">
-                    <div class="col-xl-8 col-lg-12 pb-xl-0">
-                        ${jqMovieContainerTemplate.html()}
-                    </div>
-                </div>
-            `
-        );
-        var jqThumbnailElem = jqMovieContainer.find('.video-thumbnail');
-        jqThumbnailElem.addClass('large');
-        MovieThumbnailUtils.refreshThumbnailState(jqThumbnailElem, movie);
-        this._rootScreenContainer.append(jqMovieContainer);
     }
 
     this._cleanupAllThumbnails = function() {
@@ -679,24 +657,21 @@ function BookedMoviesController(selector) {
         var lastCarouselSlide = false;
 
         movies.forEach(function(movie, index) {
-            if (!lastCarouselSlide || index % 2 != 0) {
+            if (!lastCarouselSlide || index % 2 == 0) {
                 lastCarouselSlide = $(`<div class="movie-slide"></div>`);
-                lastCarouselSlide.toggleClass('large', index == 0)
                 jqCarouselContainer.append(lastCarouselSlide)
             }
 
             var jqThumbnailContainer = $(
                 `
-                    <div class="${index % 2 != 0 ? 'mb-3' : ''}">
+                    <div class="${movies.length > 1 && index % 2 == 0 ? 'mb-3' : ''}">
                         ${jqMovieContainerTemplate.html()}
                     </div>
                 `
             );
-            var jqThumbnailElem = jqThumbnailContainer.find('.video-thumbnail');
-            
-            jqThumbnailElem.toggleClass('large', index == 0);
-            MovieThumbnailUtils.refreshThumbnailState(jqThumbnailElem, movie);
 
+            var jqThumbnailElem = jqThumbnailContainer.find('.video-thumbnail');
+            MovieThumbnailUtils.refreshThumbnailState(jqThumbnailElem, movie);
             lastCarouselSlide.append(jqThumbnailContainer)
         });
 
